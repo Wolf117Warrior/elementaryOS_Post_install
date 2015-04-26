@@ -120,15 +120,9 @@ then
 	clear
 	echo "Installation de Google Chrome..."
 	echo ""
-	if [[ $(uname -m) == "i686" ]]
-	then
-		wget -O /tmp/google-chrome-stable_current_i386.deb https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
-		sudo dpkg -i /tmp/google-chrome-stable_current_i386.deb
-	elif [[ $(uname -m) == "x86_64" ]]
-	then
-		wget -O /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-		sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb
-	fi
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+    sudo apt-get -y install google-chrome-stable
 fi
 
 # Installer Chromium

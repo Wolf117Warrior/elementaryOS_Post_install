@@ -37,6 +37,10 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
 	FALSE "Installer Sublime Text 3" "Installe Sublime Text 3, un puissant éditeur de texte" \
 	FALSE "Installer LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
+
+	FALSE "Installer elementary Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
+
+
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
 	--separator=', ');
@@ -98,20 +102,20 @@ then
 	sudo apt-get -y install zip unzip p7zip p7zip-rar rar unrar
 fi
 
-# Install GDebi Action
+# Installer GDebi
 if [[ $GUI == *"Installer GDebi"* ]]
 then
 	clear
-	echo "Installing GDebi..."
+	echo "Installation de GDebi..."
 	echo ""
 	sudo apt-get -y install gdebi
 fi
 
-# Install Google Chrome Action
+# Installer Google Chrome Action
 if [[ $GUI == *"Installer Google Chrome"* ]]
 then
 	clear
-	echo "Installing Google Chrome..."
+	echo "Installation de Google Chrome..."
 	echo ""
 	if [[ $(uname -m) == "i686" ]]
 	then
@@ -124,38 +128,38 @@ then
 	fi
 fi
 
-# Install Chromium
+# Installer Chromium
 if [[ $GUI == *"Installer Chromium"* ]]
 then
 	clear
-	echo "Installing Chromium..."
+	echo "Installation de Chromium..."
 	echo ""
 	sudo apt-get -y install chromium-browser
 fi
 
-# Install Firefox Action
+# Installze Firefox
 if [[ $GUI == *"Installer Firefox"* ]]
 then
 	clear
-	echo "Installing Firefox..."
+	echo "Installation de Firefox..."
 	echo ""
 	sudo apt-get -y install firefox
 fi
 
-# Install Liferea Action
+# Installer Liferea
 if [[ $GUI == *"Installer Liferea"* ]]
 then
 	clear
-	echo "Installing Liferea..."
+	echo "Installation de Liferea..."
 	echo ""
 	sudo apt-get -y install liferea
 fi
 
-# Install VLC Action
+# Installer VLC
 if [[ $GUI == *"Installer VLC"* ]]
 then
 	clear
-	echo "Installing VLC..."
+	echo "Installation de VLC..."
 	echo ""
 	sudo apt-get -y install vlc
 fi
@@ -169,35 +173,46 @@ then
 	sudo apt-get -y install transmission
 fi
 
-# Install Atom Action
+# Installer Atom
 if [[ $GUI == *"Installer Atom"* ]]
 then
 	clear
-	echo "Installing Atom..."
+	echo "Installation de Atom..."
 	echo ""
 	sudo add-apt-repository -y ppa:webupd8team/atom
 	sudo apt-get -y update
 	sudo apt-get -y install atom
 fi
 
-# Install Sublime Text 3 Action
+# Installer Sublime Text 3
 if [[ $GUI == *"Installer Sublime Text 3"* ]]
 then
 	clear
-	echo "Installing Sublime Text 3..."
+	echo "Installation de Sublime Text 3..."
 	echo ""
 	sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 	sudo apt-get -y update
 	sudo apt-get -y install sublime-text-installer
 fi
 
-# Install LibreOffice Action
+# Installer LibreOffice
 if [[ $GUI == *"Installer LibreOffice"* ]]
 then
 	clear
-	echo "Installing LibreOffice..."
+	echo "Installation de LibreOffice..."
 	echo ""
 	sudo apt-get -y install libreoffice
+fi
+
+# Installer elementary Tweaks
+if [[ $GUI == *"Installer elementary Tweaks"* ]]
+then
+	clear
+	echo "Installation de elementary Tweaks..."
+	echo ""
+	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install elementary-tweaks
 fi
 
 # Fix Broken Packages Action

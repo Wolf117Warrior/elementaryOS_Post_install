@@ -3,8 +3,7 @@
 # TODO
 # rajout du dépot communautaire elementaryos-fr
 #
-# darktable, suite photo
-# MEGA
+# darktable
 #
 #
 
@@ -42,6 +41,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer Vocal" "Installe vocal, application de podcasts." \
 	FALSE "Installer envelope" "Installe envelope, application de gestion financière." \
     FALSE "Installer darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
+    FALSE "Installer rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
     FALSE "Installer dropbox" "Installe dropbox avec les icones monochromes elementary." \
 
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
@@ -74,7 +74,8 @@ then
 	clear
 	echo "Installation des Ubuntu Restricted Extras..."
 	echo ""
-	sudo apt-get -y install ubuntu-restricted-extras
+    echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections 
+	sudo apt-get -y install ubuntu-restricted-extras ttf-mscorefonts-installer ubuntu-restricted-addons
 fi
 
 # Installer Extra Multimedia Codecs
@@ -83,7 +84,7 @@ then
 	clear
 	echo "Installation des Extra Multimedia Codecs..."
 	echo ""
-	sudo apt-get -y install libavcodec-extra-53
+	sudo apt-get -y install libavcodec-extra-53 gstreamer0.10-plugins-bad-multiverse
 fi
 
 # Installer le Support pour DVD encrypté
@@ -102,7 +103,7 @@ then
 	clear
 	echo "Installation du Support pour les formats d'archivage"
 	echo ""
-	sudo apt-get -y install zip unzip p7zip p7zip-rar rar unrar
+	sudo apt-get -y install unace rar unrar p7zip-rar p7zip zip unzip sharutils uudeview mpack arj cabextract
 fi
 
 # Installer GDebi
@@ -243,6 +244,17 @@ then
 	sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release
 	sudo apt-get -y update
 	sudo apt-get -y install darktable
+fi
+
+# Installer rapid-photo-downloader
+if [[ $GUI == *"Installer rapid-photo-downloader"* ]]
+then
+	clear
+	echo "Installation de rapid-photo-downloader..."
+	echo ""
+    sudo add-apt-repository -y ppa:dlynch3
+    sudo apt-get -y  update
+    sudo apt-get -y  install rapid-photo-downloader
 fi
 
 # Installer Dropbox

@@ -1,9 +1,8 @@
 #
 #
 # TODO
-# rajout du dépot communautaire elementaryos-fr
+# evnc, taxi, eradio
 #
-# darktable
 #
 #
 
@@ -36,7 +35,6 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
 	FALSE "Installer Sublime Text 3" "Installe Sublime Text 3, un puissant éditeur de texte" \
 	FALSE "Installer LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
-
 	FALSE "Installer elementary Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
 	FALSE "Installer Vocal" "Installe vocal, application de podcasts." \
 	FALSE "Installer envelope" "Installe envelope, application de gestion financière." \
@@ -44,7 +42,7 @@ GUI=$(zenity --list --checklist \
     FALSE "Installer rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
     FALSE "Installer Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
     FALSE "Installer dropbox" "Installe dropbox avec les icones monochromes elementary." \
-
+    FALSE "Installer MEGA" "Installe MEGASync pour le cloud de MEGA." \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
 	--separator=', ');
@@ -280,6 +278,26 @@ then
 	echo ""
     git clone https://github.com/zant95/elementary-dropbox /tmp/elementary-dropbox
     bash /tmp/elementary-dropbox/install.sh
+fi
+
+# Installer MEGA
+if [[ $GUI == *"Installer MEGA"* ]]
+then
+	clear
+	echo "Installation de MEGASync..."
+	echo ""
+	if [[ $(uname -m) == "i686" ]]
+	then
+		wget -O /tmp/megasync_2.0.0_i386.deb https://mega.co.nz/linux/MEGAsync/xUbuntu_14.04/i386/megasync_2.0.0_i386.deb
+		sudo dpkg -i /tmp/megasync_2.0.0_i386.deb
+	elif [[ $(uname -m) == "x86_64" ]]
+	then
+		wget -O /tmp/megasync_2.0.0_amd64.deb https://mega.co.nz/linux/MEGAsync/xUbuntu_14.04/amd64/megasync_2.0.0_amd64.deb
+		sudo dpkg -i /tmp/megasync_2.0.0_amd64.deb
+	fi
+	echo ""
+    git clone https://github.com/cybre/megasync-elementary /tmp/megasync-elementary
+    bash /tmp/megasync-elementary/install.sh
 fi
 
 # Fix Broken Packages Action

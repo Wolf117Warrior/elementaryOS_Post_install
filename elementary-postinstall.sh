@@ -4,7 +4,7 @@
 # rajout du dépot communautaire elementaryos-fr
 #
 # darktable, suite photo
-#
+# MEGA
 #
 #
 
@@ -41,6 +41,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer elementary Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
 	FALSE "Installer Vocal" "Installe vocal, application de podcasts." \
 	FALSE "Installer envelope" "Installe envelope, application de gestion financière." \
+    FALSE "Installer darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
 
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
@@ -236,6 +237,17 @@ then
 	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install envelope
+fi
+
+# Installer darktable
+if [[ $GUI == *"Installer darktable"* ]]
+then
+	clear
+	echo "Installation de darktable..."
+	echo ""
+	sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release
+	sudo apt-get -y update
+	sudo apt-get -y install darktable
 fi
 
 # Fix Broken Packages Action

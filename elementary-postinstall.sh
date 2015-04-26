@@ -38,12 +38,12 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer elementary Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
 	FALSE "Installer Vocal" "Installe vocal, application de podcasts." \
 	FALSE "Installer envelope" "Installe envelope, application de gestion financière." \
-    FALSE "Installer darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
-    FALSE "Installer rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
-    FALSE "Installer Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
-    FALSE "Installer dropbox" "Installe dropbox avec les icones monochromes elementary." \
-    FALSE "Installer MEGA" "Installe MEGASync pour le cloud de MEGA." \
-    FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
+	FALSE "Installer darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
+	FALSE "Installer rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
+	FALSE "Installer Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
+	FALSE "Installer dropbox" "Installe dropbox avec les icones monochromes elementary." \
+	FALSE "Installer MEGA" "Installe MEGASync pour le cloud de MEGA." \
+	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
 	--separator=', ');
 

@@ -43,7 +43,7 @@ GUI=$(zenity --list --checklist \
     FALSE "Installer Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
     FALSE "Installer dropbox" "Installe dropbox avec les icones monochromes elementary." \
     FALSE "Installer MEGA" "Installe MEGASync pour le cloud de MEGA." \
-	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
+    FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
 	--separator=', ');
 

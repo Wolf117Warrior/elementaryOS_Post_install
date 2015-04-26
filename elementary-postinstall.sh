@@ -39,7 +39,8 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
 
 	FALSE "Installer elementary Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
-
+	FALSE "Installer Vocal" "Installe vocal, application de podcasts." \
+	FALSE "Installer envelope" "Installe envelope, application de gestion financière." \
 
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
@@ -215,6 +216,28 @@ then
 	sudo apt-get -y install elementary-tweaks
 fi
 
+# Installer Vocal
+if [[ $GUI == *"Installer Vocal"* ]]
+then
+	clear
+	echo "Installation de Vocal..."
+	echo ""
+	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install vocal
+fi
+
+# Installer envelope
+if [[ $GUI == *"Installer envelope"* ]]
+then
+	clear
+	echo "Installation de envelope..."
+	echo ""
+	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install envelope
+fi
+
 # Fix Broken Packages Action
 if [[ $GUI == *"Fix Broken Packages"* ]]
 then
@@ -236,4 +259,4 @@ fi
 
 # Notification
 clear
-notify-send -i utilities-terminal elementary-script "Toutes les tâches ont été effactuées avec succès!"
+notify-send -i utilities-terminal elementary-script "Toutes les tâches ont été effactuées avec succès!".

@@ -42,6 +42,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer envelope" "Installe envelope, application de gestion financière." \
     FALSE "Installer darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
     FALSE "Installer rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
+    FALSE "Installer Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
     FALSE "Installer dropbox" "Installe dropbox avec les icones monochromes elementary." \
 
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
@@ -255,6 +256,17 @@ then
     sudo add-apt-repository -y ppa:dlynch3
     sudo apt-get -y  update
     sudo apt-get -y  install rapid-photo-downloader
+fi
+
+# Installer GIMP et GMIC
+if [[ $GUI == *"Installer gimp et gmic"* ]]
+then
+	clear
+	echo "Installation de gimp et gmic..."
+	echo ""
+    sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
+    sudo apt-get -y update
+    sudo apt-get -y install gmic gimp-gmic
 fi
 
 # Installer Dropbox

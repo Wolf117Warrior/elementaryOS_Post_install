@@ -42,6 +42,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer Vocal" "Installe vocal, application de podcasts." \
 	FALSE "Installer envelope" "Installe envelope, application de gestion financière." \
     FALSE "Installer darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
+    FALSE "Installer dropbox" "Installe dropbox avec les icones monochromes elementary." \
 
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
@@ -248,6 +249,19 @@ then
 	sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release
 	sudo apt-get -y update
 	sudo apt-get -y install darktable
+fi
+
+# Installer Dropbox
+if [[ $GUI == *"Installer dropbox"* ]]
+then
+	clear
+	echo "Installation de dropbox..."
+	echo ""
+	sudo apt-get -y install nautilus-dropbox
+	echo "Installation des icones dropbox..."
+	echo ""
+    git clone https://github.com/zant95/elementary-dropbox /tmp/elementary-dropbox
+    bash /tmp/elementary-dropbox/install.sh
 fi
 
 # Fix Broken Packages Action

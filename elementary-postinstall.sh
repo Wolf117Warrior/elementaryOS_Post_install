@@ -2,7 +2,7 @@
 #
 # TODO
 # evnc, taxi, eradio
-#
+# elementary-wallpapers-extra (walls de Luna)
 #
 #
 
@@ -41,8 +41,13 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
 	FALSE "Installer rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
 	FALSE "Installer Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
+	FALSE "Installer Inkscape" "Installe le logiciel de vectorisation Inkscape." \
 	FALSE "Installer dropbox" "Installe dropbox avec les icones monochromes elementary." \
 	FALSE "Installer MEGA" "Installe MEGASync pour le cloud de MEGA." \
+	FALSE "Installer eVNC" "Installe evnv, l'application de contrôle à distance." \
+	FALSE "Installer Taxi" "Installe taxi, l'application de protocole FTP." \
+	FALSE "Installer eRadio" "Installe eradio, l'application de streaming radio." \
+	FALSE "Installer elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
 	--separator=', ');
@@ -267,6 +272,15 @@ then
     sudo apt-get -y install gmic gimp-gmic
 fi
 
+# Installer Inkscape
+if [[ $GUI == *"Installer inkscape"* ]]
+then
+	clear
+	echo "Installation de inkscape..."
+	echo ""
+	sudo apt-get -y install inkscape
+fi
+
 # Installer Dropbox
 if [[ $GUI == *"Installer dropbox"* ]]
 then
@@ -298,6 +312,48 @@ then
 	echo ""
     git clone https://github.com/cybre/megasync-elementary /tmp/megasync-elementary
     bash /tmp/megasync-elementary/install.sh
+fi
+
+# Installer evnc
+if [[ $GUI == *"Installer evnc"* ]]
+then
+	clear
+	echo "Installation de evnc..."
+	echo ""
+	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install evnc
+fi
+
+# Installer taxi
+if [[ $GUI == *"Installer taxi"* ]]
+then
+	clear
+	echo "Installation de taxi..."
+	echo ""
+	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install taxi
+fi
+
+# Installer eradio
+if [[ $GUI == *"Installer eradio"* ]]
+then
+	clear
+	echo "Installation de eradio..."
+	echo ""
+	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install eradio
+fi
+
+# Installer elementary-wallpapers-extra
+if [[ $GUI == *"Installer elementary-wallpapers-extra"* ]]
+then
+	clear
+	echo "Installation de elementary-wallpapers-extra..."
+	echo ""
+	sudo apt-get -y install elementary-wallpapers-extra
 fi
 
 # Fix Broken Packages Action

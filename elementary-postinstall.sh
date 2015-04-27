@@ -15,7 +15,7 @@ GUI=$(zenity --list --checklist \
 	--height 400 \
 	--width 900 \
 	--title="Script Post-Installation elementary OS 0.3 Freya" \
-	--text "Sélectionner ou plusieurs actions à éxécuter." \
+	--text "Sélectionner une ou plusieurs action(s) à éxécuter." \
 	--column=Cochez \
 	--column=Actions \
 	--column=Description \

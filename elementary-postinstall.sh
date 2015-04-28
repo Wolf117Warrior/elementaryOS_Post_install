@@ -1,9 +1,7 @@
 #
 #
 # TODO
-# evnc, taxi, eradio
-# elementary-wallpapers-extra (walls de Luna)
-#
+# Kernel BFQ https://launchpad.net/~nick-athens30/+archive/ubuntu/trusty-ck
 #
 
 
@@ -50,6 +48,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
+	FALSE "Installer le Kernel CK" "Installe le Kernel CK, optimisé BFQ scheduler." \
 	--separator=', ');
 
 # Mise à jour du Système
@@ -373,6 +372,19 @@ then
 	echo ""
 	sudo apt-get -y autoremove
 	sudo apt-get -y autoclean
+fi
+
+# Installer le Kernel CK
+if [[ $GUI == *"Installer Kernel CK"* ]]
+then
+	clear
+	echo "Installation du kernel CK..."
+	echo ""
+	sudo add-apt-repository -y ppa:nick-athens30/trusty-ck
+	sudo apt-get -y update
+	sudo apt-get -y install linux-image-generic-ck linux-headers-generic-ck
+	echo "Pensez à rebooter pour profiter de ce kernel..."
+	echo ""
 fi
 
 # Notification

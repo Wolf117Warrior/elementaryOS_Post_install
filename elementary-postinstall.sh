@@ -1,8 +1,8 @@
 #
 #
 # TODO
-# Kernel BFQ https://launchpad.net/~nick-athens30/+archive/ubuntu/trusty-ck
-#
+# Spotify, Steam, Playonlinux/Wine?, Telegram, Viber, Teamviewer, quelques wallpapers-pack ou plank themes
+# elementary-plus
 
 
 # Clear the Terminal
@@ -375,7 +375,7 @@ then
 fi
 
 # Installer le Kernel CK
-if [[ $GUI == *"Installer Kernel CK"* ]]
+if [[ $GUI == *"Installer le Kernel CK"* ]]
 then
 	clear
 	echo "Installation du kernel CK..."

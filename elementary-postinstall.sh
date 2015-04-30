@@ -1,6 +1,8 @@
 #
 #
 # TODO
+# telegram ppa:atareao/telegram
+# spotify http://www.ubuntuupdates.org/ppa/spotify
 # Spotify, Steam, Playonlinux/Wine?, Telegram, Viber, Teamviewer, quelques wallpapers-pack ou plank themes
 # elementary-plus
 
@@ -45,6 +47,8 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer eVNC" "Installe evnv, l'application de contrôle à distance." \
 	FALSE "Installer Taxi" "Installe taxi, l'application de protocole FTP." \
 	FALSE "Installer eRadio" "Installe eradio, l'application de streaming radio." \
+	FALSE "Installer spotify" "Installe Spotify, l'application de service streaming de musique." \
+
 	FALSE "Installer elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
@@ -344,6 +348,18 @@ then
 	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install eradio
+fi
+
+# Installer spotify
+if [[ $GUI == *"Installer spotify"* ]]
+then
+	clear
+	echo "Installation de spotify..."
+	echo ""
+	sudo add-apt-repository -y "deb http://repository.spotify.com stable non-free"
+	sudo apt-key -y adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
+	sudo apt-get -y update
+	sudo apt-get -y install spotify-client
 fi
 
 # Installer elementary-wallpapers-extra

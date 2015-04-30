@@ -1,9 +1,8 @@
 #
 #
 # TODO
-# telegram ppa:atareao/telegram
-# spotify http://www.ubuntuupdates.org/ppa/spotify
-# Spotify, Steam, Playonlinux/Wine?, Telegram, Viber, Teamviewer, quelques wallpapers-pack ou plank themes
+# 
+# Teamviewer, quelques wallpapers-pack ou plank themes
 # elementary-plus
 
 
@@ -48,6 +47,9 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer Taxi" "Installe taxi, l'application de protocole FTP." \
 	FALSE "Installer eRadio" "Installe eradio, l'application de streaming radio." \
 	FALSE "Installer spotify" "Installe Spotify, l'application de service streaming de musique." \
+	FALSE "Installer steam" "Installe Steam, la plateforme en ligne de Jeux." \
+	FALSE "Installer playonlinux" "Installe PlayOnLinux, le front-end de l'émulateur Wine." \
+	FALSE "Installer telegram" "Installe Telegram, version desktop de l'application SMS." \
 
 	FALSE "Installer elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
@@ -360,6 +362,37 @@ then
 	sudo apt-key -y adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
 	sudo apt-get -y update
 	sudo apt-get -y install spotify-client
+fi
+
+# Installer steam
+if [[ $GUI == *"Installer steam"* ]]
+then
+	clear
+	echo "Installation de steam..."
+	echo ""
+	sudo apt-get -y update
+	sudo apt-get -y install steam-launcher
+fi
+
+# Installer playonlinux
+if [[ $GUI == *"Installer playonlinux"* ]]
+then
+	clear
+	echo "Installation de playonlinux..."
+	echo ""
+	sudo apt-get -y update
+	sudo apt-get -y install playonlinux
+fi
+
+# Installer telegram
+if [[ $GUI == *"Installer telegram"* ]]
+then
+	clear
+	echo "Installation de telegram..."
+	echo ""
+	sudo add-apt-repository -y ppa:atareao/telegram
+	sudo apt-get -y update
+	sudo apt-get -y install telegram
 fi
 
 # Installer elementary-wallpapers-extra

@@ -50,11 +50,11 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer steam" "Installe Steam, la plateforme en ligne de Jeux." \
 	FALSE "Installer playonlinux" "Installe PlayOnLinux, le front-end de l'émulateur Wine." \
 	FALSE "Installer telegram" "Installe Telegram, version desktop de l'application SMS." \
-
 	FALSE "Installer elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
 	FALSE "Installer le Kernel CK" "Installe le Kernel CK, optimisé BFQ scheduler." \
+	FALSE "Installer le driver NVIDIA" "Installe le driver NVIDIA (PPA mamarley)" \
 	--separator=', ');
 
 # Mise à jour du Système
@@ -434,6 +434,19 @@ then
 	sudo apt-get -y update
 	sudo apt-get -y install linux-image-generic-ck linux-headers-generic-ck
 	echo "Pensez à rebooter pour profiter de ce kernel..."
+	echo ""
+fi
+
+# Installer le Kernel CK
+if [[ $GUI == *"Installer le driver NVIDIA"* ]]
+then
+	clear
+	echo "Installation du driver NVIDIA..."
+	echo ""
+	sudo add-apt-repository -y ppa:mamarley/nvidia
+	sudo apt-get -y update
+	sudo apt-get -y install nvidia-settings nvidia-340
+	echo "Pensez à rebooter..."
 	echo ""
 fi
 

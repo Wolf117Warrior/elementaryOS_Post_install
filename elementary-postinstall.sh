@@ -54,7 +54,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
 	FALSE "Installer le Kernel CK" "Installe le Kernel CK, optimisé BFQ scheduler." \
-	FALSE "Installer le driver NVIDIA" "Installe le driver NVIDIA 340+ (PPA mamarley)" \
+	FALSE "Installer le driver NVIDIA" "Installe le driver NVIDIA (PPA mamarley) pour GTX 7XX et +" \
 	--separator=', ');
 
 # Mise à jour du Système

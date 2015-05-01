@@ -1,7 +1,7 @@
 #
 #
 # TODO
-# 
+#
 # Teamviewer, quelques wallpapers-pack ou plank themes
 # elementary-plus
 
@@ -83,7 +83,7 @@ then
 	clear
 	echo "Installation des Ubuntu Restricted Extras..."
 	echo ""
-    echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections 
+    echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 	sudo apt-get -y install ubuntu-restricted-extras ttf-mscorefonts-installer ubuntu-restricted-addons
 fi
 
@@ -305,6 +305,7 @@ then
 	clear
 	echo "Installation de MEGASync..."
 	echo ""
+	wget -q -O - https://mega.nz/linux/MEGAsync/xUbuntu_14.04/Release.key | sudo apt-key add -
 	if [[ $(uname -m) == "i686" ]]
 	then
 		wget -O /tmp/megasync_2.0.0_i386.deb https://mega.co.nz/linux/MEGAsync/xUbuntu_14.04/i386/megasync_2.0.0_i386.deb

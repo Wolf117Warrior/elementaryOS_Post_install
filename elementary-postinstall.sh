@@ -282,9 +282,9 @@ then
 	clear
 	echo "Installation de Lollypop..."
 	echo ""
-	sudo add-apt-repository ppa:gnumdk/gnuppa
-	sudo apt-get update
-	sudo apt-get install lollypop
+	sudo add-apt-repository -y ppa:gnumdk/gnuppa
+	sudo apt-get -y update
+	sudo apt-get -y install lollypop
 fi
 
 # Installer envelope

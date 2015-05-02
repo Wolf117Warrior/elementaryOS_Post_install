@@ -58,6 +58,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
 	FALSE "Installer le Kernel CK" "Installe le Kernel CK, optimisé BFQ scheduler." \
 	FALSE "Installer le driver NVIDIA" "Installe le driver NVIDIA (PPA mamarley) pour GTX 7XX et +" \
+	FALSE "Installer TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe" \
 	--separator=', ');
 
 # Mise à jour du Système
@@ -500,6 +501,19 @@ then
 	sudo apt-get -y update
 	sudo apt-get -y install nvidia-settings nvidia-340
 	echo "Pensez à rebooter..."
+	echo ""
+fi
+
+# Installer TLP
+if [[ $GUI == *"Installer TLP"* ]]
+then
+	clear
+	echo "Installation de TLP..."
+	echo ""
+	sudo add-apt-repository ppa:linrunner/tlp
+	sudo apt-get update
+	sudo apt-get install tlp tlp-rdw
+	sudo tlp start
 	echo ""
 fi
 

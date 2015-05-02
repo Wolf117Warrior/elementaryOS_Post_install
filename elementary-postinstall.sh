@@ -202,7 +202,7 @@ then
 fi
 
 # Installer transmission-gtk3
-if [[ $GUI == *"Installer tranmission-gtk3"* ]]
+if [[ $GUI == *"Installer transmission-gtk3"* ]]
 then
 	clear
 	echo "Installation de tranmission-gtk3..."

@@ -37,6 +37,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
 	FALSE "Installer elementary Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
 	FALSE "Installer Vocal" "Installe vocal, application de podcasts." \
+	FALSE "Installer Lollypop" "Installe lollypop, lecteur de musique." \
 	FALSE "Installer envelope" "Installe envelope, application de gestion financière." \
 	FALSE "Installer darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
 	FALSE "Installer rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
@@ -250,6 +251,17 @@ then
 	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install vocal
+fi
+
+# Installer Lollypop
+if [[ $GUI == *"Installer Lollypop"* ]]
+then
+	clear
+	echo "Installation de Lollypop..."
+	echo ""
+	sudo add-apt-repository ppa:gnumdk/gnuppa
+	sudo apt-get update
+	sudo apt-get install lollypop
 fi
 
 # Installer envelope

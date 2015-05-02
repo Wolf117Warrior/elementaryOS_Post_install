@@ -282,7 +282,7 @@ then
 	clear
 	echo "Installation de Lollypop..."
 	echo ""
-	sudo add-apt-repository -y ppa:gnumdk/gnuppa
+	sudo add-apt-repository -y ppa:gnumdk/lollypop
 	sudo apt-get -y update
 	sudo apt-get -y install lollypop
 fi

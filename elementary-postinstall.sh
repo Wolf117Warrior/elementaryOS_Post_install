@@ -211,15 +211,15 @@ then
 
 	    then
 	        wget -c http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-i386.deb
-	        sudo apt-get purge transmission*
+	        sudo apt-get -y purge transmission*
 	        sudo dpkg -i *.deb
-	        sudo apt-get -f install
+	        sudo apt-get -y -f install
 
 	    else
 	        wget -c http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-amd64.deb
-	        sudo apt-get purge transmission*
+	        sudo apt-get -y purge transmission*
 	        sudo dpkg -i *.deb
-	        sudo apt-get -f install
+	        sudo apt-get -y -f install
 	fi
 fi
 

@@ -28,6 +28,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer Google Chrome" "Installe Google Chrome, le navigateur Google." \
 	FALSE "Installer Chromium" "Installe Chromium, la version opensource de Chrome." \
 	FALSE "Installer Firefox" "Installe Firefox, le navigateur libre et opensource." \
+	FALSE "Installer Vivaldi" "Installe Vivaldi, le nouveau navigateur (version Tech Preview)." \
 	FALSE "Installer Liferea" "Installe Liferea, un aggrégateur de flux opensource." \
 	FALSE "Installer VLC" "Installe VLC, le lecteur multimédia." \
 	FALSE "Installer Transmission" "Installe the Transmission, le client bitorrent." \
@@ -145,13 +146,30 @@ then
 	sudo apt-get -y install chromium-browser
 fi
 
-# Installze Firefox
+# Installer Firefox
 if [[ $GUI == *"Installer Firefox"* ]]
 then
 	clear
 	echo "Installation de Firefox..."
 	echo ""
 	sudo apt-get -y install firefox
+fi
+
+# Installer Vivaldi
+if [[ $GUI == *"Installer Vivaldi"* ]]
+then
+	clear
+	echo "Installation de Vivaldi..."
+	echo ""
+	if [[ $(uname -m) == "i686" ]]
+	then
+		wget -O /tmp/Vivaldi_TP3.1.0.162.4-1_i386.deb https://vivaldi.com/download/Vivaldi_TP3.1.0.162.4-1_i386.deb
+		sudo dpkg -i /tmp/Vivaldi_TP3.1.0.162.4-1_i386.deb
+	elif [[ $(uname -m) == "x86_64" ]]
+	then
+		wget -O /tmp/Vivaldi_TP3.1.0.162.4-1_amd64.deb https://vivaldi.com/download/Vivaldi_TP3.1.0.162.4-1_amd64.deb
+		sudo dpkg -i /tmp/Vivaldi_TP3.1.0.162.4-1_amd64.deb
+	fi
 fi
 
 # Installer Liferea

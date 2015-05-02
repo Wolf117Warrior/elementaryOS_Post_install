@@ -50,6 +50,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Installer steam" "Installe Steam, la plateforme en ligne de Jeux." \
 	FALSE "Installer playonlinux" "Installe PlayOnLinux, le front-end de l'émulateur Wine." \
 	FALSE "Installer telegram" "Installe Telegram, version desktop de l'application SMS." \
+	FALSE "Installer transmission-gtk3" "Installe Tranmission compatible GTK+3" \
 	FALSE "Installer elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
@@ -394,6 +395,28 @@ then
 	sudo add-apt-repository -y ppa:atareao/telegram
 	sudo apt-get -y update
 	sudo apt-get -y install telegram
+fi
+
+# Installer transmission-gtk3
+if [[ $GUI == *"Installer tranmission-gtk3"* ]]
+then
+	clear
+	echo "Installation de tranmission-gtk3..."
+	echo ""
+	if [ `getconf LONG_BIT` = '32' ];
+
+	    then
+	        wget -c http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-i386.deb
+	        sudo apt-get purge transmission*
+	        sudo dpkg -i *.deb
+	        sudo apt-get -f install
+
+	    else
+	        wget -c http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-amd64.deb
+	        sudo apt-get purge transmission*
+	        sudo dpkg -i *.deb
+	        sudo apt-get -f install
+	fi
 fi
 
 # Installer elementary-wallpapers-extra

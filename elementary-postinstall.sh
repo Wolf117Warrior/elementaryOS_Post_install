@@ -64,7 +64,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Transmission (GTK3)" "Installe la version de Tranmission compatible GTK+3" \
 	FALSE "Dropbox" "Installe dropbox avec les icones monochromes elementary." \
 	FALSE "MEGA" "Installe MEGASync pour le cloud de MEGA avec les icones monochromes elementary." \
-	FALSE "eVNC" "Installe evnv, l'application de contrôle à distance." \
+	FALSE "eVNC" "Installe eVNC, l'application de contrôle à distance." \
 	FALSE "Taxi" "Installe taxi, l'application de protocole FTP." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
 	FALSE " Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \

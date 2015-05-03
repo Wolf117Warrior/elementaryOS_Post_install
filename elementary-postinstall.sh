@@ -1,8 +1,8 @@
 #
 #
 # TODO
-# jeux: , wesnoth, war thunder
-# pack icones, pack themes plank 
+# jeux: , wesnoth, war thunder,
+# pack icones, pack themes plank
 #
 #
 
@@ -15,7 +15,7 @@
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify
 # INTERNET: Chrome, chromium, Firefox, liferea, transmission(+gtk3), Vivaldi, dropbox, mega, evnc, taxi, telegram, hexchat
 # INFOGRAPHIE: gimp, darktable, inkscape, rapid
-# JEUX: steam, playonlinux, 0.A.D
+# JEUX: steam, playonlinux, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
 #
 
@@ -76,6 +76,8 @@ GUI=$(zenity --list --checklist \
 	FALSE "Steam" "Installe Steam, la plateforme en ligne de Jeux." \
 	FALSE "Playonlinux" "Installe PlayOnLinux, le front-end de l'émulateur Wine." \
 	FALSE "0.A.D" "Installe 0.A.D, le jeu de stratégie en temps réel dans l'époque Antique." \
+	FALSE "Wesnoth" "Installe Bataille de Wesnoth, le jeu de stratégie au tour par tour" \
+	FALSE "FlightGear" "Installe FlightGear, le simulateur de vol OpenSource." \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de prinptemps" "Retire les paquets qui ne sont plus nécéssaires." \
 	--separator=', ');
@@ -518,6 +520,40 @@ then
 	sudo add-apt-repository -y ppa:wfg/0ad
 	sudo apt-get -y update
 	sudo apt-get -y install 0ad 0ad-data
+fi
+
+# Installer Wesnoth
+if [[ $GUI == *"Wesnoth"* ]]
+then
+	clear
+	echo "Installation de Wesnoth..."
+	echo ""
+	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Wesnoth" -t 5000
+	sudo add-apt-repository -y ppa:vincent-c/wesnoth
+	sudo apt-get -y update
+	sudo apt-get -y install wesnoth
+fi
+
+# Installer FlightGear
+if [[ $GUI == *"FlightGear"* ]]
+then
+	clear
+	echo "Installation de FlightGear..."
+	echo ""
+	notify-send -i applications-arcade "elementary OS Post Install" "Installation de FlightGear" -t 5000
+	sudo add-apt-repository -y ppa:saiarcot895/flightgear
+	sudo apt-get -y update
+	sudo apt-get -y install fgrun fgx flightgear flightgear-data simgear
+	sudo apt-get -y install flightgear-data-aircrafts-747-8
+	sudo apt-get -y install flightgear-data-aircrafts-a10
+	sudo apt-get -y install flightgear-data-aircrafts-a380
+	sudo apt-get -y install flightgear-data-aircrafts-b707
+	sudo apt-get -y install flightgear-data-aircrafts-b747-400
+	sudo apt-get -y install flightgear-data-aircrafts-dc3
+	sudo apt-get -y install flightgear-data-aircrafts-dr400-dauphin
+	sudo apt-get -y install flightgear-data-aircrafts-ec130
+	sudo apt-get -y install flightgear-data-aircrafts-p51d
+	sudo apt-get -y install flightgear-data-aircrafts-tu154b
 fi
 
 # Installer telegram

@@ -69,7 +69,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Taxi" "Installe taxi, l'application de protocole FTP." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
 	FALSE "Hexchat" "Installe Hexchat, le client IRC." \
-	FALSE " Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
+	FALSE "Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
 	FALSE "Inkscape" "Installe le logiciel de vectorisation Inkscape." \
 	FALSE "Darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
 	FALSE "Rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \

@@ -78,6 +78,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "0.A.D" "Installe 0.A.D, le jeu de stratégie en temps réel dans l'époque Antique." \
 	FALSE "Wesnoth" "Installe Bataille de Wesnoth, le jeu de stratégie au tour par tour" \
 	FALSE "FlightGear" "Installe FlightGear, le simulateur de vol OpenSource." \
+	FALSE "Unvanquished" "Installe Unvanquished, jeux FPS contre des Aliens." \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de prinptemps" "Retire les paquets qui ne sont plus nécéssaires." \
 	--separator=', ');
@@ -554,6 +555,20 @@ then
 	sudo apt-get -y install flightgear-data-aircrafts-ec130
 	sudo apt-get -y install flightgear-data-aircrafts-p51d
 	sudo apt-get -y install flightgear-data-aircrafts-tu154b
+fi
+
+# Installer Unvanquished
+if [[ $GUI == *"Unvanquished"* ]]
+then
+	clear
+	echo "Installation de Unvanquished..."
+	echo ""
+	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Unvanquished" -t 5000
+	wget -q "http://debs.unvanquished.net/unvanquished-archive-key.gpg.asc" -O- | sudo apt-key add -
+	sudo sh -c 'echo deb http://debs.unvanquished.net trusty main
+> /etc/apt/sources.list.d/unvanquished.list'
+	sudo apt-get -y update
+	sudo apt-get -y install unvanquished
 fi
 
 # Installer telegram

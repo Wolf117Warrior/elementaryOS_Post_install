@@ -1,10 +1,10 @@
 #
 #
 # TODO
-# clementine, steam, jeux ? (getdeb)
-# pack icones, pack themes plank covergloobus
-# des messages de notifs comme https://github.com/thomasfrei/ubuntu-post-install/blob/master/post-install.sh
-# couleurs terminal, jeux ?
+# jeux: , wesnoth, war thunder
+# pack icones, pack themes plank 
+#
+#
 
 #
 # Ordre menu
@@ -13,9 +13,9 @@
 # UTILITAIRES: archivage, Gdebi, atom, sublime text
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify
-# INTERNET: Chrome, chromium, Firefox, liferea, transmission(+gtk3), Vivaldi, dropbox, mega, evnc, taxi, telegram
+# INTERNET: Chrome, chromium, Firefox, liferea, transmission(+gtk3), Vivaldi, dropbox, mega, evnc, taxi, telegram, hexchat
 # INFOGRAPHIE: gimp, darktable, inkscape, rapid
-# JEUX: steam, playonlinux
+# JEUX: steam, playonlinux, 0.A.D
 # DIVERS: paquet cassés, nettoyage
 #
 
@@ -68,14 +68,16 @@ GUI=$(zenity --list --checklist \
 	FALSE "eVNC" "Installe eVNC, l'application de contrôle à distance." \
 	FALSE "Taxi" "Installe taxi, l'application de protocole FTP." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
+	FALSE "Hexchat" "Installe Hexchat, le client IRC." \
 	FALSE " Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
 	FALSE "Inkscape" "Installe le logiciel de vectorisation Inkscape." \
 	FALSE "Darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
 	FALSE "Rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
 	FALSE "Steam" "Installe Steam, la plateforme en ligne de Jeux." \
 	FALSE "Playonlinux" "Installe PlayOnLinux, le front-end de l'émulateur Wine." \
+	FALSE "0.A.D" "Installe 0.A.D, le jeu de stratégie en temps réel dans l'époque Antique." \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
-	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
+	FALSE "Nettoyage de prinptemps" "Retire les paquets qui ne sont plus nécéssaires." \
 	--separator=', ');
 
 # Mise à jour du Système
@@ -506,6 +508,18 @@ then
 	sudo apt-get -y install playonlinux
 fi
 
+# Installer 0.A.D
+if [[ $GUI == *"0.A.D"* ]]
+then
+	clear
+	echo "Installation de playonlinux..."
+	echo ""
+	notify-send -i applications-arcade "elementary OS Post Install" "Installation de 0.A.D" -t 5000
+	sudo add-apt-repository -y ppa:wfg/0ad
+	sudo apt-get -y update
+	sudo apt-get -y install 0ad 0ad-data
+fi
+
 # Installer telegram
 if [[ $GUI == *"Telegram"* ]]
 then
@@ -516,6 +530,18 @@ then
 	sudo add-apt-repository -y ppa:atareao/telegram
 	sudo apt-get -y update
 	sudo apt-get -y install telegram
+fi
+
+# Installer Hexchat
+if [[ $GUI == *"Hexchat"* ]]
+then
+	clear
+	echo "Installation de Hexchat..."
+	echo ""
+	notify-send -i applications-chat "elementary OS Post Install" "Installation d'Hexchat" -t 5000
+	sudo add-apt-repository -y ppa:gwendal-lebihan-dev/hexchat-stable
+	sudo apt-get -y update
+	sudo apt-get -y install hexchat
 fi
 
 # Installer elementary-wallpapers-extra
@@ -539,10 +565,10 @@ then
 fi
 
 # Nettoyage de primptemps
-if [[ $GUI == *"Nettoyage de primptemps"* ]]
+if [[ $GUI == *"Nettoyage de prinptemps"* ]]
 then
 	clear
-	echo "Nettoyage de primptemps en cours..."
+	echo "Nettoyage de prinptemps en cours..."
 	echo ""
 	notify-send -i user-trash-full "elementary OS Post Install" "Nettoyage des paquets inutiles" -t 5000
 	sudo apt-get -y autoremove

@@ -4,7 +4,21 @@
 # clementine, steam, jeux ? (getdeb)
 # pack icones, pack themes plank covergloobus
 # des messages de notifs comme https://github.com/thomasfrei/ubuntu-post-install/blob/master/post-install.sh
-# couleurs terminal
+# couleurs terminal, jeux ?
+
+#
+# Ordre menu
+# SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, TLP, tweaks
+# CUSTOMISATION: wallpapers luna
+# UTILITAIRES: archivage, Gdebi, atom, sublime text
+# BUREAUTIQUE: libreoffice, envelope
+# MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify
+# INTERNET: Chrome, chromium, Firefox, liferea, transmission(+gtk3), Vivaldi, dropbox, mega, evnc, taxi, telegram
+# INFOGRAPHIE: gimp, darktable, inkscape, rapid
+# JEUX: steam, playonlinux
+# DIVERS: paquet cassés, nettoyage
+#
+
 
 
 # Clear the Terminal
@@ -22,45 +36,45 @@ GUI=$(zenity --list --checklist \
 	--column=Description \
 	FALSE "Mise à jour du Système" "Mise à jour de la liste des paquets et des applications déjà installées."  \
 	FALSE "Accélération de la mémoire" "Installation de preload et de zRAM." \
-	FALSE "Installer Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
-	FALSE "Installer Extra Multimedia Codecs" "Installation des codecs multimédia additionnels." \
-	FALSE "Installer Support pour DVD encrypté" "Installation du support pour lire les DVDs encryptés." \
-	FALSE "Installer Support pour les formats d'archivage" "Installation du support pour formats d'archivage (zip,rar,7z...)" \
-	FALSE "Installer GDebi" "Installs GDebi. A simple tool to install deb files." \
-	FALSE "Installer Google Chrome" "Installe Google Chrome, le navigateur Google." \
-	FALSE "Installer Chromium" "Installe Chromium, la version opensource de Chrome." \
-	FALSE "Installer Firefox" "Installe Firefox, le navigateur libre et opensource." \
-	FALSE "Installer Vivaldi" "Installe Vivaldi, le nouveau navigateur (version Tech Preview)." \
-	FALSE "Installer Liferea" "Installe Liferea, un aggrégateur de flux opensource." \
-	FALSE "Installer VLC" "Installe VLC, le lecteur multimédia." \
-	FALSE "Installer Transmission" "Installe Transmission, le client bitorrent." \
-	FALSE "Installer transmission-gtk3" "Installe la version de Tranmission compatible GTK+3" \
-	FALSE "Installer Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
-	FALSE "Installer Sublime Text 3" "Installe Sublime Text 3, un puissant éditeur de texte" \
-	FALSE "Installer LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
-	FALSE "Installer elementary Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
-	FALSE "Installer Vocal" "Installe vocal, application de podcasts." \
-	FALSE "Installer Lollypop" "Installe lollypop, lecteur de musique." \
-	FALSE "Installer envelope" "Installe envelope, application de gestion financière." \
-	FALSE "Installer darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
-	FALSE "Installer rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
-	FALSE "Installer Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
-	FALSE "Installer Inkscape" "Installe le logiciel de vectorisation Inkscape." \
-	FALSE "Installer dropbox" "Installe dropbox avec les icones monochromes elementary." \
-	FALSE "Installer MEGA" "Installe MEGASync pour le cloud de MEGA." \
-	FALSE "Installer eVNC" "Installe evnv, l'application de contrôle à distance." \
-	FALSE "Installer Taxi" "Installe taxi, l'application de protocole FTP." \
-	FALSE "Installer eRadio" "Installe eradio, l'application de streaming radio." \
-	FALSE "Installer spotify" "Installe Spotify, l'application de service streaming de musique." \
-	FALSE "Installer steam" "Installe Steam, la plateforme en ligne de Jeux." \
-	FALSE "Installer playonlinux" "Installe PlayOnLinux, le front-end de l'émulateur Wine." \
-	FALSE "Installer telegram" "Installe Telegram, version desktop de l'application SMS." \
-	FALSE "Installer elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
+	FALSE "Kernel CK" "Installe le Kernel CK, optimisé BFQ scheduler." \
+	FALSE "driver NVIDIA" "Installe le driver NVIDIA (PPA mamarley) pour GTX 7XX et +." \
+	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
+	FALSE "Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
+	FALSE "Elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
+	FALSE "Support formats d'archivage" "Installation du support pour formats d'archivage (zip,rar,7z...)." \
+	FALSE "GDebi" "Installs GDebi. A simple tool to install deb files." \
+	FALSE "Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
+	FALSE "Sublime Text 3" "Installe Sublime Text 3, un puissant éditeur de texte" \
+	FALSE "LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
+	FALSE "Envelope" "Installe envelope, application de gestion financière." \
+	FALSE "Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
+	FALSE "Extra Multimedia Codecs" "Installation des codecs multimédia additionnels." \
+	FALSE "Support DVD encrypté" "Installation du support pour lire les DVDs encryptés." \
+	FALSE "VLC" "Installe VLC, le lecteur multimédia." \
+	FALSE "Vocal" "Installe vocal, application de podcasts." \
+	FALSE "Lollypop" "Installe lollypop, lecteur de musique." \
+	FALSE "eRadio" "Installe eradio, l'application de streaming radio." \
+	FALSE "Spotify" "Installe Spotify, l'application de service streaming de musique." \
+	FALSE "Google Chrome" "Installe Google Chrome, le navigateur Google." \
+	FALSE "Chromium" "Installe Chromium, la version opensource de Chrome." \
+	FALSE "Firefox" "Installe Firefox, le navigateur libre et opensource." \
+	FALSE "Vivaldi" "Installe Vivaldi, le nouveau navigateur (version Tech Preview)." \
+	FALSE "Liferea" "Installe Liferea, un aggrégateur de flux opensource." \
+	FALSE "Transmission" "Installe Transmission, le client bitorrent." \
+	FALSE "Transmission (GTK3)" "Installe la version de Tranmission compatible GTK+3" \
+	FALSE "Dropbox" "Installe dropbox avec les icones monochromes elementary." \
+	FALSE "MEGA" "Installe MEGASync pour le cloud de MEGA." \
+	FALSE "eVNC" "Installe evnv, l'application de contrôle à distance." \
+	FALSE "Taxi" "Installe taxi, l'application de protocole FTP." \
+	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
+	FALSE " Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
+	FALSE "Inkscape" "Installe le logiciel de vectorisation Inkscape." \
+	FALSE "Darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
+	FALSE "Rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
+	FALSE "Steam" "Installe Steam, la plateforme en ligne de Jeux." \
+	FALSE "Playonlinux" "Installe PlayOnLinux, le front-end de l'émulateur Wine." \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de primptemps" "Retire les paquets qui ne sont plus nécéssaires." \
-	FALSE "Installer le Kernel CK" "Installe le Kernel CK, optimisé BFQ scheduler." \
-	FALSE "Installer le driver NVIDIA" "Installe le driver NVIDIA (PPA mamarley) pour GTX 7XX et +" \
-	FALSE "Installer TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe" \
 	--separator=', ');
 
 # Mise à jour du Système
@@ -87,7 +101,7 @@ then
 fi
 
 # Installer Ubuntu Restricted Extras
-if [[ $GUI == *"Installer Ubuntu Restricted Extras"* ]]
+if [[ $GUI == *"Ubuntu Restricted Extras"* ]]
 then
 	clear
 	echo "Installation des Ubuntu Restricted Extras..."
@@ -98,7 +112,7 @@ then
 fi
 
 # Installer Extra Multimedia Codecs
-if [[ $GUI == *"Installer Extra Multimedia Codecs"* ]]
+if [[ $GUI == *"Extra Multimedia Codecs"* ]]
 then
 	clear
 	echo "Installation des Extra Multimedia Codecs..."
@@ -108,7 +122,7 @@ then
 fi
 
 # Installer le Support pour DVD encrypté
-if [[ $GUI == *"Installer Support pour DVD encrypté"* ]]
+if [[ $GUI == *"Support DVD encrypté"* ]]
 then
 	clear
 	echo "Installation du Support pour DVD encrypté..."
@@ -119,7 +133,7 @@ then
 fi
 
 # Installer le Support pour les formats d'archivage
-if [[ $GUI == *"Installer Support pour les formats d'archivage"* ]]
+if [[ $GUI == *"Support formats d'archivage"* ]]
 then
 	clear
 	echo "Installation du Support pour les formats d'archivage"
@@ -129,7 +143,7 @@ then
 fi
 
 # Installer GDebi
-if [[ $GUI == *"Installer GDebi"* ]]
+if [[ $GUI == *"GDebi"* ]]
 then
 	clear
 	echo "Installation de GDebi..."
@@ -139,7 +153,7 @@ then
 fi
 
 # Installer Google Chrome Action
-if [[ $GUI == *"Installer Google Chrome"* ]]
+if [[ $GUI == *"Google Chrome"* ]]
 then
 	clear
 	echo "Installation de Google Chrome..."
@@ -151,7 +165,7 @@ then
 fi
 
 # Installer Chromium
-if [[ $GUI == *"Installer Chromium"* ]]
+if [[ $GUI == *"Chromium"* ]]
 then
 	clear
 	echo "Installation de Chromium..."
@@ -161,7 +175,7 @@ then
 fi
 
 # Installer Firefox
-if [[ $GUI == *"Installer Firefox"* ]]
+if [[ $GUI == *"Firefox"* ]]
 then
 	clear
 	echo "Installation de Firefox..."
@@ -171,7 +185,7 @@ then
 fi
 
 # Installer Vivaldi
-if [[ $GUI == *"Installer Vivaldi"* ]]
+if [[ $GUI == *"Vivaldi"* ]]
 then
 	clear
 	echo "Installation de Vivaldi..."
@@ -189,7 +203,7 @@ then
 fi
 
 # Installer Liferea
-if [[ $GUI == *"Installer Liferea"* ]]
+if [[ $GUI == *"Liferea"* ]]
 then
 	clear
 	echo "Installation de Liferea..."
@@ -199,7 +213,7 @@ then
 fi
 
 # Installer VLC
-if [[ $GUI == *"Installer VLC"* ]]
+if [[ $GUI == *"VLC"* ]]
 then
 	clear
 	echo "Installation de VLC..."
@@ -209,7 +223,7 @@ then
 fi
 
 # Install Transmission Action
-if [[ $GUI == *"Installer Transmission"* ]]
+if [[ $GUI == *"Transmission"* ]]
 then
 	clear
 	echo "Installing Transmission..."
@@ -219,7 +233,7 @@ then
 fi
 
 # Installer transmission-gtk3
-if [[ $GUI == *"Installer transmission-gtk3"* ]]
+if [[ $GUI == *"Transmission (GTK3)"* ]]
 then
 	clear
 	echo "Installation de tranmission-gtk3..."
@@ -241,7 +255,7 @@ then
 fi
 
 # Installer Atom
-if [[ $GUI == *"Installer Atom"* ]]
+if [[ $GUI == *"Atom"* ]]
 then
 	clear
 	echo "Installation de Atom..."
@@ -253,7 +267,7 @@ then
 fi
 
 # Installer Sublime Text 3
-if [[ $GUI == *"Installer Sublime Text 3"* ]]
+if [[ $GUI == *"Sublime Text 3"* ]]
 then
 	clear
 	echo "Installation de Sublime Text 3..."
@@ -265,7 +279,7 @@ then
 fi
 
 # Installer LibreOffice
-if [[ $GUI == *"Installer LibreOffice"* ]]
+if [[ $GUI == *"LibreOffice"* ]]
 then
 	clear
 	echo "Installation de LibreOffice..."
@@ -277,7 +291,7 @@ then
 fi
 
 # Installer elementary Tweaks
-if [[ $GUI == *"Installer elementary Tweaks"* ]]
+if [[ $GUI == *"Tweaks"* ]]
 then
 	clear
 	echo "Installation de elementary Tweaks..."
@@ -289,7 +303,7 @@ then
 fi
 
 # Installer Vocal
-if [[ $GUI == *"Installer Vocal"* ]]
+if [[ $GUI == *"Vocal"* ]]
 then
 	clear
 	echo "Installation de Vocal..."
@@ -301,7 +315,7 @@ then
 fi
 
 # Installer Lollypop
-if [[ $GUI == *"Installer Lollypop"* ]]
+if [[ $GUI == *"Lollypop"* ]]
 then
 	clear
 	echo "Installation de Lollypop..."
@@ -313,7 +327,7 @@ then
 fi
 
 # Installer envelope
-if [[ $GUI == *"Installer envelope"* ]]
+if [[ $GUI == *"Envelope"* ]]
 then
 	clear
 	echo "Installation de envelope..."
@@ -325,7 +339,7 @@ then
 fi
 
 # Installer darktable
-if [[ $GUI == *"Installer darktable"* ]]
+if [[ $GUI == *"Darktable"* ]]
 then
 	clear
 	echo "Installation de darktable..."
@@ -337,7 +351,7 @@ then
 fi
 
 # Installer rapid-photo-downloader
-if [[ $GUI == *"Installer rapid-photo-downloader"* ]]
+if [[ $GUI == *"Rapid-photo-downloader"* ]]
 then
 	clear
 	echo "Installation de rapid-photo-downloader..."
@@ -349,7 +363,7 @@ then
 fi
 
 # Installer GIMP et GMIC
-if [[ $GUI == *"Installer gimp et gmic"* ]]
+if [[ $GUI == *"Gimp et GMIC"* ]]
 then
 	clear
 	echo "Installation de gimp et gmic..."
@@ -361,7 +375,7 @@ then
 fi
 
 # Installer Inkscape
-if [[ $GUI == *"Installer inkscape"* ]]
+if [[ $GUI == *"Inkscape"* ]]
 then
 	clear
 	echo "Installation de inkscape..."
@@ -371,7 +385,7 @@ then
 fi
 
 # Installer Dropbox
-if [[ $GUI == *"Installer dropbox"* ]]
+if [[ $GUI == *"Dropbox"* ]]
 then
 	clear
 	echo "Installation de dropbox..."
@@ -385,7 +399,7 @@ then
 fi
 
 # Installer MEGA
-if [[ $GUI == *"Installer MEGA"* ]]
+if [[ $GUI == *"MEGA"* ]]
 then
 	clear
 	echo "Installation de MEGASync..."
@@ -407,7 +421,7 @@ then
 fi
 
 # Installer evnc
-if [[ $GUI == *"Installer evnc"* ]]
+if [[ $GUI == *"eVNC"* ]]
 then
 	clear
 	echo "Installation de evnc..."
@@ -419,7 +433,7 @@ then
 fi
 
 # Installer taxi
-if [[ $GUI == *"Installer taxi"* ]]
+if [[ $GUI == *"Taxi"* ]]
 then
 	clear
 	echo "Installation de taxi..."
@@ -431,7 +445,7 @@ then
 fi
 
 # Installer eradio
-if [[ $GUI == *"Installer eradio"* ]]
+if [[ $GUI == *"eRadio"* ]]
 then
 	clear
 	echo "Installation de eradio..."
@@ -443,7 +457,7 @@ then
 fi
 
 # Installer spotify
-if [[ $GUI == *"Installer spotify"* ]]
+if [[ $GUI == *"Spotify"* ]]
 then
 	clear
 	echo "Installation de spotify..."
@@ -456,7 +470,7 @@ then
 fi
 
 # Installer steam
-if [[ $GUI == *"Installer steam"* ]]
+if [[ $GUI == *"Steam"* ]]
 then
 	clear
 	echo "Installation de steam..."
@@ -467,7 +481,7 @@ then
 fi
 
 # Installer playonlinux
-if [[ $GUI == *"Installer playonlinux"* ]]
+if [[ $GUI == *"Playonlinux"* ]]
 then
 	clear
 	echo "Installation de playonlinux..."
@@ -480,7 +494,7 @@ then
 fi
 
 # Installer telegram
-if [[ $GUI == *"Installer telegram"* ]]
+if [[ $GUI == *"Telegram"* ]]
 then
 	clear
 	echo "Installation de telegram..."
@@ -492,7 +506,7 @@ then
 fi
 
 # Installer elementary-wallpapers-extra
-if [[ $GUI == *"Installer elementary-wallpapers-extra"* ]]
+if [[ $GUI == *"Elementary-wallpapers-extra"* ]]
 then
 	clear
 	echo "Installation de elementary-wallpapers-extra..."
@@ -523,7 +537,7 @@ then
 fi
 
 # Installer le Kernel CK
-if [[ $GUI == *"Installer le Kernel CK"* ]]
+if [[ $GUI == *"Kernel CK"* ]]
 then
 	clear
 	echo "Installation du kernel CK..."
@@ -537,7 +551,7 @@ then
 fi
 
 # Installer le Kernel CK
-if [[ $GUI == *"Installer le driver NVIDIA"* ]]
+if [[ $GUI == *"Driver NVIDIA"* ]]
 then
 	clear
 	echo "Installation du driver NVIDIA..."
@@ -551,7 +565,7 @@ then
 fi
 
 # Installer TLP
-if [[ $GUI == *"Installer TLP"* ]]
+if [[ $GUI == *"TLP"* ]]
 then
 	clear
 	echo "Installation de TLP..."

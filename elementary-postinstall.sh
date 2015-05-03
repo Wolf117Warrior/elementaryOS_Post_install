@@ -1,13 +1,15 @@
 #
 #
 # TODO
-#
-# Teamviewer, quelques wallpapers-pack ou plank themes
-# elementary-plus
+# clementine, steam, jeux ? (getdeb)
+# pack icones, pack themes plank covergloobus
+# des messages de notifs comme https://github.com/thomasfrei/ubuntu-post-install/blob/master/post-install.sh
+# couleurs terminal
 
 
 # Clear the Terminal
 clear
+notify-send  --icon=dialog-error "Attention" "Le mot de passe root vous sera demandé"
 
 # Zenity
 GUI=$(zenity --list --checklist \
@@ -67,6 +69,7 @@ then
 	clear
 	echo "Mise à jour du Système..."
 	echo ""
+	notify-send -i system-software-update "elementary OS Post Install" "Mise à jour du système en cours" -t 5000
 	sudo apt-get -y update
 	sudo apt-get -y upgrade
 fi
@@ -77,7 +80,9 @@ then
 	clear
 	echo "Accélération de la mémoire..."
 	echo ""
+	notify-send -i system-software-update "elementary OS Post Install" "Installation de Preload" -t 5000
 	sudo apt-get -y install preload
+	notify-send -i system-software-update "elementary OS Post Install" "Installation de zRAM" -t 5000
 	sudo apt-get -y install zram-config
 fi
 
@@ -87,6 +92,7 @@ then
 	clear
 	echo "Installation des Ubuntu Restricted Extras..."
 	echo ""
+	notify-send -i software-properties "elementary OS Post Install" "Installation des Ubuntu Restricted Extras" -t 5000
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 	sudo apt-get -y install ubuntu-restricted-extras ttf-mscorefonts-installer ubuntu-restricted-addons
 fi
@@ -97,6 +103,7 @@ then
 	clear
 	echo "Installation des Extra Multimedia Codecs..."
 	echo ""
+	notify-send -i multimedia-video-player "elementary OS Post Install" "Installation des codecs" -t 5000
 	sudo apt-get -y install libavcodec-extra-53 gstreamer0.10-plugins-bad-multiverse
 fi
 
@@ -106,6 +113,7 @@ then
 	clear
 	echo "Installation du Support pour DVD encrypté..."
 	echo ""
+	notify-send -i media-dvd "elementary OS Post Install" "Installation de libdvdread4" -t 5000
 	sudo apt-get -y install libdvdread4
 	sudo /usr/share/doc/libdvdread4/install-css.sh
 fi
@@ -116,6 +124,7 @@ then
 	clear
 	echo "Installation du Support pour les formats d'archivage"
 	echo ""
+	notify-send -i file-roller "elementary OS Post Install" "Installation de zip,unrar,unace,cabextract...etc" -t 5000
 	sudo apt-get -y install unace rar unrar p7zip-rar p7zip zip unzip sharutils uudeview mpack arj cabextract
 fi
 
@@ -125,6 +134,7 @@ then
 	clear
 	echo "Installation de GDebi..."
 	echo ""
+	notify-send -i package "elementary OS Post Install" "Installation de GDebi" -t 5000
 	sudo apt-get -y install gdebi
 fi
 
@@ -134,6 +144,7 @@ then
 	clear
 	echo "Installation de Google Chrome..."
 	echo ""
+	  notify-send -i web-browser "elementary OS Post Install" "Installation de Google Chrome" -t 5000
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
     sudo apt-get -y install google-chrome-stable
@@ -145,6 +156,7 @@ then
 	clear
 	echo "Installation de Chromium..."
 	echo ""
+	notify-send -i web-browser "elementary OS Post Install" "Installation de Chromium" -t 5000
 	sudo apt-get -y install chromium-browser
 fi
 
@@ -154,6 +166,7 @@ then
 	clear
 	echo "Installation de Firefox..."
 	echo ""
+	notify-send -i web-browser "elementary OS Post Install" "Installation de Firefox" -t 5000
 	sudo apt-get -y install firefox
 fi
 
@@ -163,6 +176,7 @@ then
 	clear
 	echo "Installation de Vivaldi..."
 	echo ""
+	notify-send -i web-browser "elementary OS Post Install" "Installation de Vivaldi" -t 5000
 	if [[ $(uname -m) == "i686" ]]
 	then
 		wget -O /tmp/Vivaldi_TP3.1.0.162.4-1_i386.deb https://vivaldi.com/download/Vivaldi_TP3.1.0.162.4-1_i386.deb
@@ -180,6 +194,7 @@ then
 	clear
 	echo "Installation de Liferea..."
 	echo ""
+	notify-send -i internet-news-reader "elementary OS Post Install" "Installation de Liferea" -t 5000
 	sudo apt-get -y install liferea
 fi
 
@@ -189,6 +204,7 @@ then
 	clear
 	echo "Installation de VLC..."
 	echo ""
+	notify-send -i multimedia-video-player "elementary OS Post Install" "Installation de VLC" -t 5000
 	sudo apt-get -y install vlc
 fi
 
@@ -198,6 +214,7 @@ then
 	clear
 	echo "Installing Transmission..."
 	echo ""
+	notify-send -i applications-filesharing "elementary OS Post Install" "Installation de Transmission" -t 5000
 	sudo apt-get -y install transmission
 fi
 
@@ -207,18 +224,18 @@ then
 	clear
 	echo "Installation de tranmission-gtk3..."
 	echo ""
+	notify-send -i applications-filesharing "elementary OS Post Install" "Installation de Transmission compatible GTK3" -t 5000
 	if [ `getconf LONG_BIT` = '32' ];
-
 	    then
-	        wget -c http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-i386.deb
+			    wget -O /tmp/transmission-gtk3-3.14-i386.deb http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-i386.deb
 	        sudo apt-get -y purge transmission*
-	        sudo dpkg -i *.deb
+					sudo dpkg -i /tmp/transmission-gtk3-3.14-i386.deb
 	        sudo apt-get -y -f install
 
 	    else
-	        wget -c http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-amd64.deb
-	        sudo apt-get -y purge transmission*
-	        sudo dpkg -i *.deb
+				wget -O /tmp/transmission-gtk3-3.14-amd64.deb http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-amd64.deb
+				sudo apt-get -y purge transmission*
+				sudo dpkg -i /tmp/transmission-gtk3-3.14-amd64.deb
 	        sudo apt-get -y -f install
 	fi
 fi
@@ -229,6 +246,7 @@ then
 	clear
 	echo "Installation de Atom..."
 	echo ""
+	notify-send -i accessories-text-editor "elementary OS Post Install" "Installation d'Atom" -t 5000
 	sudo add-apt-repository -y ppa:webupd8team/atom
 	sudo apt-get -y update
 	sudo apt-get -y install atom
@@ -240,6 +258,7 @@ then
 	clear
 	echo "Installation de Sublime Text 3..."
 	echo ""
+	notify-send -i accessories-text-editor "elementary OS Post Install" "Installation de Sublime Text 3" -t 5000
 	sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 	sudo apt-get -y update
 	sudo apt-get -y install sublime-text-installer
@@ -251,6 +270,9 @@ then
 	clear
 	echo "Installation de LibreOffice..."
 	echo ""
+	notify-send -i applications-office "elementary OS Post Install" "Installation de Libreoffice" -t 5000
+	sudo add-apt-repository -y ppa:libreoffice/ppa
+	sudo apt-get -y update
 	sudo apt-get -y install libreoffice
 fi
 
@@ -260,6 +282,7 @@ then
 	clear
 	echo "Installation de elementary Tweaks..."
 	echo ""
+	notify-send -i preferences-desktop "elementary OS Post Install" "Installation d'elementary Tweaks'" -t 5000
 	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install elementary-tweaks
@@ -271,6 +294,7 @@ then
 	clear
 	echo "Installation de Vocal..."
 	echo ""
+	notify-send -i applications-multimedia "elementary OS Post Install" "Installation de Vocal" -t 5000
 	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install vocal
@@ -282,6 +306,7 @@ then
 	clear
 	echo "Installation de Lollypop..."
 	echo ""
+	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation de Lollypop" -t 5000
 	sudo add-apt-repository -y ppa:gnumdk/lollypop
 	sudo apt-get -y update
 	sudo apt-get -y install lollypop
@@ -293,6 +318,7 @@ then
 	clear
 	echo "Installation de envelope..."
 	echo ""
+	notify-send -i applications-mathematics "elementary OS Post Install" "Installation d'envelope'" -t 5000
 	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install envelope
@@ -304,6 +330,7 @@ then
 	clear
 	echo "Installation de darktable..."
 	echo ""
+	notify-send -i applications-photography "elementary OS Post Install" "Installation de Darktable" -t 5000
 	sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release
 	sudo apt-get -y update
 	sudo apt-get -y install darktable
@@ -315,6 +342,7 @@ then
 	clear
 	echo "Installation de rapid-photo-downloader..."
 	echo ""
+	notify-send -i media-memory-sd "elementary OS Post Install" "Installation de rapid-photo-downloader" -t 5000
     sudo add-apt-repository -y ppa:dlynch3
     sudo apt-get -y  update
     sudo apt-get -y  install rapid-photo-downloader
@@ -326,6 +354,7 @@ then
 	clear
 	echo "Installation de gimp et gmic..."
 	echo ""
+	notify-send -i applications-graphics "elementary OS Post Install" "Installation de GIMP avec GMIC" -t 5000
     sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
     sudo apt-get -y update
     sudo apt-get -y install gmic gimp-gmic
@@ -337,6 +366,7 @@ then
 	clear
 	echo "Installation de inkscape..."
 	echo ""
+	notify-send -i applications-graphics "elementary OS Post Install" "Installation d'Inkscape'" -t 5000
 	sudo apt-get -y install inkscape
 fi
 
@@ -346,6 +376,7 @@ then
 	clear
 	echo "Installation de dropbox..."
 	echo ""
+	notify-send -i applications-internet "elementary OS Post Install" "Installation de Dropbox avec icones monochromes" -t 5000
 	sudo apt-get -y install nautilus-dropbox
 	echo "Installation des icones dropbox..."
 	echo ""
@@ -359,6 +390,7 @@ then
 	clear
 	echo "Installation de MEGASync..."
 	echo ""
+	notify-send -i applications-internet "elementary OS Post Install" "Installation de MeGA avec icones monochromes" -t 5000
 	wget -q -O - https://mega.nz/linux/MEGAsync/xUbuntu_14.04/Release.key | sudo apt-key add -
 	if [[ $(uname -m) == "i686" ]]
 	then
@@ -380,6 +412,7 @@ then
 	clear
 	echo "Installation de evnc..."
 	echo ""
+	notify-send -i network-vpn "elementary OS Post Install" "Installation d'eVNC" -t 5000
 	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install evnc
@@ -391,6 +424,7 @@ then
 	clear
 	echo "Installation de taxi..."
 	echo ""
+	notify-send -i preferences-network-system "elementary OS Post Install" "Installation de Taxi" -t 5000
 	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install taxi
@@ -402,6 +436,7 @@ then
 	clear
 	echo "Installation de eradio..."
 	echo ""
+	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation d'eRadio'" -t 5000
 	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install eradio
@@ -413,6 +448,7 @@ then
 	clear
 	echo "Installation de spotify..."
 	echo ""
+	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation de Spotify" -t 5000
 	sudo add-apt-repository -y "deb http://repository.spotify.com stable non-free"
 	sudo apt-key -y adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
 	sudo apt-get -y update
@@ -425,6 +461,7 @@ then
 	clear
 	echo "Installation de steam..."
 	echo ""
+	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Steam" -t 5000
 	sudo apt-get -y update
 	sudo apt-get -y install steam-launcher
 fi
@@ -435,6 +472,9 @@ then
 	clear
 	echo "Installation de playonlinux..."
 	echo ""
+	notify-send -i applications-arcade "elementary OS Post Install" "Installation de PlayOnLinux" -t 5000
+	wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
+  sudo wget http://deb.playonlinux.com/playonlinux_trusty.list -O /etc/apt/sources.list.d/playonlinux.list
 	sudo apt-get -y update
 	sudo apt-get -y install playonlinux
 fi
@@ -445,6 +485,7 @@ then
 	clear
 	echo "Installation de telegram..."
 	echo ""
+	notify-send -i applications-chat "elementary OS Post Install" "Installation de Telegram" -t 5000
 	sudo add-apt-repository -y ppa:atareao/telegram
 	sudo apt-get -y update
 	sudo apt-get -y install telegram
@@ -456,15 +497,17 @@ then
 	clear
 	echo "Installation de elementary-wallpapers-extra..."
 	echo ""
+	notify-send -i preferences-desktop-wallpaper "elementary OS Post Install" "Installation des fonds d'écran de Luna" -t 5000
 	sudo apt-get -y install elementary-wallpapers-extra
 fi
 
 # Fix Broken Packages Action
-if [[ $GUI == *"Fix Broken Packages"* ]]
+if [[ $GUI == *"Réparer les paquets cassés"* ]]
 then
 	clear
-	echo "Fixing the broken packages..."
+	echo "Réparation des paquets cassés..."
 	echo ""
+	notify-send -i package "elementary OS Post Install" "Réparation des paquets cassés" -t 5000
 	sudo apt-get -y -f install
 fi
 
@@ -474,6 +517,7 @@ then
 	clear
 	echo "Nettoyage de primptemps en cours..."
 	echo ""
+	notify-send -i user-trash-full "elementary OS Post Install" "Nettoyage des paquets inutiles" -t 5000
 	sudo apt-get -y autoremove
 	sudo apt-get -y autoclean
 fi
@@ -484,6 +528,7 @@ then
 	clear
 	echo "Installation du kernel CK..."
 	echo ""
+	notify-send -i applications-system "elementary OS Post Install" "Installation du kernel CK" -t 5000
 	sudo add-apt-repository -y ppa:nick-athens30/trusty-ck
 	sudo apt-get -y update
 	sudo apt-get -y install linux-image-generic-ck linux-headers-generic-ck
@@ -497,6 +542,7 @@ then
 	clear
 	echo "Installation du driver NVIDIA..."
 	echo ""
+	notify-send -i display "elementary OS Post Install" "Installation du driver NVIDIA" -t 5000
 	sudo add-apt-repository -y ppa:mamarley/nvidia
 	sudo apt-get -y update
 	sudo apt-get -y install nvidia-settings nvidia-340
@@ -510,6 +556,7 @@ then
 	clear
 	echo "Installation de TLP..."
 	echo ""
+	notify-send -i battery-full-charging "elementary OS Post Install" "Installation de TLP" -t 5000
 	sudo add-apt-repository ppa:linrunner/tlp
 	sudo apt-get update
 	sudo apt-get install tlp tlp-rdw
@@ -519,4 +566,4 @@ fi
 
 # Notification
 clear
-notify-send -i utilities-terminal elementary-script "Toutes les tâches ont été effactuées avec succès!".
+notify-send -i dialog-ok "Et voilà !" "Toutes les tâches ont été effactuées avec succès!" -t 5000

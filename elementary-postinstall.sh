@@ -63,7 +63,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Transmission" "Installe Transmission, le client bitorrent." \
 	FALSE "Transmission (GTK3)" "Installe la version de Tranmission compatible GTK+3" \
 	FALSE "Dropbox" "Installe dropbox avec les icones monochromes elementary." \
-	FALSE "MEGA" "Installe MEGASync pour le cloud de MEGA." \
+	FALSE "MEGA" "Installe MEGASync pour le cloud de MEGA avec les icones monochromes elementary." \
 	FALSE "eVNC" "Installe evnv, l'application de contrôle à distance." \
 	FALSE "Taxi" "Installe taxi, l'application de protocole FTP." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \

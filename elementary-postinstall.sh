@@ -52,6 +52,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Support DVD encrypté" "Installation du support pour lire les DVDs encryptés." \
 	FALSE "VLC" "Installe VLC, le lecteur multimédia." \
 	FALSE "Vocal" "Installe vocal, application de podcasts." \
+	FALSE "Clementine" "Installe Clementine, lecteur de musique." \
 	FALSE "Lollypop" "Installe lollypop, lecteur de musique." \
 	FALSE "eRadio" "Installe eradio, l'application de streaming radio." \
 	FALSE "Spotify" "Installe Spotify, l'application de service streaming de musique." \
@@ -324,6 +325,18 @@ then
 	sudo add-apt-repository -y ppa:gnumdk/lollypop
 	sudo apt-get -y update
 	sudo apt-get -y install lollypop
+fi
+
+# Installer Clementine
+if [[ $GUI == *"Clementine"* ]]
+then
+	clear
+	echo "Installation de Clementine..."
+	echo ""
+	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation de Clementine" -t 5000
+	sudo add-apt-repository -y ppa:me-davidsansome/clementine
+  sudo apt-get -y update
+  sudo apt-get -y install clementine
 fi
 
 # Installer envelope

@@ -9,7 +9,7 @@
 
 # Clear the Terminal
 clear
-notify-send  --icon=dialog-error "Attention" "Le mot de passe root vous sera demandé"
+notify-send  --icon=dialog-error "Attention" "Le mot de passe root vous sera demandé" -t 10000
 
 # Zenity
 GUI=$(zenity --list --checklist \
@@ -566,4 +566,4 @@ fi
 
 # Notification
 clear
-notify-send -i dialog-ok "Et voilà !" "Toutes les tâches ont été effactuées avec succès!" -t 5000
+notify-send -i dialog-ok "Et voilà !" "Toutes les tâches ont été effectuées avec succès!" -t 5000

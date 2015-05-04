@@ -42,6 +42,8 @@ GUI=$(zenity --list --checklist \
 	FALSE "Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
 	FALSE "Elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
 	FALSE "Thèmes Plank" "Installe des thèmes pour Plank" \
+	FALSE "Thèmes Icones" "Installe des thèmes d'icones" \
+	ALSE "Thèmes GTK" "Installe des thèmes de fenêtres GTK" \
 	FALSE "Support formats d'archivage" "Installation du support pour formats d'archivage (zip,rar,7z...)." \
 	FALSE "GDebi" "Installs GDebi. A simple tool to install deb files." \
 	FALSE "Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
@@ -325,6 +327,50 @@ then
 	sudo apt-get -y install plank-theme-pantiva
 	sudo apt-get -y install plank-theme-paperterial.
 	sudo apt-get -y install plank-theme-rainier
+	sudo apt-add-repository -y ppa:numix/ppa
+  sudo apt-get -y update
+  sudo apt-get -y install numix-plank-theme
+fi
+
+# Installer Thèmes Icones
+if [[ $GUI == *"Thèmes Icones"* ]]
+then
+	clear
+	echo "Installation des Thèmes Icones..."
+	echo ""
+	notify-send -i preferences-desktop "elementary OS Post Install" "Installation des thèmes d'icones" -t 5000
+	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install paper-icon-theme
+	sudo apt-get -y install elementary-add-icon-theme
+	sudo apt-get -y install elementary-enhanced
+	sudo apt-get -y install elementary-plus
+	sudo apt-get -y install plank-theme-pantiva
+	sudo apt-get -y install plank-theme-paperterial.
+	sudo apt-get -y install plank-theme-rainier
+	sudo apt-add-repository -y ppa:numix/ppa
+  sudo apt-get -y update
+  sudo apt-get install -y numix-icon-theme numix-icon-theme-circle numix-icon-theme-bevel
+	sudo add-apt-repository -y ppa:captiva/ppa
+  sudo apt-get -y update
+  sudo apt-get -y install captiva-icon-theme
+fi
+
+# Installer Thèmes GTK
+if [[ $GUI == *"Thèmes GTK"* ]]
+then
+	clear
+	echo "Installation des Thèmes GTK..."
+	echo ""
+	notify-send -i preferences-desktop "elementary OS Post Install" "Installation des thèmes GTK" -t 5000
+	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install paper-gtk-theme
+	sudo apt-get -y install elementary-yo
+	sudo apt-get -y install vertex-gtk3
+	sudo apt-add-repository -y ppa:numix/ppa
+  sudo apt-get -y update
+  sudo apt-get install -y numix-gtk-theme
 fi
 
 # Installer Vocal

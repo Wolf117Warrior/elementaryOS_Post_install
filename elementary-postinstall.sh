@@ -2,7 +2,7 @@
 #
 # TODO
 # jeux: , war thunder,
-# pack icones, 
+# pack icones,
 # corebird, memtest86+
 #
 
@@ -37,7 +37,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Mise à jour du Système" "Mise à jour de la liste des paquets et des applications déjà installées."  \
 	FALSE "Accélération de la mémoire" "Installation de preload et de zRAM." \
 	FALSE "Kernel CK" "Installe le Kernel CK, optimisé BFQ scheduler." \
-	FALSE "driver NVIDIA" "Installe le driver NVIDIA (PPA mamarley) pour GTX 7XX et +." \
+	FALSE "Driver NVIDIA" "Installe le driver NVIDIA (PPA mamarley) pour GTX 7XX et +." \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
 	FALSE "Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
 	FALSE "Elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \

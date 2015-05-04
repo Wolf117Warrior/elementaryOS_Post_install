@@ -1,15 +1,15 @@
 #
 #
 # TODO
-# jeux: , wesnoth, war thunder,
-# pack icones, pack themes plank
+# jeux: , war thunder,
+# pack icones, 
 # corebird, memtest86+
 #
 
 #
 # Ordre menu
 # SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, TLP, tweaks
-# CUSTOMISATION: wallpapers luna
+# CUSTOMISATION: wallpapers luna, thèmes plank
 # UTILITAIRES: archivage, Gdebi, atom, sublime text
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify

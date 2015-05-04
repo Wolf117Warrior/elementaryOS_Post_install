@@ -3,7 +3,7 @@
 # TODO
 # jeux: , wesnoth, war thunder,
 # pack icones, pack themes plank
-#
+# corebird, memtest86+
 #
 
 #
@@ -41,6 +41,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
 	FALSE "Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
 	FALSE "Elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
+	FALSE "Thèmes Plank" "Installe des thèmes pour Plank" \
 	FALSE "Support formats d'archivage" "Installation du support pour formats d'archivage (zip,rar,7z...)." \
 	FALSE "GDebi" "Installs GDebi. A simple tool to install deb files." \
 	FALSE "Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
@@ -306,6 +307,24 @@ then
 	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install elementary-tweaks
+fi
+
+# Installer Thèmes Plank
+if [[ $GUI == *"Thèmes Plank"* ]]
+then
+	clear
+	echo "Installation des Thèmes Plank..."
+	echo ""
+	notify-send -i preferences-desktop "elementary OS Post Install" "Installation des thèmes pour Plank" -t 5000
+	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install plank-theme-capeos
+	sudo apt-get -y install plank-theme-cratos-lion
+	sudo apt-get -y install plank-theme-grantheon
+	sudo apt-get -y install plank-theme-korora
+	sudo apt-get -y install plank-theme-pantiva
+	sudo apt-get -y install plank-theme-paperterial.
+	sudo apt-get -y install plank-theme-rainier
 fi
 
 # Installer Vocal

@@ -1,8 +1,7 @@
 #
 #
 # TODO
-# jeux: , war thunder,
-# corebird, memtest86+
+# DONE!
 #
 
 #
@@ -12,7 +11,7 @@
 # UTILITAIRES: archivage, Gdebi, atom, sublime text
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify
-# INTERNET: Chrome, chromium, Firefox, liferea, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, hexchat
+# INTERNET: Chrome, chromium, Firefox, liferea, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, corebird, hexchat
 # INFOGRAPHIE: gimp, darktable, inkscape, rapid
 # JEUX: steam, playonlinux, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
@@ -35,6 +34,7 @@ GUI=$(zenity --list --checklist \
 	--column=Description \
 	FALSE "Mise à jour du Système" "Mise à jour de la liste des paquets et des applications déjà installées."  \
 	FALSE "Accélération de la mémoire" "Installation de preload et de zRAM." \
+	FALSE "Memtest86+" "Installation de memtest86+ pour tester la RAM." \
 	FALSE "Kernel CK" "Installe le Kernel CK, optimisé BFQ scheduler." \
 	FALSE "Driver NVIDIA" "Installe le driver NVIDIA (PPA mamarley) pour GTX 7XX et +." \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
@@ -70,6 +70,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Grive Tools" "Installe Grive Tools pour le cloud Google Drive." \
 	FALSE "eVNC" "Installe eVNC, l'application de contrôle à distance." \
 	FALSE "Taxi" "Installe taxi, l'application de protocole FTP." \
+	FALSE "Corebird" "Installe Corebird, client twitter." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
 	FALSE "Hexchat" "Installe Hexchat, le client IRC." \
 	FALSE "Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
@@ -108,6 +109,16 @@ then
 	sudo apt-get -y install preload
 	notify-send -i system-software-update "elementary OS Post Install" "Installation de zRAM" -t 5000
 	sudo apt-get -y install zram-config
+fi
+
+# Memtest86+
+if [[ $GUI == *"Memtest86+"* ]]
+then
+	clear
+	echo "Installation de Memtest86+..."
+	echo ""
+	notify-send -i system-software-update "elementary OS Post Install" "Installation de Memtest86+" -t 5000
+	sudo apt-get -y install memtest86+
 fi
 
 # Installer Ubuntu Restricted Extras
@@ -679,6 +690,18 @@ then
 	sudo add-apt-repository -y ppa:atareao/telegram
 	sudo apt-get -y update
 	sudo apt-get -y install telegram
+fi
+
+# Installer Corebird
+if [[ $GUI == *"Corebird"* ]]
+then
+	clear
+	echo "Installation de Corebird..."
+	echo ""
+	notify-send -i applications-chat "elementary OS Post Install" "Installation de Corebird" -t 5000
+	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install corebird
 fi
 
 # Installer Hexchat

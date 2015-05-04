@@ -306,7 +306,7 @@ then
 	echo "Installation de elementary Tweaks..."
 	echo ""
 	notify-send -i preferences-desktop "elementary OS Post Install" "Installation d'elementary Tweaks'" -t 5000
-	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+	sudo add-apt-repository -y ppa:mpstark/elementary-tweaks-daily
 	sudo apt-get -y update
 	sudo apt-get -y install elementary-tweaks
 fi

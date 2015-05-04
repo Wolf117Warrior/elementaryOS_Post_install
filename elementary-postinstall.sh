@@ -82,6 +82,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Wesnoth" "Installe Bataille de Wesnoth, le jeu de stratégie au tour par tour" \
 	FALSE "FlightGear" "Installe FlightGear, le simulateur de vol OpenSource." \
 	FALSE "Unvanquished" "Installe Unvanquished, jeux FPS contre des Aliens." \
+	FALSE "War Thunder" "Installe War Thunder, simulateur de chars et avions de combat en ligne (64bits seulement!)" \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de prinptemps" "Retire les paquets qui ne sont plus nécéssaires." \
 	--separator=', ');
@@ -646,6 +647,26 @@ then
 > /etc/apt/sources.list.d/unvanquished.list'
 	sudo apt-get -y update
 	sudo apt-get -y install unvanquished
+fi
+
+# Installer War Thunder
+if [[ $GUI == *"War Thunder"* ]]
+then
+	clear
+	echo "Installation de War Thunder..."
+	echo ""
+	notify-send -i applications-arcade "elementary OS Post Install" "War Thunder sera installé dans le dossier warthunder sur votre HOME" -t 15000
+	mkdir $HOME/warthunder
+	wget http://yup1.gaijinent.com/updater_1.0.7.tar.gz
+	tar -xf updater_1.0.7.tar.gz ./updater ./updater.blk -C $HOME/warthunder
+	cd $HOME/warthunder
+	notify-send -i applications-arcade "elementary OS Post Install" "Téléchargement de War Thunder, cela va prendre du temps!" -t 15000
+	./updater
+	notify-send -i applications-arcade "elementary OS Post Install" "Création d'un raccourci pour War Thunder!" -t 5000
+	cd /tmp
+	wget -O /tmp/warthunder.desktop https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/warthunder.desktop
+	chmod +x /tmp/warthunder.desktop
+	sudo cp /tmp/warthunder.desktop /usr/share/applications/warthunder.desktop
 fi
 
 # Installer telegram

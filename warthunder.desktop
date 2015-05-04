@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=War Thunder
+Comment=War Thunder
+Exec=$HOME/warthunder/aces
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=$HOME/warthunder/icon.ico
+Categories=Games

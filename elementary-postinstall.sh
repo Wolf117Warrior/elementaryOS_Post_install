@@ -2,7 +2,6 @@
 #
 # TODO
 # jeux: , war thunder,
-# pack icones,
 # corebird, memtest86+
 #
 
@@ -13,7 +12,7 @@
 # UTILITAIRES: archivage, Gdebi, atom, sublime text
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify
-# INTERNET: Chrome, chromium, Firefox, liferea, transmission(+gtk3), Vivaldi, dropbox, mega, evnc, taxi, telegram, hexchat
+# INTERNET: Chrome, chromium, Firefox, liferea, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, hexchat
 # INFOGRAPHIE: gimp, darktable, inkscape, rapid
 # JEUX: steam, playonlinux, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
@@ -43,7 +42,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
 	FALSE "Thèmes Plank" "Installe des thèmes pour Plank" \
 	FALSE "Thèmes Icones" "Installe des thèmes d'icones" \
-	ALSE "Thèmes GTK" "Installe des thèmes de fenêtres GTK" \
+	FALSE "Thèmes GTK" "Installe des thèmes de fenêtres GTK" \
 	FALSE "Support formats d'archivage" "Installation du support pour formats d'archivage (zip,rar,7z...)." \
 	FALSE "GDebi" "Installs GDebi. A simple tool to install deb files." \
 	FALSE "Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
@@ -68,6 +67,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Transmission (GTK3)" "Installe la version de Tranmission compatible GTK+3" \
 	FALSE "Dropbox" "Installe dropbox avec les icones monochromes elementary." \
 	FALSE "MEGA" "Installe MEGASync pour le cloud de MEGA avec les icones monochromes elementary." \
+	FALSE "Grive Tools" "Installe Grive Tools pour le cloud Google Drive." \
 	FALSE "eVNC" "Installe eVNC, l'application de contrôle à distance." \
 	FALSE "Taxi" "Installe taxi, l'application de protocole FTP." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
@@ -501,6 +501,18 @@ then
 	echo ""
     git clone https://github.com/cybre/megasync-elementary /tmp/megasync-elementary
     bash /tmp/megasync-elementary/install.sh
+fi
+
+# Installer Grive Tools
+if [[ $GUI == *"Grive Tools"* ]]
+then
+	clear
+	echo "Installation de Grive Tools..."
+	echo ""
+	notify-send -i applications-internet  "elementary OS Post Install" "Installation de Grive Tools" -t 5000
+	sudo add-apt-repository -y ppa:thefanclub/grive-tools
+  sudo apt-get -y update
+  sudo apt-get -y install grive-tools
 fi
 
 # Installer evnc

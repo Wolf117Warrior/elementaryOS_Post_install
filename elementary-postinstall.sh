@@ -1,7 +1,7 @@
 #
 #
 # TODO
-# DONE!
+# timeshift, conky-manager https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+packages?field.name_filter=&field.status_filter=published&field.series_filter=trusty
 #
 
 #
@@ -782,9 +782,9 @@ then
 	echo "Installation de TLP..."
 	echo ""
 	notify-send -i battery-full-charging "elementary OS Post Install" "Installation de TLP" -t 5000
-	sudo add-apt-repository ppa:linrunner/tlp
-	sudo apt-get update
-	sudo apt-get install tlp tlp-rdw
+	sudo add-apt-repository -y ppa:linrunner/tlp
+	sudo apt-get -y update
+	sudo apt-get -y install tlp tlp-rdw
 	sudo tlp start
 	echo ""
 fi

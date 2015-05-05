@@ -2,7 +2,7 @@
 #
 # TODO
 # timeshift, conky-manager https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+packages?field.name_filter=&field.status_filter=published&field.series_filter=trusty
-#
+# http://covergloobus.deviantart.com/
 
 #
 # Ordre menu
@@ -770,7 +770,7 @@ then
 	notify-send -i display "elementary OS Post Install" "Installation du driver NVIDIA" -t 5000
 	sudo add-apt-repository -y ppa:mamarley/nvidia
 	sudo apt-get -y update
-	sudo apt-get -y install nvidia-settings nvidia-340
+	sudo apt-get -y install nvidia-settings nvidia-349
 	echo "Pensez à rebooter..."
 	echo ""
 fi

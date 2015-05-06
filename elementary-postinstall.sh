@@ -428,7 +428,7 @@ then
 	echo "Installation de envelope..."
 	echo ""
 	notify-send -i applications-mathematics "elementary OS Post Install" "Installation d'envelope'" -t 5000
-	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+	sudo add-apt-repository -y ppa:nicolas-laplante/envelope-daily
 	sudo apt-get -y update
 	sudo apt-get -y install envelope
 fi

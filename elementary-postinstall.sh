@@ -392,7 +392,7 @@ then
 	echo "Installation de Vocal..."
 	echo ""
 	notify-send -i applications-multimedia "elementary OS Post Install" "Installation de Vocal" -t 5000
-	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+	sudo add-apt-repository -y ppa:nathandyer/vocal-daily
 	sudo apt-get -y update
 	sudo apt-get -y install vocal
 fi

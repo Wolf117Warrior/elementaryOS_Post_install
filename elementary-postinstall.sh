@@ -11,7 +11,7 @@
 # UTILITAIRES: archivage, Gdebi, atom, sublime text
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify
-# INTERNET: Chrome, chromium, Firefox, liferea, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, corebird, hexchat
+# INTERNET: Chrome, chromium, Firefox, feedreader, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, corebird, hexchat
 # INFOGRAPHIE: gimp, darktable, inkscape, rapid
 # JEUX: steam, playonlinux, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
@@ -62,7 +62,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Chromium" "Installe Chromium, la version opensource de Chrome." \
 	FALSE "Firefox" "Installe Firefox, le navigateur libre et opensource." \
 	FALSE "Vivaldi" "Installe Vivaldi, le nouveau navigateur (version Tech Preview)." \
-	FALSE "Liferea" "Installe Liferea, un aggrégateur de flux opensource." \
+	FALSE "FeedReader" "Installe FeedReader, un aggrégateur de flux opensource." \
 	FALSE "Transmission" "Installe Transmission, le client bitorrent." \
 	FALSE "Transmission (GTK3)" "Installe la version de Tranmission compatible GTK+3" \
 	FALSE "Dropbox" "Installe dropbox avec les icones monochromes elementary." \
@@ -223,14 +223,16 @@ then
 	fi
 fi
 
-# Installer Liferea
-if [[ $GUI == *"Liferea"* ]]
+# Installer FeedReader
+if [[ $GUI == *"FeedReader"* ]]
 then
 	clear
-	echo "Installation de Liferea..."
+	echo "Installation de FeedReader..."
 	echo ""
-	notify-send -i internet-news-reader "elementary OS Post Install" "Installation de Liferea" -t 5000
-	sudo apt-get -y install liferea
+	notify-send -i internet-news-reader "elementary OS Post Install" "Installation de FeedReader" -t 5000
+	sudo add-apt-repository -y ppa:eviltwin1/feedreader-stable
+	sudo apt-get -y update
+	sudo apt-get -y install feedreader
 fi
 
 # Installer VLC

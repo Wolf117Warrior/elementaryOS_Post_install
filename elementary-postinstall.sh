@@ -6,7 +6,7 @@
 
 #
 # Ordre menu
-# SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, TLP, tweaks
+# SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, TLP, tweaks, boot-repair
 # CUSTOMISATION: wallpapers luna, thèmes plank
 # UTILITAIRES: archivage, Gdebi, atom, sublime text
 # BUREAUTIQUE: libreoffice, envelope
@@ -39,6 +39,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Driver NVIDIA" "Installe le driver NVIDIA (PPA mamarley) pour GTX 7XX et +." \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
 	FALSE "Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
+	FALSE "Boot Repair" "Installe boot-repair, réparateur de GRUB." \
 	FALSE "Elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
 	FALSE "Thèmes Plank" "Installe des thèmes pour Plank" \
 	FALSE "Thèmes Icones" "Installe des thèmes d'icones" \
@@ -323,6 +324,18 @@ then
 	sudo add-apt-repository -y ppa:mpstark/elementary-tweaks-daily
 	sudo apt-get -y update
 	sudo apt-get -y install elementary-tweaks
+fi
+
+# Installer boot-repair
+if [[ $GUI == *"Boot Repair"* ]]
+then
+	clear
+	echo "Installation de boot-repair..."
+	echo ""
+	notify-send -i applications-system "elementary OS Post Install" "Installation d'elementary Tweaks'" -t 5000
+	sudo add-apt-repository -y ppa:yannubuntu/boot-repair
+	sudo apt-get -y update
+	sudo apt-get -y install boot-repair
 fi
 
 # Installer Thèmes Plank

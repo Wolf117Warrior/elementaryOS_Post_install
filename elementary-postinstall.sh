@@ -68,7 +68,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Transmission (GTK3)" "Installe la version de Tranmission compatible GTK+3" \
 	FALSE "Dropbox" "Installe dropbox avec les icones monochromes elementary." \
 	FALSE "MEGA" "Installe MEGASync pour le cloud de MEGA avec les icones monochromes elementary." \
-	FALSE "Grive Tools" "Installe Grive Tools pour le cloud Google Drive." \
+	FALSE "Grive 2" "Installe Grive 2 pour le cloud Google Drive." \
 	FALSE "eVNC" "Installe eVNC, l'application de contrôle à distance." \
 	FALSE "Taxi" "Installe taxi, l'application de protocole FTP." \
 	FALSE "Corebird" "Installe Corebird, client twitter." \
@@ -530,16 +530,16 @@ then
     bash /tmp/megasync-elementary/install.sh
 fi
 
-# Installer Grive Tools
-if [[ $GUI == *"Grive Tools"* ]]
+# Installer Grive 2
+if [[ $GUI == *"Grive 2"* ]]
 then
 	clear
-	echo "Installation de Grive Tools..."
+	echo "Installation de Grive 2..."
 	echo ""
-	notify-send -i applications-internet  "elementary OS Post Install" "Installation de Grive Tools" -t 5000
-	sudo add-apt-repository -y ppa:thefanclub/grive-tools
+	notify-send -i applications-internet  "elementary OS Post Install" "Installation de Grive 2" -t 5000
+	sudo add-apt-repository -y pa:nilarimogard/webupd8
   sudo apt-get -y update
-  sudo apt-get -y install grive-tools
+  sudo apt-get -y install grive
 fi
 
 # Installer evnc

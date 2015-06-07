@@ -180,7 +180,7 @@ then
 	clear
 	echo "Installation de Google Chrome..."
 	echo ""
-	  notify-send -i web-browser "elementary OS Post Install" "Installation de Google Chrome" -t 5000
+  	notify-send -i web-browser "elementary OS Post Install" "Installation de Google Chrome" -t 5000
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
     sudo apt-get -y install google-chrome-stable
@@ -265,15 +265,15 @@ then
 	notify-send -i applications-filesharing "elementary OS Post Install" "Installation de Transmission compatible GTK3" -t 5000
 	if [ `getconf LONG_BIT` = '32' ];
 	    then
-			    wget -O /tmp/transmission-gtk3-3.14-i386.deb http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-i386.deb
+		    wget -O /tmp/transmission-gtk3-3.14-i386.deb http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-i386.deb
 	        sudo apt-get -y purge transmission*
-					sudo dpkg -i /tmp/transmission-gtk3-3.14-i386.deb
+			sudo dpkg -i /tmp/transmission-gtk3-3.14-i386.deb
 	        sudo apt-get -y -f install
 
 	    else
-				wget -O /tmp/transmission-gtk3-3.14-amd64.deb http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-amd64.deb
-				sudo apt-get -y purge transmission*
-				sudo dpkg -i /tmp/transmission-gtk3-3.14-amd64.deb
+			wget -O /tmp/transmission-gtk3-3.14-amd64.deb http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-amd64.deb
+			sudo apt-get -y purge transmission*
+			sudo dpkg -i /tmp/transmission-gtk3-3.14-amd64.deb
 	        sudo apt-get -y -f install
 	fi
 fi
@@ -355,8 +355,8 @@ then
 	sudo apt-get -y install plank-theme-paperterial.
 	sudo apt-get -y install plank-theme-rainier
 	sudo apt-add-repository -y ppa:numix/ppa
-  sudo apt-get -y update
-  sudo apt-get -y install numix-plank-theme
+  	sudo apt-get -y update
+  	sudo apt-get -y install numix-plank-theme
 fi
 
 # Installer Thèmes Icones
@@ -376,11 +376,11 @@ then
 	sudo apt-get -y install plank-theme-paperterial.
 	sudo apt-get -y install plank-theme-rainier
 	sudo apt-add-repository -y ppa:numix/ppa
-  sudo apt-get -y update
-  sudo apt-get install -y numix-icon-theme numix-icon-theme-circle numix-icon-theme-bevel
+  	sudo apt-get -y update
+  	sudo apt-get install -y numix-icon-theme numix-icon-theme-circle numix-icon-theme-bevel
 	sudo add-apt-repository -y ppa:captiva/ppa
-  sudo apt-get -y update
-  sudo apt-get -y install captiva-icon-theme
+  	sudo apt-get -y update
+  	sudo apt-get -y install captiva-icon-theme
 fi
 
 # Installer Thèmes GTK
@@ -396,8 +396,8 @@ then
 	sudo apt-get -y install elementary-yo
 	sudo apt-get -y install vertex-gtk3
 	sudo apt-add-repository -y ppa:numix/ppa
-  sudo apt-get -y update
-  sudo apt-get install -y numix-gtk-theme
+  	sudo apt-get -y update
+  	sudo apt-get install -y numix-gtk-theme
 fi
 
 # Installer Vocal
@@ -432,8 +432,8 @@ then
 	echo ""
 	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation de Clementine" -t 5000
 	sudo add-apt-repository -y ppa:me-davidsansome/clementine
-  sudo apt-get -y update
-  sudo apt-get -y install clementine
+ 	sudo apt-get -y update
+  	sudo apt-get -y install clementine
 fi
 
 # Installer envelope
@@ -538,8 +538,8 @@ then
 	echo ""
 	notify-send -i applications-internet  "elementary OS Post Install" "Installation de Grive Tools" -t 5000
 	sudo add-apt-repository -y ppa:thefanclub/grive-tools
-  sudo apt-get -y update
-  sudo apt-get -y install grive-tools
+  	sudo apt-get -y update
+  	sudo apt-get -y install grive-tools
 fi
 
 # Installer evnc
@@ -610,7 +610,7 @@ then
 	echo ""
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation de PlayOnLinux" -t 5000
 	wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
-  sudo wget http://deb.playonlinux.com/playonlinux_trusty.list -O /etc/apt/sources.list.d/playonlinux.list
+  	sudo wget http://deb.playonlinux.com/playonlinux_trusty.list -O /etc/apt/sources.list.d/playonlinux.list
 	sudo apt-get -y update
 	sudo apt-get -y install playonlinux
 fi
@@ -669,8 +669,7 @@ then
 	echo ""
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Unvanquished" -t 5000
 	wget -q "http://debs.unvanquished.net/unvanquished-archive-key.gpg.asc" -O- | sudo apt-key add -
-	sudo sh -c 'echo deb http://debs.unvanquished.net trusty main
-> /etc/apt/sources.list.d/unvanquished.list'
+	sudo sh -c 'echo deb http://debs.unvanquished.net trusty main > /etc/apt/sources.list.d/unvanquished.list'
 	sudo apt-get -y update
 	sudo apt-get -y install unvanquished
 fi
@@ -705,6 +704,8 @@ then
 	sudo add-apt-repository -y ppa:atareao/telegram
 	sudo apt-get -y update
 	sudo apt-get -y install telegram
+	sudo chmod +x /opt/telegram
+	sudo chown -R $whoami:$whoami /opt/telegram
 fi
 
 # Installer Corebird

@@ -536,17 +536,10 @@ then
 	clear
 	echo "Installation de Grive 2..."
 	echo ""
-<<<<<<< HEAD
 	notify-send -i applications-internet  "elementary OS Post Install" "Installation de Grive 2" -t 5000
 	sudo add-apt-repository -y pa:nilarimogard/webupd8
   sudo apt-get -y update
   sudo apt-get -y install grive
-=======
-	notify-send -i applications-internet  "elementary OS Post Install" "Installation de Grive Tools" -t 5000
-	sudo add-apt-repository -y ppa:thefanclub/grive-tools
-  	sudo apt-get -y update
-  	sudo apt-get -y install grive-tools
->>>>>>> b5779607db20d355a834f661979d9b411633540b
 fi
 
 # Installer evnc

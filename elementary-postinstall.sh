@@ -39,6 +39,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Driver NVIDIA" "Installe le driver NVIDIA (PPA mamarley) pour GTX 7XX et +." \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
 	FALSE "Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
+	FALSE "Configurator" "Installe Configurator l'éditeur dconf pour elementary." \
 	FALSE "Boot Repair" "Installe boot-repair, réparateur de GRUB." \
 	FALSE "Elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
 	FALSE "Thèmes Plank" "Installe des thèmes pour Plank" \
@@ -357,6 +358,18 @@ then
 	sudo apt-add-repository -y ppa:numix/ppa
   	sudo apt-get -y update
   	sudo apt-get -y install numix-plank-theme
+fi
+
+# Installer Configurator
+if [[ $GUI == *"Installation de Configurator"* ]]
+then
+	clear
+	echo "Installation de Configurator.."
+	echo ""
+	notify-send -i preferences-desktop "elementary OS Post Install" "Installation de Configurator" -t 5000
+	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
+  sudo apt-get -y update
+  sudo apt-get -y install Configurator
 fi
 
 # Installer Thèmes Icones

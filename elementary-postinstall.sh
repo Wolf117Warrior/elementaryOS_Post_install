@@ -73,7 +73,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Taxi" "Installe taxi, l'application de protocole FTP." \
 	FALSE "Corebird" "Installe Corebird, client twitter." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
-	FALSE "Hexchat" "Installe Hexchat, le client IRC." \
+	FALSE "Relay" "Installe Relay, le client IRC pour elementary OS." \
 	FALSE "Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
 	FALSE "Inkscape" "Installe le logiciel de vectorisation Inkscape." \
 	FALSE "Darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
@@ -720,16 +720,16 @@ then
 	sudo apt-get -y install corebird
 fi
 
-# Installer Hexchat
-if [[ $GUI == *"Hexchat"* ]]
+# Installer Relay
+if [[ $GUI == *"Relay"* ]]
 then
 	clear
-	echo "Installation de Hexchat..."
+	echo "Installation de Relay..."
 	echo ""
-	notify-send -i applications-chat "elementary OS Post Install" "Installation d'Hexchat" -t 5000
-	sudo add-apt-repository -y ppa:gwendal-lebihan-dev/hexchat-stable
+	notify-send -i applications-chat "elementary OS Post Install" "Installation d'Relay" -t 5000
+	sudo add-apt-repository -y ppa:agronick/relay
 	sudo apt-get -y update
-	sudo apt-get -y install hexchat
+	sudo apt-get -y install relay
 fi
 
 # Installer elementary-wallpapers-extra

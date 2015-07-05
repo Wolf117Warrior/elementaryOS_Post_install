@@ -739,7 +739,7 @@ then
 	clear
 	echo "Installation de Relay..."
 	echo ""
-	notify-send -i applications-chat "elementary OS Post Install" "Installation d'Relay" -t 5000
+	notify-send -i applications-chat "elementary OS Post Install" "Installation de Relay" -t 5000
 	sudo add-apt-repository -y ppa:agronick/relay
 	sudo apt-get -y update
 	sudo apt-get -y install relay

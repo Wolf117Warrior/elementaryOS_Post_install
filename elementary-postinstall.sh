@@ -384,16 +384,19 @@ then
 	sudo apt-get -y install paper-icon-theme
 	sudo apt-get -y install elementary-add-icon-theme
 	sudo apt-get -y install elementary-enhanced
-	sudo apt-get -y install elementary-plus
 	sudo apt-get -y install plank-theme-pantiva
 	sudo apt-get -y install plank-theme-paperterial.
 	sudo apt-get -y install plank-theme-rainier
 	sudo apt-add-repository -y ppa:numix/ppa
-  	sudo apt-get -y update
-  	sudo apt-get install -y numix-icon-theme numix-icon-theme-circle numix-icon-theme-bevel
-	sudo add-apt-repository -y ppa:captiva/ppa
-  	sudo apt-get -y update
-  	sudo apt-get -y install captiva-icon-theme
+  sudo apt-get -y update
+  sudo apt-get install -y numix-icon-theme numix-icon-theme-circle numix-icon-theme-bevel
+	udo add-apt-repository -y ppa:captiva/ppa
+  sudo apt-get -y update
+  sudo apt-get -y install captiva-icon-theme
+	sudo add-apt-repository -y ppa:cybre/elementaryplus
+	sudo apt-get -y update
+	sudo apt-get -y install elementaryplus
+
 fi
 
 # Installer Thèmes GTK

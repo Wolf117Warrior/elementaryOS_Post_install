@@ -786,9 +786,9 @@ then
 	echo "Installation du kernel CK..."
 	echo ""
 	notify-send -i applications-system "elementary OS Post Install" "Installation du kernel CK" -t 5000
-	sudo add-apt-repository -y ppa:nick-athens30/trusty-ck
+	sudo add-apt-repository -y ppa:nick-athens30/tahr-ck
 	sudo apt-get -y update
-	sudo apt-get -y install linux-image-generic-ck linux-headers-generic-ck
+	sudo apt-get -y install linux-image-ck linux-headers-ck
 	echo "Pensez à rebooter pour profiter de ce kernel..."
 	echo ""
 fi

@@ -35,7 +35,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Mise à jour du Système" "Mise à jour de la liste des paquets et des applications déjà installées."  \
 	FALSE "Accélération de la mémoire" "Installation de preload et de zRAM." \
 	FALSE "Memtest86+" "Installation de memtest86+ pour tester la RAM." \
-	FALSE "Kernel CK" "Installe le Kernel CK, optimisé BFQ scheduler." \
+	FALSE "Kernel Trusty Tahr BFS/BFQ" "Installe le Kernel Trusty Tahr optimisé BFQ/BFS scheduler." \
 	FALSE "Driver NVIDIA" "Installe le driver NVIDIA (PPA mamarley) pour GTX 7XX et +." \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
 	FALSE "Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
@@ -779,16 +779,16 @@ then
 	sudo apt-get -y autoclean
 fi
 
-# Installer le Kernel CK
-if [[ $GUI == *"Kernel CK"* ]]
+# Installer le Kernel Trusty Tahr BFS/BFQ
+if [[ $GUI == *"Kernel Trusty Tahr BFS/BFQ"* ]]
 then
 	clear
-	echo "Installation du kernel CK..."
+	echo "Installation du kernel Trusty Tahr BFS/BFQ..."
 	echo ""
-	notify-send -i applications-system "elementary OS Post Install" "Installation du kernel CK" -t 5000
-	sudo add-apt-repository -y ppa:nick-athens30/tahr-ck
+	notify-send -i applications-system "elementary OS Post Install" "Installation du kernel Trusty Tahr BFS/BFQ" -t 5000
+	sudo add-apt-repository -y ppa:nick-athens30/trusty4-ck
 	sudo apt-get -y update
-	sudo apt-get -y install linux-image-ck linux-headers-ck
+	sudo apt-get -y install linux-image-bb linux-headers-bb
 	echo "Pensez à rebooter pour profiter de ce kernel..."
 	echo ""
 fi

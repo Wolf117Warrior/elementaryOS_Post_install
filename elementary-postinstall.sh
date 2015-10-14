@@ -36,7 +36,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Accélération de la mémoire" "Installation de preload et de zRAM." \
 	FALSE "Memtest86+" "Installation de memtest86+ pour tester la RAM." \
 	FALSE "Kernel Trusty Tahr BFS/BFQ" "Installe le Kernel Trusty Tahr optimisé BFQ/BFS scheduler." \
-	FALSE "Driver NVIDIA" "Installe le driver NVIDIA (PPA mamarley) pour GTX 7XX et +." \
+	FALSE "Driver NVIDIA" "Installe le driver NVIDIA (ppa graphics-drivers) pour GTX 7XX et +." \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
 	FALSE "Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
 	FALSE "Configurator" "Installe Configurator l'éditeur dconf pour elementary." \
@@ -800,9 +800,9 @@ then
 	echo "Installation du driver NVIDIA..."
 	echo ""
 	notify-send -i display "elementary OS Post Install" "Installation du driver NVIDIA" -t 5000
-	sudo add-apt-repository -y ppa:mamarley/nvidia
+	sudo add-apt-repository -y ppa:graphics-drivers/ppa
 	sudo apt-get -y update
-	sudo apt-get -y install nvidia-settings nvidia-349
+	sudo apt-get -y install nvidia-settings nvidia-355
 	echo "Pensez à rebooter..."
 	echo ""
 fi

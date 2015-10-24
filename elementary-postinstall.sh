@@ -216,12 +216,12 @@ then
 	notify-send -i web-browser "elementary OS Post Install" "Installation de Vivaldi" -t 5000
 	if [[ $(uname -m) == "i686" ]]
 	then
-		wget -O /tmp/Vivaldi_TP3.1.0.162.4-1_i386.deb https://vivaldi.com/download/Vivaldi_TP3.1.0.162.4-1_i386.deb
-		sudo dpkg -i /tmp/Vivaldi_TP3.1.0.162.4-1_i386.deb
+		wget -O /tmp/vivaldi_TP4.1.0.219.50-1_i386.deb https://vivaldi.com/download/vivaldi_TP4.1.0.219.50-1_i386.deb
+		sudo dpkg -i /tmp/vivaldi_TP4.1.0.219.50-1_i386.deb
 	elif [[ $(uname -m) == "x86_64" ]]
 	then
-		wget -O /tmp/Vivaldi_TP3.1.0.162.4-1_amd64.deb https://vivaldi.com/download/Vivaldi_TP3.1.0.162.4-1_amd64.deb
-		sudo dpkg -i /tmp/Vivaldi_TP3.1.0.162.4-1_amd64.deb
+		wget -O /tmp/vivaldi_TP4.1.0.219.50-1_amd64.deb https://vivaldi.com/download/vivaldi_TP4.1.0.219.50-1_amd64.deb
+		sudo dpkg -i /tmp/vivaldi_TP4.1.0.219.50-1_amd64.deb
 	fi
 fi
 

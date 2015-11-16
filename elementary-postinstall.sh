@@ -3,6 +3,9 @@
 # TODO
 # timeshift, conky-manager https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+packages?field.name_filter=&field.status_filter=published&field.series_filter=trusty
 # http://covergloobus.deviantart.com/
+# intel tearing
+# zsh ?
+
 
 #
 # Ordre menu
@@ -788,12 +791,12 @@ then
 	notify-send -i applications-system "elementary OS Post Install" "Installation du kernel Trusty Tahr BFS/BFQ" -t 5000
 	sudo add-apt-repository -y ppa:nick-athens30/trusty4-ck
 	sudo apt-get -y update
-	sudo apt-get -y install linux-image-bb linux-headers-bb
+	sudo apt-get -y install linux-bb
 	echo "Pensez à rebooter pour profiter de ce kernel..."
 	echo ""
 fi
 
-# Installer le Kernel CK
+# Installer le driver NVIDIA
 if [[ $GUI == *"Driver NVIDIA"* ]]
 then
 	clear

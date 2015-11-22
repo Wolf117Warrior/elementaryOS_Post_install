@@ -13,7 +13,7 @@
 # CUSTOMISATION: wallpapers luna, thèmes plank
 # UTILITAIRES: archivage, Gdebi, atom, sublime text
 # BUREAUTIQUE: libreoffice, envelope
-# MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify
+# MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify, tomahawk
 # INTERNET: Chrome, chromium, Firefox, feedreader, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, corebird, hexchat
 # INFOGRAPHIE: gimp, darktable, inkscape, rapid
 # JEUX: steam, playonlinux, 0.A.D, FlightGear
@@ -61,6 +61,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Vocal" "Installe vocal, application de podcasts." \
 	FALSE "Clementine" "Installe Clementine, lecteur de musique." \
 	FALSE "Lollypop" "Installe lollypop, lecteur de musique." \
+	FALSE "Tomahawk" "Installe tomahawk, lecteur de musique." \
 	FALSE "eRadio" "Installe eradio, l'application de streaming radio." \
 	FALSE "Spotify" "Installe Spotify, l'application de service streaming de musique." \
 	FALSE "Google Chrome" "Installe Google Chrome, le navigateur Google." \
@@ -441,6 +442,18 @@ then
 	sudo add-apt-repository -y ppa:gnumdk/lollypop
 	sudo apt-get -y update
 	sudo apt-get -y install lollypop
+fi
+
+# Installer Tomahawk
+if [[ $GUI == *"Tomahawk"* ]]
+then
+	clear
+	echo "Installation de Tomahawk..."
+	echo ""
+	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation de Tomahawk" -t 5000
+	sudo add-apt-repository -y ppa:tomahawk/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install tomahawk
 fi
 
 # Installer Clementine

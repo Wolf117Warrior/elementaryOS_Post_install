@@ -5,13 +5,16 @@
 # http://covergloobus.deviantart.com/
 # intel tearing
 # zsh ?
+# teamviewer http://download.teamviewer.com/download/teamviewer_i386.deb
+# wireshark, bleachbit
+#redshift https://github.com/k0pernicus/ElementaryOS_config
 
 
 #
 # Ordre menu
 # SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, TLP, tweaks, boot-repair
 # CUSTOMISATION: wallpapers luna, thèmes plank
-# UTILITAIRES: archivage, Gdebi, atom, sublime text
+# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify, tomahawk
 # INTERNET: Chrome, chromium, Firefox, feedreader, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, corebird, hexchat
@@ -52,6 +55,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "GDebi" "Installs GDebi. A simple tool to install deb files." \
 	FALSE "Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
 	FALSE "Sublime Text 3" "Installe Sublime Text 3, un puissant éditeur de texte" \
+	FALSE "Deja Dup" "Installe Deja Dup,  utilitaire pour sauvegarde \
 	FALSE "LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
 	FALSE "Envelope" "Installe envelope, application de gestion financière." \
 	FALSE "Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
@@ -305,6 +309,17 @@ then
 	sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 	sudo apt-get -y update
 	sudo apt-get -y install sublime-text-installer
+fi
+
+# Installer Deja Dup
+if [[ $GUI == *"Deja Dup"* ]]
+then
+	clear
+	echo "Installation de Deja Dup..."
+	echo ""
+	notify-send -i locked "elementary OS Post Install" "Installation de Deja Dup" -t 5000
+	sudo apt-get -y update
+	sudo apt-get -y install deja-dup
 fi
 
 # Installer LibreOffice

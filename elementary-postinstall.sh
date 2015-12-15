@@ -3,28 +3,22 @@
 # TODO
 # timeshift, conky-manager https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+packages?field.name_filter=&field.status_filter=published&field.series_filter=trusty
 # http://covergloobus.deviantart.com/
-# intel tearing
 # zsh ?
 # teamviewer http://download.teamviewer.com/download/teamviewer_i386.deb
 # wireshark, bleachbit
 #redshift https://github.com/k0pernicus/ElementaryOS_config
-# adb http://www.linuxslaves.com/2015/07/install-android-tools-adb-fastboot-on-ubuntu-linux.html
-
 
 #
 # Ordre menu
-# SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, TLP, tweaks, boot-repair
+# SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, inteal video tearing fix, TLP, tweaks, configurator, boot-repair
 # CUSTOMISATION: wallpapers luna, thèmes plank
-# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup
+# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify, tomahawk
 # INTERNET: Chrome, chromium, Firefox, feedreader, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, corebird, hexchat
 # INFOGRAPHIE: gimp, darktable, inkscape, rapid
 # JEUX: steam, playonlinux, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
-#
-
-
 
 # Clear the Terminal
 clear
@@ -57,7 +51,8 @@ GUI=$(zenity --list --checklist \
 	FALSE "GDebi" "Installs GDebi. A simple tool to install deb files." \
 	FALSE "Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
 	FALSE "Sublime Text 3" "Installe Sublime Text 3, un puissant éditeur de texte" \
-	FALSE "Deja Dup" "Installe Deja Dup,  utilitaire pour sauvegarde \
+	FALSE "Deja Dup" "Installe Deja Dup,  utilitaire pour sauvegarde" \
+	FALSE "ADB" "Installe ADB, outil pour téléphones sous Android" \
 	FALSE "LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
 	FALSE "Envelope" "Installe envelope, application de gestion financière." \
 	FALSE "Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
@@ -324,6 +319,17 @@ then
 	sudo apt-get -y install deja-dup
 fi
 
+# Installer ADB
+if [[ $GUI == *"ADB"* ]]
+then
+	clear
+	echo "Installation du SDK Android..."
+	echo ""
+	notify-send -i locked "elementary OS Post Install" "Installation du SDK Android" -t 5000
+	sudo apt-get -y update
+	sudo apt-get -y install deja-dup
+fi
+
 # Installer LibreOffice
 if [[ $GUI == *"LibreOffice"* ]]
 then
@@ -331,9 +337,10 @@ then
 	echo "Installation de LibreOffice..."
 	echo ""
 	notify-send -i applications-office "elementary OS Post Install" "Installation de Libreoffice" -t 5000
-	sudo add-apt-repository -y ppa:libreoffice/ppa
-	sudo apt-get -y update
-	sudo apt-get -y install libreoffice
+	sudo wget -O /etc/udev/rules.d/51-android.rules https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/android/51-android.rules
+	sudo chmod a+r /etc/udev/rules .d/51-android.rules
+	sudo service udev restart
+	sudo apt-get install android-tools-adb android-tools-fastboot
 fi
 
 # Installer elementary Tweaks

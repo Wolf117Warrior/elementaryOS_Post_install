@@ -8,6 +8,7 @@
 # teamviewer http://download.teamviewer.com/download/teamviewer_i386.deb
 # wireshark, bleachbit
 #redshift https://github.com/k0pernicus/ElementaryOS_config
+# adb http://www.linuxslaves.com/2015/07/install-android-tools-adb-fastboot-on-ubuntu-linux.html
 
 
 #
@@ -43,6 +44,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Memtest86+" "Installation de memtest86+ pour tester la RAM." \
 	FALSE "Kernel Trusty Tahr BFS/BFQ" "Installe le Kernel Trusty Tahr optimisé BFQ/BFS scheduler." \
 	FALSE "Driver NVIDIA" "Installe le driver NVIDIA (ppa graphics-drivers) pour GTX 7XX et +." \
+	FALSE "Intel Tearing Fix" "Correction du tearing avec le driver Intel Graphics" \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
 	FALSE "Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
 	FALSE "Configurator" "Installe Configurator l'éditeur dconf pour elementary." \
@@ -834,6 +836,20 @@ then
 	sudo add-apt-repository -y ppa:graphics-drivers/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install nvidia-settings nvidia-358
+	echo "Pensez à rebooter..."
+	echo ""
+fi
+
+# Intel Tearing Fix
+if [[ $GUI == *"Intel Tearing Fix"* ]]
+then
+	clear
+	echo "Correctif Intel Tearing..."
+	echo ""
+	notify-send -i display "elementary OS Post Install" "Correctif Intel Tearing..." -t 5000
+	sudo apt-get -y install mesa-utils
+	sudo mkdir /etc/X11/xorg.conf.d/
+	echo -e 'Section "Device"\n Identifier "Intel Graphics"\n Driver "Intel"\n Option "AccelMethod" "sna"\n Option "TearFree" "true"\nEndSection' | sudo tee /etc/X11/xorg.conf.d/20-intel.conf
 	echo "Pensez à rebooter..."
 	echo ""
 fi

@@ -1,7 +1,7 @@
 #
 #
 # TODO
-# timeshift, conky-manager https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+packages?field.name_filter=&field.status_filter=published&field.series_filter=trusty
+# conky-manager  ppa:teejee2008/ppa
 # http://covergloobus.deviantart.com/
 # zsh ?
 # teamviewer http://download.teamviewer.com/download/teamviewer_i386.deb
@@ -325,9 +325,11 @@ then
 	clear
 	echo "Installation du SDK Android..."
 	echo ""
-	notify-send -i locked "elementary OS Post Install" "Installation du SDK Android" -t 5000
-	sudo apt-get -y update
-	sudo apt-get -y install deja-dup
+	notify-send -i applications-office "elementary OS Post Install" "Installation du SDK Android" -t 5000
+	sudo wget -O /etc/udev/rules.d/51-android.rules https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/android/51-android.rules
+	sudo chmod a+r /etc/udev/rules .d/51-android.rules
+	sudo service udev restart
+	sudo apt-get install android-tools-adb android-tools-fastboot
 fi
 
 # Installer LibreOffice
@@ -337,10 +339,9 @@ then
 	echo "Installation de LibreOffice..."
 	echo ""
 	notify-send -i applications-office "elementary OS Post Install" "Installation de Libreoffice" -t 5000
-	sudo wget -O /etc/udev/rules.d/51-android.rules https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/android/51-android.rules
-	sudo chmod a+r /etc/udev/rules .d/51-android.rules
-	sudo service udev restart
-	sudo apt-get install android-tools-adb android-tools-fastboot
+	sudo add-apt-repository -y ppa:libreoffice/libreoffice-5-0
+	sudo apt-get -y update
+	sudo apt-get -y install libreoffice
 fi
 
 # Installer elementary Tweaks

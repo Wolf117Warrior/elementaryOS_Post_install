@@ -13,7 +13,7 @@
 
 #
 # Ordre menu
-# SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, inteal video tearing fix, TLP, tweaks, configurator, boot-repair
+# SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, ppa oibaf, inteal video tearing fix, TLP, tweaks, configurator, boot-repair
 # CUSTOMISATION: wallpapers luna, thèmes plank, conky-manager
 # UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik
 # BUREAUTIQUE: libreoffice, envelope
@@ -41,6 +41,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Memtest86+" "Installation de memtest86+ pour tester la RAM." \
 	FALSE "Kernel Trusty Tahr BFS/BFQ" "Installe le Kernel Trusty Tahr optimisé BFQ/BFS scheduler." \
 	FALSE "Driver NVIDIA" "Installe le driver NVIDIA (ppa graphics-drivers) pour GTX 7XX et +." \
+	FALSE "Oibaf" "Installe le PPA Oibaf pour les versions git des drivers graphiques libres (xorg-server-nouveau/intel/ati)" \
 	FALSE "Intel Tearing Fix" "Correction du tearing avec le driver Intel Graphics" \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
 	FALSE "Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
@@ -886,6 +887,20 @@ then
 	sudo add-apt-repository -y ppa:graphics-drivers/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install nvidia-settings nvidia-358
+	echo "Pensez à rebooter..."
+	echo ""
+fi
+
+# Oibaf
+if [[ $GUI == *"Oibaf"* ]]
+then
+	clear
+	echo "Installation du PPA Oibaf..."
+	echo ""
+	notify-send -i display "elementary OS Post Install" "Installation des derniers drivers graphiques libres" -t 5000
+	sudo add-apt-repository -y ppa:oibaf/graphics-drivers
+	sudo apt-get -y update
+	sudo apt-get -y dist-upgrade
 	echo "Pensez à rebooter..."
 	echo ""
 fi

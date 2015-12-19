@@ -1,7 +1,6 @@
 #
 #
 # TODO
-# conky-manager  ppa:teejee2008/ppa
 # timeshift ppa:teejee2008/ppa
 # viber http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
 # skype wget -c "http://www.skype.com/go/getskype-linux-beta-ubuntu-64" -O  "skype_linux.deb"
@@ -17,7 +16,7 @@
 # Ordre menu
 # SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, inteal video tearing fix, TLP, tweaks, configurator, boot-repair
 # CUSTOMISATION: wallpapers luna, thèmes plank, conky-manager
-# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB
+# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify, tomahawk
 # INTERNET: Chrome, chromium, Firefox, feedreader, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, corebird, hexchat
@@ -56,9 +55,10 @@ GUI=$(zenity --list --checklist \
 	FALSE "Support formats d'archivage" "Installation du support pour formats d'archivage (zip,rar,7z...)." \
 	FALSE "GDebi" "Installs GDebi. A simple tool to install deb files." \
 	FALSE "Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
-	FALSE "Sublime Text 3" "Installe Sublime Text 3, un puissant éditeur de texte" \
-	FALSE "Deja Dup" "Installe Deja Dup,  utilitaire pour sauvegarde" \
-	FALSE "ADB" "Installe ADB, outil pour téléphones sous Android" \
+	FALSE "Sublime Text 3" "Installe Sublime Text 3, un puissant éditeur de texte." \
+	FALSE "Deja Dup" "Installe Deja Dup,  utilitaire pour sauvegarde." \
+	FALSE "ADB" "Installe ADB, outil pour téléphones sous Android." \
+	FALSE "Time Shift" "Installe timeshift pour les restaurations système." \
 	FALSE "LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
 	FALSE "Envelope" "Installe envelope, application de gestion financière." \
 	FALSE "Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
@@ -336,6 +336,18 @@ then
 	sudo chmod a+r /etc/udev/rules .d/51-android.rules
 	sudo service udev restart
 	sudo apt-get install android-tools-adb android-tools-fastboot
+fi
+
+# Installer timeshift
+if [[ $GUI == *"Time Shift"* ]]
+then
+	clear
+	echo "Installation de Time Shift..."
+	echo ""
+	notify-send -i applications-system "elementary OS Post Install" "Installation de timeshift" -t 5000
+	sudo add-apt-repository -y ppa:teejee2008/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install timeshift
 fi
 
 # Installer LibreOffice

@@ -1,7 +1,6 @@
 #
 #
 # TODO
-# timeshift ppa:teejee2008/ppa
 # viber http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
 # skype wget -c "http://www.skype.com/go/getskype-linux-beta-ubuntu-64" -O  "skype_linux.deb"
 # simplescreenrecorder ppa:maarten-baert/simplescreenrecorder
@@ -16,7 +15,7 @@
 # Ordre menu
 # SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, inteal video tearing fix, TLP, tweaks, configurator, boot-repair
 # CUSTOMISATION: wallpapers luna, thèmes plank, conky-manager
-# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift
+# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify, tomahawk
 # INTERNET: Chrome, chromium, Firefox, feedreader, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, corebird, hexchat
@@ -51,7 +50,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Thèmes Plank" "Installe des thèmes pour Plank" \
 	FALSE "Thèmes Icones" "Installe des thèmes d'icones" \
 	FALSE "Thèmes GTK" "Installe des thèmes de fenêtres GTK" \
-	FALSE "conky-manager" "Application pour gérer les fichier de conf de conky" \
+	FALSE "Conky-Manager" "Application pour gérer les fichier de conf de conky" \
 	FALSE "Support formats d'archivage" "Installation du support pour formats d'archivage (zip,rar,7z...)." \
 	FALSE "GDebi" "Installs GDebi. A simple tool to install deb files." \
 	FALSE "Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
@@ -59,6 +58,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Deja Dup" "Installe Deja Dup,  utilitaire pour sauvegarde." \
 	FALSE "ADB" "Installe ADB, outil pour téléphones sous Android." \
 	FALSE "Time Shift" "Installe timeshift pour les restaurations système." \
+	FALSE "Aptik" "Installe aptik pour sauvegardes de paquets, thèmes,icones..." \
 	FALSE "LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
 	FALSE "Envelope" "Installe envelope, application de gestion financière." \
 	FALSE "Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
@@ -350,6 +350,18 @@ then
 	sudo apt-get -y install timeshift
 fi
 
+# Installer aptik
+if [[ $GUI == *"Aptik"* ]]
+then
+	clear
+	echo "Installation de Aptik..."
+	echo ""
+	notify-send -i applications-system "elementary OS Post Install" "Installation de aptik" -t 5000
+	sudo add-apt-repository -y ppa:teejee2008/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install aptik
+fi
+
 # Installer LibreOffice
 if [[ $GUI == *"LibreOffice"* ]]
 then
@@ -408,7 +420,7 @@ then
 fi
 
 # Installer conky-manager
-if [[ $GUI == *"conky-manager"* ]]
+if [[ $GUI == *"Conky-Manager"* ]]
 then
 	clear
 	echo "Installation de conky-manager..."

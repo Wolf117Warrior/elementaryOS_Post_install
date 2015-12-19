@@ -2,6 +2,11 @@
 #
 # TODO
 # conky-manager  ppa:teejee2008/ppa
+# timeshift ppa:teejee2008/ppa
+# viber http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
+# skype wget -c "http://www.skype.com/go/getskype-linux-beta-ubuntu-64" -O  "skype_linux.deb"
+# simplescreenrecorder ppa:maarten-baert/simplescreenrecorder
+# lightworks http://www.lwks.com/dmpub/lwks-12.5.0-amd64.deb
 # http://covergloobus.deviantart.com/
 # zsh ?
 # teamviewer http://download.teamviewer.com/download/teamviewer_i386.deb
@@ -11,7 +16,7 @@
 #
 # Ordre menu
 # SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, inteal video tearing fix, TLP, tweaks, configurator, boot-repair
-# CUSTOMISATION: wallpapers luna, thèmes plank
+# CUSTOMISATION: wallpapers luna, thèmes plank, conky-manager
 # UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify, tomahawk
@@ -47,6 +52,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Thèmes Plank" "Installe des thèmes pour Plank" \
 	FALSE "Thèmes Icones" "Installe des thèmes d'icones" \
 	FALSE "Thèmes GTK" "Installe des thèmes de fenêtres GTK" \
+	FALSE "conky-manager" "Application pour gérer les fichier de conf de conky" \
 	FALSE "Support formats d'archivage" "Installation du support pour formats d'archivage (zip,rar,7z...)." \
 	FALSE "GDebi" "Installs GDebi. A simple tool to install deb files." \
 	FALSE "Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
@@ -387,6 +393,18 @@ then
 	sudo apt-add-repository -y ppa:numix/ppa
   	sudo apt-get -y update
   	sudo apt-get -y install numix-plank-theme
+fi
+
+# Installer conky-manager
+if [[ $GUI == *"conky-manager"* ]]
+then
+	clear
+	echo "Installation de conky-manager..."
+	echo ""
+	notify-send -i preferences-desktop "elementary OS Post Install" "Installation de conky-manager'" -t 5000
+	sudo add-apt-repository -y ppa:teejee2008/ppa
+	sudo apt-get -y update
+	sudo apt-get -y install conky-manager
 fi
 
 # Installer Configurator

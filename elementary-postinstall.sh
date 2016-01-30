@@ -380,7 +380,7 @@ then
 	sudo apt-get install libxcb1-dev libxcb-randr0-dev libx11-dev
   wget -O /tmp/redshift-1.11.tar.gz https://github.com/jonls/redshift/archive/v1.11.tar.gz
 	tar -xf redshift-1.11.tar.gz
-	cd tmp/redshift-1.11
+	cd /tmp/redshift-1.11
 	./configure && ./make && sudo ./make install
 	wget -O $HOME/.config/redshift.conf https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/redshift.conf
 fi

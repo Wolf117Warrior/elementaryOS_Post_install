@@ -389,7 +389,9 @@ then
 	tar -xf redshift-1.11.tar.gz
 	cd redshift-1.11
 	./bootstrap && ./configure --enable-drm --enable-vidmode --enable-randr --enable-geoclue --enable-geoclue2 --enable-gui && make -j2 distcheck
+	sudo make install
 	wget -O $HOME/.config/redshift.conf https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/redshift.conf
+	/usr/local/bin/redshift-gtk &
 fi
 
 # Installer aptik

@@ -15,10 +15,10 @@
 # Ordre menu
 # SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, ppa oibaf, inteal video tearing fix, TLP, tweaks, configurator, boot-repair
 # CUSTOMISATION: wallpapers luna, thèmes plank, conky-manager
-# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik
+# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik, redshift
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify, tomahawk
-# INTERNET: Chrome, chromium, Firefox, feedreader, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, corebird, hexchat
+# INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, corebird, hexchat
 # INFOGRAPHIE: gimp, darktable, inkscape, rapid
 # JEUX: steam, playonlinux, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
@@ -60,6 +60,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "ADB" "Installe ADB, outil pour téléphones sous Android." \
 	FALSE "Time Shift" "Installe timeshift pour les restaurations système." \
 	FALSE "Aptik" "Installe aptik pour sauvegardes de paquets, thèmes,icones..." \
+	FALSE "Redshift" "Installe redshift pour adapter la luminositié de l'écran en fonction du jour..." \
 	FALSE "LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
 	FALSE "Envelope" "Installe envelope, application de gestion financière." \
 	FALSE "Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
@@ -75,6 +76,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Google Chrome" "Installe Google Chrome, le navigateur Google." \
 	FALSE "Chromium" "Installe Chromium, la version opensource de Chrome." \
 	FALSE "Firefox" "Installe Firefox, le navigateur libre et opensource." \
+	FALSE "Nylas N1" "Installe Nylas N1, un superbe client mail." \
 	FALSE "Vivaldi" "Installe Vivaldi, le nouveau navigateur (version Tech Preview)." \
 	FALSE "FeedReader" "Installe FeedReader, un aggrégateur de flux opensource." \
 	FALSE "Transmission" "Installe Transmission, le client bitorrent." \
@@ -219,6 +221,24 @@ then
 	sudo apt-get -y install firefox
 fi
 
+# Installer Nylas N1
+if [[ $GUI == *"Nylas N1"* ]]
+then
+	clear
+	echo "Installation de Nylas N1..."
+	echo ""
+	notify-send -i internet-mail "elementary OS Post Install" "Installation de Nylas N1" -t 5000
+	if [[ $(uname -m) == "i686" ]]
+	then
+		wget -O /tmp/N1.deb https://edgehill.nylas.com/download?platform=linux-deb
+		sudo dpkg -i /tmp/N1.deb
+	elif [[ $(uname -m) == "x86_64" ]]
+	then
+		wget -O /tmp/N1.deb https://edgehill.nylas.com/download?platform=linux-deb
+		sudo dpkg -i /tmp/N1.deb
+	fi
+fi
+
 # Installer Vivaldi
 if [[ $GUI == *"Vivaldi"* ]]
 then
@@ -349,6 +369,21 @@ then
 	sudo add-apt-repository -y ppa:teejee2008/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install timeshift
+fi
+
+# Installer redshift
+if [[ $GUI == *"Redshift"* ]]
+then
+	clear
+	echo "Compilation et Installation de redshift..."
+	echo ""
+	notify-send -i display "elementary OS Post Install" "Installation de Redshift" -t 5000
+	sudo apt-get install libxcb1-dev libxcb-randr0-dev libx11-dev
+  wget -O /tmp/redshift-1.11.tar.gz https://github.com/jonls/redshift/archive/v1.11.tar.gz
+	tar -xf redshift-1.11.tar.gz
+	cd redshift-1.11
+	./configure && ./make && sudo ./make install
+	wget -O $HOME/.config/redshift.conf https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/redshift.conf
 fi
 
 # Installer aptik

@@ -414,8 +414,9 @@ then
 	echo ""
 	notify-send -i applications-office "elementary OS Post Install" "Installation de Libreoffice" -t 5000
 	sudo add-apt-repository -y ppa:libreoffice/libreoffice-5-0
+	sudo add-apt-repository -y ppa:shimmerproject/daily
 	sudo apt-get -y update
-	sudo apt-get -y install libreoffice
+	sudo apt-get -y install libreoffice libreoffice-style-elementary
 fi
 
 # Installer elementary Tweaks

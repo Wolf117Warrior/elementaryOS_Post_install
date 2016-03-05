@@ -284,8 +284,8 @@ then
 	echo "Installing Transmission..."
 	echo ""
 	notify-send -i applications-filesharing "elementary OS Post Install" "Installation de Transmission" -t 5000
-	sudo add-apt-repository  -y ppa:transmissionbt/ppa
-  sudo apt-get  -y update
+	sudo add-apt-repository  -y ppa:transmissionbt
+	sudo apt-get -y update
 	sudo apt-get  -y install transmission-gtk
 fi
 

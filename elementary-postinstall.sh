@@ -79,7 +79,6 @@ GUI=$(zenity --list --checklist \
 	FALSE "Vivaldi" "Installe Vivaldi, le nouveau navigateur (version Tech Preview)." \
 	FALSE "FeedReader" "Installe FeedReader, un aggrégateur de flux opensource." \
 	FALSE "Transmission" "Installe Transmission, le client bitorrent." \
-	FALSE "Transmission (GTK3)" "Installe la version de Tranmission compatible GTK+3" \
 	FALSE "Dropbox" "Installe dropbox avec les icones monochromes elementary." \
 	FALSE "MEGA" "Installe MEGASync pour le cloud de MEGA avec les icones monochromes elementary." \
 	FALSE "Grive 2" "Installe Grive 2 pour le cloud Google Drive." \
@@ -285,29 +284,9 @@ then
 	echo "Installing Transmission..."
 	echo ""
 	notify-send -i applications-filesharing "elementary OS Post Install" "Installation de Transmission" -t 5000
-	sudo apt-get -y install transmission
-fi
-
-# Installer transmission-gtk3
-if [[ $GUI == *"Transmission (GTK3)"* ]]
-then
-	clear
-	echo "Installation de tranmission-gtk3..."
-	echo ""
-	notify-send -i applications-filesharing "elementary OS Post Install" "Installation de Transmission compatible GTK3" -t 5000
-	if [ `getconf LONG_BIT` = '32' ];
-	    then
-		    wget -O /tmp/transmission-gtk3-3.14-i386.deb http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-i386.deb
-	        sudo apt-get -y purge transmission*
-			sudo dpkg -i /tmp/transmission-gtk3-3.14-i386.deb
-	        sudo apt-get -y -f install
-
-	    else
-			wget -O /tmp/transmission-gtk3-3.14-amd64.deb http://www.elementary.today/downloads/packages/transmission-gtk3-3.14-amd64.deb
-			sudo apt-get -y purge transmission*
-			sudo dpkg -i /tmp/transmission-gtk3-3.14-amd64.deb
-	        sudo apt-get -y -f install
-	fi
+	sudo add-apt-repository  -y ppa:transmissionbt/ppa
+  sudo apt-get  -y update
+	sudo apt-get  -y install transmission-gtk
 fi
 
 # Installer Atom

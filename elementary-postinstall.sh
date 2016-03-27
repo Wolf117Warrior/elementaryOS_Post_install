@@ -909,7 +909,7 @@ then
 	notify-send -i display "elementary OS Post Install" "Installation du driver NVIDIA" -t 5000
 	sudo add-apt-repository -y ppa:graphics-drivers/ppa
 	sudo apt-get -y update
-	sudo apt-get -y install nvidia-settings nvidia-358
+	sudo apt-get -y install nvidia-settings nvidia-364
 	echo "Pensez à rebooter..."
 	echo ""
 fi

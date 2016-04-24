@@ -14,7 +14,7 @@
 # Ordre menu
 # SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, ppa oibaf, inteal video tearing fix, TLP, tweaks, configurator, boot-repair
 # CUSTOMISATION: wallpapers luna, thèmes plank, conky-manager
-# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik, redshift
+# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik, redshift, my weather indicator
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify, tomahawk
 # INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, corebird, hexchat
@@ -60,6 +60,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Time Shift" "Installe timeshift pour les restaurations système." \
 	FALSE "Aptik" "Installe aptik pour sauvegardes de paquets, thèmes,icones..." \
 	FALSE "Redshift" "Installe redshift pour adapter la luminositié de l'écran en fonction du jour..." \
+	FALSE "My Weather Indicator" "Installe my-weather-indicator, indicateur de météo sur le panel..." \
 	FALSE "LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
 	FALSE "Envelope" "Installe envelope, application de gestion financière." \
 	FALSE "Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
@@ -371,6 +372,18 @@ then
 	sudo make install
 	wget -O $HOME/.config/redshift.conf https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/redshift.conf
 	/usr/local/bin/redshift-gtk &
+fi
+
+# Installer redshift
+if [[ $GUI == *"My Weather Indicator"* ]]
+then
+	clear
+	echo "Installation de My Weather Indicator..."
+	echo ""
+	notify-send -i applications-system "elementary OS Post Install" "Installation de my-weather-indicator" -t 5000
+	sudo add-apt-repository -y ppa:atareao/atareao
+	sudo apt-get -y update
+	sudo apt-get -y install my-weather-indicator
 fi
 
 # Installer aptik

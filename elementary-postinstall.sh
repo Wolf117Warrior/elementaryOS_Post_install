@@ -88,7 +88,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Corebird" "Installe Corebird, client twitter." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
 	FALSE "Relay" "Installe Relay, le client IRC pour elementary OS." \
-	FALSE "Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
+	FALSE "Gimp et plugins" "Installe le logiciel de retouche GIMP et les plugins GMIC...." \
 	FALSE "Inkscape" "Installe le logiciel de vectorisation Inkscape." \
 	FALSE "Darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
 	FALSE "Rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
@@ -609,15 +609,15 @@ then
 fi
 
 # Installer GIMP et GMIC
-if [[ $GUI == *"Gimp et GMIC"* ]]
+if [[ $GUI == *"Gimp et plugins"* ]]
 then
 	clear
-	echo "Installation de gimp et gmic..."
+	echo "Installation de gimp et des plugins..."
 	echo ""
-	notify-send -i applications-graphics "elementary OS Post Install" "Installation de GIMP avec GMIC" -t 5000
+	notify-send -i applications-graphics "elementary OS Post Install" "Installation de GIMP avec plugins" -t 5000
     sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
     sudo apt-get -y update
-    sudo apt-get -y install gmic gimp-gmic
+    sudo apt-get -y install gimp gmic gimp-plugin-registry gimplensfun
 fi
 
 # Installer Inkscape

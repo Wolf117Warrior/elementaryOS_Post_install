@@ -10,13 +10,13 @@ d'elementary OS 0.3 Freya ou 0.4 Loki Beta.
 Copiez ceci dans votre terminal
 
 ```bash
-wget -O /tmp/elementary-postinstall.sh https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/elementary_freya-postinstall.sh && chmod +x /tmp/elementary_freya-postinstall.sh && /tmp/elementary_freya-postinstall.sh
+wget -O /tmp/elementary_freya-postinstall.sh https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/elementary_freya-postinstall.sh && chmod +x /tmp/elementary_freya-postinstall.sh && /tmp/elementary_freya-postinstall.sh
 ``` 
 
 Pour 0.4 Loki beta:
 
 ```bash
-wget -O /tmp/elementary-postinstall.sh https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/elementary_loki-postinstall.sh && chmod +x /tmp/elementary_loki-postinstall.sh && /tmp/elementary_loki-postinstall.sh
+wget -O /tmp/elementary_loki-postinstall.sh https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/elementary_loki-postinstall.sh && chmod +x /tmp/elementary_loki-postinstall.sh && /tmp/elementary_loki-postinstall.sh
 ``` 
 
 ## Source

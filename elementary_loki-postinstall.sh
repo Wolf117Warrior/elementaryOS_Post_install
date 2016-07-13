@@ -2,7 +2,6 @@
 #
 # TODO
 # viber http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
-# skype wget -c "http://www.skype.com/go/getskype-linux-beta-ubuntu-64" -O  "skype_linux.deb"
 # simplescreenrecorder ppa:maarten-baert/simplescreenrecorder
 # lightworks http://www.lwks.com/dmpub/lwks-12.5.0-amd64.deb
 # http://covergloobus.deviantart.com/
@@ -12,12 +11,12 @@
 
 #
 # Ordre menu
-# SYSTEME: upgrade, mémoire, kernel CK, NVIDIA,  intel video tearing fix, TLP, tweaks, configurator, boot-repair
+# SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, ppa oibaf, inteal video tearing fix, TLP, tweaks, configurator, boot-repair
 # CUSTOMISATION: wallpapers luna, thèmes plank, conky-manager
 # UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik, redshift
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify, tomahawk
-# INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, corebird, hexchat
+# INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission(+gtk3), Vivaldi, dropbox, mega, grive,  telegram, hexchat
 # INFOGRAPHIE: gimp, darktable, inkscape, rapid
 # JEUX: steam, playonlinux, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
@@ -30,7 +29,7 @@ notify-send  --icon=dialog-error "Attention" "Le mot de passe root vous sera dem
 GUI=$(zenity --list --checklist \
 	--height 400 \
 	--width 900 \
-	--title="Script Post-Installation elementary OS 0.3 Freya" \
+	--title="Script Post-Installation elementary OS 0.4 Loki" \
 	--text "Sélectionner une ou plusieurs action(s) à éxécuter." \
 	--column=Cochez \
 	--column=Actions \
@@ -38,17 +37,12 @@ GUI=$(zenity --list --checklist \
 	FALSE "Mise à jour du Système" "Mise à jour de la liste des paquets et des applications déjà installées."  \
 	FALSE "Accélération de la mémoire" "Installation de preload et de zRAM." \
 	FALSE "Memtest86+" "Installation de memtest86+ pour tester la RAM." \
-	FALSE "Kernel Trusty Tahr BFS/BFQ" "Installe le Kernel Trusty Tahr optimisé BFQ/BFS scheduler." \
 	FALSE "Driver NVIDIA" "Installe le driver NVIDIA (ppa graphics-drivers) pour GTX 7XX et +." \
-	FALSE "Intel Tearing Fix" "Correction du tearing avec le driver Intel Graphics" \
+	FALSE "Oibaf" "Installe le PPA Oibaf pour les versions git des drivers graphiques libres (xorg-server-nouveau/intel/ati)" \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
 	FALSE "Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
-	FALSE "Configurator" "Installe Configurator l'éditeur dconf pour elementary." \
 	FALSE "Boot Repair" "Installe boot-repair, réparateur de GRUB." \
 	FALSE "Elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
-	FALSE "Thèmes Plank" "Installe des thèmes pour Plank" \
-	FALSE "Thèmes Icones" "Installe des thèmes d'icones" \
-	FALSE "Thèmes GTK" "Installe des thèmes de fenêtres GTK" \
 	FALSE "Conky-Manager" "Application pour gérer les fichier de conf de conky" \
 	FALSE "Support formats d'archivage" "Installation du support pour formats d'archivage (zip,rar,7z...)." \
 	FALSE "GDebi" "Installs GDebi. A simple tool to install deb files." \
@@ -60,7 +54,6 @@ GUI=$(zenity --list --checklist \
 	FALSE "Aptik" "Installe aptik pour sauvegardes de paquets, thèmes,icones..." \
 	FALSE "Redshift" "Installe redshift pour adapter la luminositié de l'écran en fonction du jour..." \
 	FALSE "LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
-	FALSE "Envelope" "Installe envelope, application de gestion financière." \
 	FALSE "Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
 	FALSE "Extra Multimedia Codecs" "Installation des codecs multimédia additionnels." \
 	FALSE "Support DVD encrypté" "Installation du support pour lire les DVDs encryptés." \
@@ -69,7 +62,6 @@ GUI=$(zenity --list --checklist \
 	FALSE "Clementine" "Installe Clementine, lecteur de musique." \
 	FALSE "Lollypop" "Installe lollypop, lecteur de musique." \
 	FALSE "Tomahawk" "Installe tomahawk, lecteur de musique." \
-	FALSE "eRadio" "Installe eradio, l'application de streaming radio." \
 	FALSE "Spotify" "Installe Spotify, l'application de service streaming de musique." \
 	FALSE "Google Chrome" "Installe Google Chrome, le navigateur Google." \
 	FALSE "Chromium" "Installe Chromium, la version opensource de Chrome." \
@@ -81,18 +73,13 @@ GUI=$(zenity --list --checklist \
 	FALSE "Dropbox" "Installe dropbox avec les icones monochromes elementary." \
 	FALSE "MEGA" "Installe MEGASync pour le cloud de MEGA avec les icones monochromes elementary." \
 	FALSE "Grive 2" "Installe Grive 2 pour le cloud Google Drive." \
-	FALSE "eVNC" "Installe eVNC, l'application de contrôle à distance." \
-	FALSE "Taxi" "Installe taxi, l'application de protocole FTP." \
-	FALSE "Corebird" "Installe Corebird, client twitter." \
 	FALSE "Skype" "Installe Corebird, client twitter." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
-	FALSE "Relay" "Installe Relay, le client IRC pour elementary OS." \
 	FALSE "Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
 	FALSE "Inkscape" "Installe le logiciel de vectorisation Inkscape." \
 	FALSE "Darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
 	FALSE "Rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
 	FALSE "Steam" "Installe Steam, la plateforme en ligne de Jeux." \
-	FALSE "Playonlinux" "Installe PlayOnLinux, le front-end de l'émulateur Wine." \
 	FALSE "0.A.D" "Installe 0.A.D, le jeu de stratégie en temps réel dans l'époque Antique." \
 	FALSE "Wesnoth" "Installe Bataille de Wesnoth, le jeu de stratégie au tour par tour" \
 	FALSE "FlightGear" "Installe FlightGear, le simulateur de vol OpenSource." \
@@ -405,7 +392,7 @@ then
 	echo "Installation de elementary Tweaks..."
 	echo ""
 	notify-send -i preferences-desktop "elementary OS Post Install" "Installation d'elementary Tweaks'" -t 5000
-	sudo add-apt-repository -y ppa:mpstark/elementary-tweaks-daily
+	sudo add-apt-repository -y  ppa:philip.scott/elementary-tweaks
 	sudo apt-get -y update
 	sudo apt-get -y install elementary-tweaks
 fi
@@ -422,26 +409,6 @@ then
 	sudo apt-get -y install boot-repair
 fi
 
-# Installer Thèmes Plank
-if [[ $GUI == *"Thèmes Plank"* ]]
-then
-	clear
-	echo "Installation des Thèmes Plank..."
-	echo ""
-	notify-send -i preferences-desktop "elementary OS Post Install" "Installation des thèmes pour Plank" -t 5000
-	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
-	sudo apt-get -y update
-	sudo apt-get -y install plank-theme-capeos
-	sudo apt-get -y install plank-theme-cratos-lion
-	sudo apt-get -y install plank-theme-grantheon
-	sudo apt-get -y install plank-theme-korora
-	sudo apt-get -y install plank-theme-pantiva
-	sudo apt-get -y install plank-theme-paperterial.
-	sudo apt-get -y install plank-theme-rainier
-	sudo apt-add-repository -y ppa:numix/ppa
-  	sudo apt-get -y update
-  	sudo apt-get -y install numix-plank-theme
-fi
 
 # Installer conky-manager
 if [[ $GUI == *"Conky-Manager"* ]]
@@ -453,62 +420,6 @@ then
 	sudo add-apt-repository -y ppa:teejee2008/ppa
 	sudo apt-get -y update
 	sudo apt-get -y install conky-manager
-fi
-
-# Installer Configurator
-if [[ $GUI == *"Installation de Configurator"* ]]
-then
-	clear
-	echo "Installation de Configurator.."
-	echo ""
-	notify-send -i preferences-desktop "elementary OS Post Install" "Installation de Configurator" -t 5000
-	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
-  sudo apt-get -y update
-  sudo apt-get -y install Configurator
-fi
-
-# Installer Thèmes Icones
-if [[ $GUI == *"Thèmes Icones"* ]]
-then
-	clear
-	echo "Installation des Thèmes Icones..."
-	echo ""
-	notify-send -i preferences-desktop "elementary OS Post Install" "Installation des thèmes d'icones" -t 5000
-	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
-	sudo apt-get -y update
-	sudo apt-get -y install paper-icon-theme
-	sudo apt-get -y install elementary-add-icon-theme
-	sudo apt-get -y install elementary-enhanced
-	sudo apt-get -y install plank-theme-pantiva
-	sudo apt-get -y install plank-theme-paperterial.
-	sudo apt-get -y install plank-theme-rainier
-	sudo apt-add-repository -y ppa:numix/ppa
-  sudo apt-get -y update
-  sudo apt-get install -y numix-icon-theme numix-icon-theme-circle numix-icon-theme-bevel
-	udo add-apt-repository -y ppa:captiva/ppa
-  sudo apt-get -y update
-  sudo apt-get -y install captiva-icon-theme
-	sudo add-apt-repository -y ppa:cybre/elementaryplus
-	sudo apt-get -y update
-	sudo apt-get -y install elementaryplus
-
-fi
-
-# Installer Thèmes GTK
-if [[ $GUI == *"Thèmes GTK"* ]]
-then
-	clear
-	echo "Installation des Thèmes GTK..."
-	echo ""
-	notify-send -i preferences-desktop "elementary OS Post Install" "Installation des thèmes GTK" -t 5000
-	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
-	sudo apt-get -y update
-	sudo apt-get -y install paper-gtk-theme
-	sudo apt-get -y install elementary-yo
-	sudo apt-get -y install vertex-gtk3
-	sudo apt-add-repository -y ppa:numix/ppa
-  	sudo apt-get -y update
-  	sudo apt-get install -y numix-gtk-theme
 fi
 
 # Installer Vocal
@@ -559,18 +470,6 @@ then
   	sudo apt-get -y install clementine
 fi
 
-# Installer envelope
-if [[ $GUI == *"Envelope"* ]]
-then
-	clear
-	echo "Installation de envelope..."
-	echo ""
-	notify-send -i applications-mathematics "elementary OS Post Install" "Installation d'envelope'" -t 5000
-	sudo add-apt-repository -y ppa:nicolas-laplante/envelope-daily
-	sudo apt-get -y update
-	sudo apt-get -y install envelope
-fi
-
 # Installer darktable
 if [[ $GUI == *"Darktable"* ]]
 then
@@ -590,9 +489,11 @@ then
 	echo "Installation de rapid-photo-downloader..."
 	echo ""
 	notify-send -i media-memory-sd "elementary OS Post Install" "Installation de rapid-photo-downloader" -t 5000
-    sudo add-apt-repository -y ppa:dlynch3
-    sudo apt-get -y  update
-    sudo apt-get -y  install rapid-photo-downloader
+	sudo apt-get -y install python3-pip
+	cd /tmp
+	wget -O https://launchpad.net/rapid/pyqt/0.9.0a4/+download/install.py
+	wget -O https://launchpad.net/rapid/pyqt/0.9.0a4/+download/rapid-photo-downloader-0.9.0a4.tar.gz
+	python3 install.py rapid-photo-downloader-0.9.0a4.tar.gz
 fi
 
 # Installer GIMP et GMIC
@@ -604,7 +505,7 @@ then
 	notify-send -i applications-graphics "elementary OS Post Install" "Installation de GIMP avec GMIC" -t 5000
     sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
     sudo apt-get -y update
-    sudo apt-get -y install gmic gimp-gmic
+    sudo apt-get -y install gmic gimp
 fi
 
 # Installer Inkscape
@@ -665,42 +566,6 @@ then
   sudo apt-get -y install grive2
 fi
 
-# Installer evnc
-if [[ $GUI == *"eVNC"* ]]
-then
-	clear
-	echo "Installation de evnc..."
-	echo ""
-	notify-send -i network-vpn "elementary OS Post Install" "Installation d'eVNC" -t 5000
-	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
-	sudo apt-get -y update
-	sudo apt-get -y install evnc
-fi
-
-# Installer taxi
-if [[ $GUI == *"Taxi"* ]]
-then
-	clear
-	echo "Installation de taxi..."
-	echo ""
-	notify-send -i preferences-network-system "elementary OS Post Install" "Installation de Taxi" -t 5000
-	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
-	sudo apt-get -y update
-	sudo apt-get -y install taxi
-fi
-
-# Installer eradio
-if [[ $GUI == *"eRadio"* ]]
-then
-	clear
-	echo "Installation de eradio..."
-	echo ""
-	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation d'eRadio'" -t 5000
-	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
-	sudo apt-get -y update
-	sudo apt-get -y install eradio
-fi
-
 # Installer spotify
 if [[ $GUI == *"Spotify"* ]]
 then
@@ -723,19 +588,6 @@ then
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Steam" -t 5000
 	sudo apt-get -y update
 	sudo apt-get -y install steam-launcher
-fi
-
-# Installer playonlinux
-if [[ $GUI == *"Playonlinux"* ]]
-then
-	clear
-	echo "Installation de playonlinux..."
-	echo ""
-	notify-send -i applications-arcade "elementary OS Post Install" "Installation de PlayOnLinux" -t 5000
-	wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
-  	sudo wget http://deb.playonlinux.com/playonlinux_trusty.list -O /etc/apt/sources.list.d/playonlinux.list
-	sudo apt-get -y update
-	sudo apt-get -y install playonlinux
 fi
 
 # Installer 0.A.D
@@ -771,17 +623,7 @@ then
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation de FlightGear" -t 5000
 	sudo add-apt-repository -y ppa:saiarcot895/flightgear
 	sudo apt-get -y update
-	sudo apt-get -y install fgrun fgx flightgear flightgear-data simgear
-	sudo apt-get -y install flightgear-data-aircrafts-747-8
-	sudo apt-get -y install flightgear-data-aircrafts-a10
-	sudo apt-get -y install flightgear-data-aircrafts-a380
-	sudo apt-get -y install flightgear-data-aircrafts-b707
-	sudo apt-get -y install flightgear-data-aircrafts-b747-400
-	sudo apt-get -y install flightgear-data-aircrafts-dc3
-	sudo apt-get -y install flightgear-data-aircrafts-dr400-dauphin
-	sudo apt-get -y install flightgear-data-aircrafts-ec130
-	sudo apt-get -y install flightgear-data-aircrafts-p51d
-	sudo apt-get -y install flightgear-data-aircrafts-tu154b
+	sudo apt-get -y install fgrun flightgear flightgear-data simgear
 fi
 
 # Installer Unvanquished
@@ -791,8 +633,8 @@ then
 	echo "Installation de Unvanquished..."
 	echo ""
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Unvanquished" -t 5000
-	wget -q "http://debs.unvanquished.net/unvanquished-archive-key.gpg.asc" -O- | sudo apt-key add -
-	sudo sh -c 'echo deb http://debs.unvanquished.net trusty main > /etc/apt/sources.list.d/unvanquished.list'
+	wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
+	sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb games" >> /etc/apt/sources.list.d/getdeb.list'
 	sudo apt-get -y update
 	sudo apt-get -y install unvanquished
 fi
@@ -831,30 +673,6 @@ then
 	sudo chown -R $whoami:$whoami /opt/telegram
 fi
 
-# Installer Corebird
-if [[ $GUI == *"Corebird"* ]]
-then
-	clear
-	echo "Installation de Corebird..."
-	echo ""
-	notify-send -i applications-chat "elementary OS Post Install" "Installation de Corebird" -t 5000
-	sudo add-apt-repository -y ppa:elementaryos-fr-community/ppa
-	sudo apt-get -y update
-	sudo apt-get -y install corebird
-fi
-
-# Installer Relay
-if [[ $GUI == *"Relay"* ]]
-then
-	clear
-	echo "Installation de Relay..."
-	echo ""
-	notify-send -i applications-chat "elementary OS Post Install" "Installation de Relay" -t 5000
-	sudo add-apt-repository -y ppa:agronick/relay
-	sudo apt-get -y update
-	sudo apt-get -y install relay
-fi
-
 # Installer elementary-wallpapers-extra
 if [[ $GUI == *"Elementary-wallpapers-extra"* ]]
 then
@@ -886,20 +704,6 @@ then
 	sudo apt-get -y autoclean
 fi
 
-# Installer le Kernel Trusty Tahr BFS/BFQ
-if [[ $GUI == *"Kernel Trusty Tahr BFS/BFQ"* ]]
-then
-	clear
-	echo "Installation du kernel Trusty Tahr BFS/BFQ..."
-	echo ""
-	notify-send -i applications-system "elementary OS Post Install" "Installation du kernel Trusty Tahr BFS/BFQ" -t 5000
-	sudo add-apt-repository -y ppa:nick-athens30/trusty4-ck
-	sudo apt-get -y update
-	sudo apt-get -y install linux-bb
-	echo "Pensez à rebooter pour profiter de ce kernel..."
-	echo ""
-fi
-
 # Installer le driver NVIDIA
 if [[ $GUI == *"Driver NVIDIA"* ]]
 then
@@ -914,16 +718,16 @@ then
 	echo ""
 fi
 
-# Intel Tearing Fix
-if [[ $GUI == *"Intel Tearing Fix"* ]]
+# Oibaf
+if [[ $GUI == *"Oibaf"* ]]
 then
 	clear
-	echo "Correctif Intel Tearing..."
+	echo "Installation du PPA Oibaf..."
 	echo ""
-	notify-send -i display "elementary OS Post Install" "Correctif Intel Tearing..." -t 5000
-	sudo apt-get -y install mesa-utils
-	sudo mkdir /etc/X11/xorg.conf.d/
-	echo -e 'Section "Device"\n Identifier "Intel Graphics"\n Driver "Intel"\n Option "AccelMethod" "sna"\n Option "TearFree" "true"\nEndSection' | sudo tee /etc/X11/xorg.conf.d/20-intel.conf
+	notify-send -i display "elementary OS Post Install" "Installation des derniers drivers graphiques libres" -t 5000
+	sudo add-apt-repository -y ppa:oibaf/graphics-drivers
+	sudo apt-get -y update
+	sudo apt-get -y dist-upgrade
 	echo "Pensez à rebooter..."
 	echo ""
 fi

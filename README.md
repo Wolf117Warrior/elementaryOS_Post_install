@@ -10,7 +10,7 @@ d'elementary OS 0.3 Freya.
 Copiez ceci dans votre terminal
 
 ```bash
-wget -O /tmp/elementary-postinstall.sh https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/elementary-postinstall.sh && chmod +x /tmp/elementary-postinstall.sh && /tmp/elementary-postinstall.sh
+wget -O /tmp/elementary-postinstall.sh https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/elementary_freya-postinstall.sh && chmod +x /tmp/elementary_freya-postinstall.sh && /tmp/elementary_freya-postinstall.sh
 ``` 
 
 ## Source

@@ -21,9 +21,6 @@
 # JEUX: steam, playonlinux, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
 
-# needed !
-sudo apt -y install software-properties-common
-
 # Clear the Terminal
 clear
 notify-send  --icon=dialog-error "Attention" "Le mot de passe root vous sera demandé" -t 10000

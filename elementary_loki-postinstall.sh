@@ -489,10 +489,10 @@ then
 	echo "Installation de rapid-photo-downloader..."
 	echo ""
 	notify-send -i media-memory-sd "elementary OS Post Install" "Installation de rapid-photo-downloader" -t 5000
-	sudo apt -y install python3-pip
+	sudo apt -y install python3-pip python-pyqt5 gir1.2-gudev-1.0 gir1.2-udisks-2.0 gir1.2-gexiv2-0.10
 	cd /tmp
-	wget -O https://launchpad.net/rapid/pyqt/0.9.0a4/+download/install.py
-	wget -O https://launchpad.net/rapid/pyqt/0.9.0a4/+download/rapid-photo-downloader-0.9.0a4.tar.gz
+	wget https://launchpad.net/rapid/pyqt/0.9.0a4/+download/install.py
+	wget https://launchpad.net/rapid/pyqt/0.9.0a4/+download/rapid-photo-downloader-0.9.0a4.tar.gz
 	python3 install.py rapid-photo-downloader-0.9.0a4.tar.gz
 fi
 

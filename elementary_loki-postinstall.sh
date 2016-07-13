@@ -21,6 +21,9 @@
 # JEUX: steam, playonlinux, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
 
+# needed !
+sudo apt -y install software-properties-common
+
 # Clear the Terminal
 clear
 notify-send  --icon=dialog-error "Attention" "Le mot de passe root vous sera demandé" -t 10000
@@ -96,8 +99,8 @@ then
 	echo "Mise à jour du Système..."
 	echo ""
 	notify-send -i system-software-update "elementary OS Post Install" "Mise à jour du système en cours" -t 5000
-	sudo apt-get -y update
-	sudo apt-get -y upgrade
+	sudo apt -y update
+	sudo apt -y upgrade
 fi
 
 # Accélération de la mémoire
@@ -107,9 +110,9 @@ then
 	echo "Accélération de la mémoire..."
 	echo ""
 	notify-send -i system-software-update "elementary OS Post Install" "Installation de Preload" -t 5000
-	sudo apt-get -y install preload
+	sudo apt -y install preload
 	notify-send -i system-software-update "elementary OS Post Install" "Installation de zRAM" -t 5000
-	sudo apt-get -y install zram-config
+	sudo apt -y install zram-config
 fi
 
 # Memtest86+
@@ -119,7 +122,7 @@ then
 	echo "Installation de Memtest86+..."
 	echo ""
 	notify-send -i system-software-update "elementary OS Post Install" "Installation de Memtest86+" -t 5000
-	sudo apt-get -y install memtest86+
+	sudo apt -y install memtest86+
 fi
 
 # Installer Ubuntu Restricted Extras
@@ -130,7 +133,7 @@ then
 	echo ""
 	notify-send -i software-properties "elementary OS Post Install" "Installation des Ubuntu Restricted Extras" -t 5000
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
-	sudo apt-get -y install ubuntu-restricted-extras ttf-mscorefonts-installer ubuntu-restricted-addons
+	sudo apt -y install ubuntu-restricted-extras ttf-mscorefonts-installer ubuntu-restricted-addons
 fi
 
 # Installer Extra Multimedia Codecs
@@ -140,7 +143,7 @@ then
 	echo "Installation des Extra Multimedia Codecs..."
 	echo ""
 	notify-send -i multimedia-video-player "elementary OS Post Install" "Installation des codecs" -t 5000
-	sudo apt-get -y install libavcodec-extra-53 gstreamer0.10-plugins-bad-multiverse
+	sudo apt -y install libavcodec-extra-53 gstreamer0.10-plugins-bad-multiverse
 fi
 
 # Installer le Support pour DVD encrypté
@@ -150,7 +153,7 @@ then
 	echo "Installation du Support pour DVD encrypté..."
 	echo ""
 	notify-send -i media-dvd "elementary OS Post Install" "Installation de libdvdread4" -t 5000
-	sudo apt-get -y install libdvdread4
+	sudo apt -y install libdvdread4
 	sudo /usr/share/doc/libdvdread4/install-css.sh
 fi
 
@@ -161,7 +164,7 @@ then
 	echo "Installation du Support pour les formats d'archivage"
 	echo ""
 	notify-send -i file-roller "elementary OS Post Install" "Installation de zip,unrar,unace,cabextract...etc" -t 5000
-	sudo apt-get -y install unace rar unrar p7zip-rar p7zip zip unzip sharutils uudeview mpack arj cabextract
+	sudo apt -y install unace rar unrar p7zip-rar p7zip zip unzip sharutils uudeview mpack arj cabextract
 fi
 
 # Installer GDebi
@@ -171,7 +174,7 @@ then
 	echo "Installation de GDebi..."
 	echo ""
 	notify-send -i package "elementary OS Post Install" "Installation de GDebi" -t 5000
-	sudo apt-get -y install gdebi
+	sudo apt -y install gdebi
 fi
 
 # Installer Google Chrome Action
@@ -183,7 +186,7 @@ then
   	notify-send -i web-browser "elementary OS Post Install" "Installation de Google Chrome" -t 5000
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-    sudo apt-get -y install google-chrome-stable
+    sudo apt -y install google-chrome-stable
 fi
 
 # Installer Chromium
@@ -193,7 +196,7 @@ then
 	echo "Installation de Chromium..."
 	echo ""
 	notify-send -i web-browser "elementary OS Post Install" "Installation de Chromium" -t 5000
-	sudo apt-get -y install chromium-browser
+	sudo apt -y install chromium-browser
 fi
 
 # Installer Firefox
@@ -203,7 +206,7 @@ then
 	echo "Installation de Firefox..."
 	echo ""
 	notify-send -i web-browser "elementary OS Post Install" "Installation de Firefox" -t 5000
-	sudo apt-get -y install firefox
+	sudo apt -y install firefox
 fi
 
 # Installer Nylas N1
@@ -250,8 +253,8 @@ then
 	echo ""
 	notify-send -i internet-news-reader "elementary OS Post Install" "Installation de FeedReader" -t 5000
 	sudo add-apt-repository -y ppa:eviltwin1/feedreader-stable
-	sudo apt-get -y update
-	sudo apt-get -y install feedreader
+	sudo apt -y update
+	sudo apt -y install feedreader
 fi
 
 # Installer VLC
@@ -261,7 +264,7 @@ then
 	echo "Installation de VLC..."
 	echo ""
 	notify-send -i multimedia-video-player "elementary OS Post Install" "Installation de VLC" -t 5000
-	sudo apt-get -y install vlc
+	sudo apt -y install vlc
 fi
 
 # Install Transmission Action
@@ -272,8 +275,8 @@ then
 	echo ""
 	notify-send -i applications-filesharing "elementary OS Post Install" "Installation de Transmission" -t 5000
 	sudo add-apt-repository  -y ppa:transmissionbt
-	sudo apt-get -y update
-	sudo apt-get  -y install transmission
+	sudo apt -y update
+	sudo apt  -y install transmission
 fi
 
 # Installer Atom
@@ -284,8 +287,8 @@ then
 	echo ""
 	notify-send -i accessories-text-editor "elementary OS Post Install" "Installation d'Atom" -t 5000
 	sudo add-apt-repository -y ppa:webupd8team/atom
-	sudo apt-get -y update
-	sudo apt-get -y install atom
+	sudo apt -y update
+	sudo apt -y install atom
 fi
 
 # Installer Sublime Text 3
@@ -296,8 +299,8 @@ then
 	echo ""
 	notify-send -i accessories-text-editor "elementary OS Post Install" "Installation de Sublime Text 3" -t 5000
 	sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
-	sudo apt-get -y update
-	sudo apt-get -y install sublime-text-installer
+	sudo apt -y update
+	sudo apt -y install sublime-text-installer
 fi
 
 # Installer Deja Dup
@@ -307,8 +310,8 @@ then
 	echo "Installation de Deja Dup..."
 	echo ""
 	notify-send -i locked "elementary OS Post Install" "Installation de Deja Dup" -t 5000
-	sudo apt-get -y update
-	sudo apt-get -y install deja-dup
+	sudo apt -y update
+	sudo apt -y install deja-dup
 fi
 
 # Installer ADB
@@ -321,7 +324,7 @@ then
 	sudo wget -O /etc/udev/rules.d/51-android.rules https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/android/51-android.rules
 	sudo chmod a+r /etc/udev/rules .d/51-android.rules
 	sudo service udev restart
-	sudo apt-get install android-tools-adb android-tools-fastboot
+	sudo apt install android-tools-adb android-tools-fastboot
 fi
 
 # Installer timeshift
@@ -332,8 +335,8 @@ then
 	echo ""
 	notify-send -i applications-system "elementary OS Post Install" "Installation de timeshift" -t 5000
 	sudo add-apt-repository -y ppa:teejee2008/ppa
-	sudo apt-get -y update
-	sudo apt-get -y install timeshift
+	sudo apt -y update
+	sudo apt -y install timeshift
 fi
 
 # Installer redshift
@@ -343,13 +346,13 @@ then
 	echo "Compilation et Installation de redshift..."
 	echo ""
 	notify-send -i display "elementary OS Post Install" "Installation de Redshift" -t 5000
-	sudo apt-get install -y autopoint intltool
-  sudo apt-get install -y libdrm-dev
-  sudo apt-get install -y libxcb1-dev libxcb-randr0-dev
-  sudo apt-get install  -y libx11-dev libxxf86vm-dev
-  sudo apt-get install -y libgeoclue-dev
-  sudo apt-get install -y libglib2.0-dev
-  sudo apt-get install -y python3
+	sudo apt install -y autopoint intltool
+  sudo apt install -y libdrm-dev
+  sudo apt install -y libxcb1-dev libxcb-randr0-dev
+  sudo apt install  -y libx11-dev libxxf86vm-dev
+  sudo apt install -y libgeoclue-dev
+  sudo apt install -y libglib2.0-dev
+  sudo apt install -y python3
   wget -O /tmp/redshift-1.11.tar.gz https://github.com/jonls/redshift/archive/v1.11.tar.gz
 	cd /tmp/
 	tar -xf redshift-1.11.tar.gz
@@ -368,8 +371,8 @@ then
 	echo ""
 	notify-send -i applications-system "elementary OS Post Install" "Installation de aptik" -t 5000
 	sudo add-apt-repository -y ppa:teejee2008/ppa
-	sudo apt-get -y update
-	sudo apt-get -y install aptik
+	sudo apt -y update
+	sudo apt -y install aptik
 fi
 
 # Installer LibreOffice
@@ -381,8 +384,8 @@ then
 	notify-send -i applications-office "elementary OS Post Install" "Installation de Libreoffice" -t 5000
 	sudo add-apt-repository -y ppa:libreoffice/libreoffice-5-0
 	sudo add-apt-repository -y ppa:shimmerproject/daily
-	sudo apt-get -y update
-	sudo apt-get -y install libreoffice libreoffice-style-elementary
+	sudo apt -y update
+	sudo apt -y install libreoffice libreoffice-style-elementary
 fi
 
 # Installer elementary Tweaks
@@ -393,8 +396,8 @@ then
 	echo ""
 	notify-send -i preferences-desktop "elementary OS Post Install" "Installation d'elementary Tweaks'" -t 5000
 	sudo add-apt-repository -y  ppa:philip.scott/elementary-tweaks
-	sudo apt-get -y update
-	sudo apt-get -y install elementary-tweaks
+	sudo apt -y update
+	sudo apt -y install elementary-tweaks
 fi
 
 # Installer boot-repair
@@ -405,8 +408,8 @@ then
 	echo ""
 	notify-send -i applications-system "elementary OS Post Install" "Installation d'elementary Tweaks'" -t 5000
 	sudo add-apt-repository -y ppa:yannubuntu/boot-repair
-	sudo apt-get -y update
-	sudo apt-get -y install boot-repair
+	sudo apt -y update
+	sudo apt -y install boot-repair
 fi
 
 
@@ -418,8 +421,8 @@ then
 	echo ""
 	notify-send -i preferences-desktop "elementary OS Post Install" "Installation de conky-manager'" -t 5000
 	sudo add-apt-repository -y ppa:teejee2008/ppa
-	sudo apt-get -y update
-	sudo apt-get -y install conky-manager
+	sudo apt -y update
+	sudo apt -y install conky-manager
 fi
 
 # Installer Vocal
@@ -430,8 +433,8 @@ then
 	echo ""
 	notify-send -i applications-multimedia "elementary OS Post Install" "Installation de Vocal" -t 5000
 	sudo add-apt-repository -y ppa:nathandyer/vocal-daily
-	sudo apt-get -y update
-	sudo apt-get -y install vocal
+	sudo apt -y update
+	sudo apt -y install vocal
 fi
 
 # Installer Lollypop
@@ -442,8 +445,8 @@ then
 	echo ""
 	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation de Lollypop" -t 5000
 	sudo add-apt-repository -y ppa:gnumdk/lollypop
-	sudo apt-get -y update
-	sudo apt-get -y install lollypop
+	sudo apt -y update
+	sudo apt -y install lollypop
 fi
 
 # Installer Tomahawk
@@ -454,8 +457,8 @@ then
 	echo ""
 	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation de Tomahawk" -t 5000
 	sudo add-apt-repository -y ppa:tomahawk/ppa
-	sudo apt-get -y update
-	sudo apt-get -y install tomahawk
+	sudo apt -y update
+	sudo apt -y install tomahawk
 fi
 
 # Installer Clementine
@@ -466,8 +469,8 @@ then
 	echo ""
 	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation de Clementine" -t 5000
 	sudo add-apt-repository -y ppa:me-davidsansome/clementine
- 	sudo apt-get -y update
-  	sudo apt-get -y install clementine
+ 	sudo apt -y update
+  	sudo apt -y install clementine
 fi
 
 # Installer darktable
@@ -478,8 +481,8 @@ then
 	echo ""
 	notify-send -i applications-photography "elementary OS Post Install" "Installation de Darktable" -t 5000
 	sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release
-	sudo apt-get -y update
-	sudo apt-get -y install darktable
+	sudo apt -y update
+	sudo apt -y install darktable
 fi
 
 # Installer rapid-photo-downloader
@@ -489,7 +492,7 @@ then
 	echo "Installation de rapid-photo-downloader..."
 	echo ""
 	notify-send -i media-memory-sd "elementary OS Post Install" "Installation de rapid-photo-downloader" -t 5000
-	sudo apt-get -y install python3-pip
+	sudo apt -y install python3-pip
 	cd /tmp
 	wget -O https://launchpad.net/rapid/pyqt/0.9.0a4/+download/install.py
 	wget -O https://launchpad.net/rapid/pyqt/0.9.0a4/+download/rapid-photo-downloader-0.9.0a4.tar.gz
@@ -504,8 +507,8 @@ then
 	echo ""
 	notify-send -i applications-graphics "elementary OS Post Install" "Installation de GIMP avec GMIC" -t 5000
     sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
-    sudo apt-get -y update
-    sudo apt-get -y install gmic gimp
+    sudo apt -y update
+    sudo apt -y install gmic gimp
 fi
 
 # Installer Inkscape
@@ -515,7 +518,7 @@ then
 	echo "Installation de inkscape..."
 	echo ""
 	notify-send -i applications-graphics "elementary OS Post Install" "Installation d'Inkscape'" -t 5000
-	sudo apt-get -y install inkscape
+	sudo apt -y install inkscape
 fi
 
 # Installer Dropbox
@@ -525,7 +528,7 @@ then
 	echo "Installation de dropbox..."
 	echo ""
 	notify-send -i applications-internet "elementary OS Post Install" "Installation de Dropbox avec icones monochromes" -t 5000
-	sudo apt-get -y install nautilus-dropbox
+	sudo apt -y install nautilus-dropbox
 	echo "Installation des icones dropbox..."
 	echo ""
     git clone https://github.com/zant95/elementary-dropbox /tmp/elementary-dropbox
@@ -562,8 +565,8 @@ then
 	echo ""
 	notify-send -i applications-internet  "elementary OS Post Install" "Installation de Grive 2" -t 5000
 	sudo add-apt-repository -y ppa:nilarimogard/webupd8
-  sudo apt-get -y update
-  sudo apt-get -y install grive2
+  sudo apt -y update
+  sudo apt -y install grive2
 fi
 
 # Installer spotify
@@ -575,8 +578,8 @@ then
 	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation de Spotify" -t 5000
 	sudo add-apt-repository -y "deb http://repository.spotify.com stable non-free"
 	sudo apt-key -y adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
-	sudo apt-get -y update
-	sudo apt-get -y install spotify-client
+	sudo apt -y update
+	sudo apt -y install spotify-client
 fi
 
 # Installer steam
@@ -586,8 +589,8 @@ then
 	echo "Installation de steam..."
 	echo ""
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Steam" -t 5000
-	sudo apt-get -y update
-	sudo apt-get -y install steam-launcher
+	sudo apt -y update
+	sudo apt -y install steam-launcher
 fi
 
 # Installer 0.A.D
@@ -598,8 +601,8 @@ then
 	echo ""
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation de 0.A.D" -t 5000
 	sudo add-apt-repository -y ppa:wfg/0ad
-	sudo apt-get -y update
-	sudo apt-get -y install 0ad 0ad-data
+	sudo apt -y update
+	sudo apt -y install 0ad 0ad-data
 fi
 
 # Installer Wesnoth
@@ -610,8 +613,8 @@ then
 	echo ""
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Wesnoth" -t 5000
 	sudo add-apt-repository -y ppa:vincent-c/wesnoth
-	sudo apt-get -y update
-	sudo apt-get -y install wesnoth
+	sudo apt -y update
+	sudo apt -y install wesnoth
 fi
 
 # Installer FlightGear
@@ -622,8 +625,8 @@ then
 	echo ""
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation de FlightGear" -t 5000
 	sudo add-apt-repository -y ppa:saiarcot895/flightgear
-	sudo apt-get -y update
-	sudo apt-get -y install fgrun flightgear flightgear-data simgear
+	sudo apt -y update
+	sudo apt -y install fgrun flightgear flightgear-data simgear
 fi
 
 # Installer Unvanquished
@@ -635,8 +638,8 @@ then
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Unvanquished" -t 5000
 	wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
 	sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb games" >> /etc/apt/sources.list.d/getdeb.list'
-	sudo apt-get -y update
-	sudo apt-get -y install unvanquished
+	sudo apt -y update
+	sudo apt -y install unvanquished
 fi
 
 # Installer War Thunder
@@ -667,8 +670,8 @@ then
 	echo ""
 	notify-send -i applications-chat "elementary OS Post Install" "Installation de Telegram" -t 5000
 	sudo add-apt-repository -y ppa:atareao/telegram
-	sudo apt-get -y update
-	sudo apt-get -y install telegram
+	sudo apt -y update
+	sudo apt -y install telegram
 	sudo chmod +x /opt/telegram
 	sudo chown -R $whoami:$whoami /opt/telegram
 fi
@@ -680,7 +683,7 @@ then
 	echo "Installation de elementary-wallpapers-extra..."
 	echo ""
 	notify-send -i preferences-desktop-wallpaper "elementary OS Post Install" "Installation des fonds d'écran de Luna" -t 5000
-	sudo apt-get -y install elementary-wallpapers-extra
+	sudo apt -y install elementary-wallpapers-extra
 fi
 
 # Fix Broken Packages Action
@@ -690,7 +693,7 @@ then
 	echo "Réparation des paquets cassés..."
 	echo ""
 	notify-send -i package "elementary OS Post Install" "Réparation des paquets cassés" -t 5000
-	sudo apt-get -y -f install
+	sudo apt -y -f install
 fi
 
 # Nettoyage de primptemps
@@ -700,8 +703,8 @@ then
 	echo "Nettoyage de prinptemps en cours..."
 	echo ""
 	notify-send -i user-trash-full "elementary OS Post Install" "Nettoyage des paquets inutiles" -t 5000
-	sudo apt-get -y autoremove
-	sudo apt-get -y autoclean
+	sudo apt -y autoremove
+	sudo apt -y autoclean
 fi
 
 # Installer le driver NVIDIA
@@ -712,8 +715,8 @@ then
 	echo ""
 	notify-send -i display "elementary OS Post Install" "Installation du driver NVIDIA" -t 5000
 	sudo add-apt-repository -y ppa:graphics-drivers/ppa
-	sudo apt-get -y update
-	sudo apt-get -y install nvidia-settings nvidia-367
+	sudo apt -y update
+	sudo apt -y install nvidia-settings nvidia-367
 	echo "Pensez à rebooter..."
 	echo ""
 fi
@@ -726,8 +729,8 @@ then
 	echo ""
 	notify-send -i display "elementary OS Post Install" "Installation des derniers drivers graphiques libres" -t 5000
 	sudo add-apt-repository -y ppa:oibaf/graphics-drivers
-	sudo apt-get -y update
-	sudo apt-get -y dist-upgrade
+	sudo apt -y update
+	sudo apt -y dist-upgrade
 	echo "Pensez à rebooter..."
 	echo ""
 fi
@@ -740,8 +743,8 @@ then
 	echo ""
 	notify-send -i battery-full-charging "elementary OS Post Install" "Installation de TLP" -t 5000
 	sudo add-apt-repository -y ppa:linrunner/tlp
-	sudo apt-get -y update
-	sudo apt-get -y install tlp tlp-rdw
+	sudo apt -y update
+	sudo apt -y install tlp tlp-rdw
 	sudo tlp start
 	echo ""
 fi

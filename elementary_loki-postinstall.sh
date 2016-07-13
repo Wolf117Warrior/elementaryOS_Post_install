@@ -12,11 +12,11 @@
 #
 # Ordre menu
 # SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, ppa oibaf, inteal video tearing fix, TLP, tweaks, configurator, boot-repair
-# CUSTOMISATION: wallpapers luna, thèmes plank, conky-manager
+# CUSTOMISATION: wallpapers luna, conky-manager
 # UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik, redshift
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify, tomahawk
-# INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission(+gtk3), Vivaldi, dropbox, mega, grive,  telegram, hexchat
+# INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission, Vivaldi, dropbox, mega, grive,  telegram, hexchat
 # INFOGRAPHIE: gimp, darktable, inkscape, rapid
 # JEUX: steam, playonlinux, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
@@ -43,6 +43,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Tweaks" "Installe elementary Tweaks pour avoir plus d'options de configuration." \
 	FALSE "Boot Repair" "Installe boot-repair, réparateur de GRUB." \
 	FALSE "Elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
+	FALSE "elementaryplus" "Installe le thème d'icones indispensable elementary plus." \
 	FALSE "Conky-Manager" "Application pour gérer les fichier de conf de conky" \
 	FALSE "Support formats d'archivage" "Installation du support pour formats d'archivage (zip,rar,7z...)." \
 	FALSE "GDebi" "Installs GDebi. A simple tool to install deb files." \
@@ -759,6 +760,18 @@ then
 		wget -O /tmp/skypeforlinux-64-alpha.deb https://go.skype.com/skypeforlinux-64-alpha.deb
 		sudo dpkg -i /tmp/skypeforlinux-64-alpha.deb
 	fi
+fi
+
+# Installer elementaryplus
+if [[ $GUI == *"elementaryplus"* ]]
+then
+	clear
+	echo "Installation dutThème d'icones elementaryplus..."
+	echo ""
+	notify-send -i preferences-desktop "elementary OS Post Install" "Installation de elementaryplus" -t 5000
+	sudo add-apt-repository -y ppa:cybre/elementaryplus
+	sudo apt-get -y update
+	sudo apt-get -y install elementaryplus
 fi
 
 # Notification

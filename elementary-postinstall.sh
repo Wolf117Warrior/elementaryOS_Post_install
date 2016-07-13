@@ -14,7 +14,7 @@
 # Ordre menu
 # SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, ppa oibaf, inteal video tearing fix, TLP, tweaks, configurator, boot-repair
 # CUSTOMISATION: wallpapers luna, thèmes plank, conky-manager
-# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik, redshift, my weather indicator
+# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik, redshift
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify, tomahawk
 # INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission(+gtk3), Vivaldi, dropbox, mega, grive, evnc, taxi, telegram, corebird, hexchat
@@ -60,7 +60,6 @@ GUI=$(zenity --list --checklist \
 	FALSE "Time Shift" "Installe timeshift pour les restaurations système." \
 	FALSE "Aptik" "Installe aptik pour sauvegardes de paquets, thèmes,icones..." \
 	FALSE "Redshift" "Installe redshift pour adapter la luminositié de l'écran en fonction du jour..." \
-	FALSE "My Weather Indicator" "Installe my-weather-indicator, indicateur de météo sur le panel..." \
 	FALSE "LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
 	FALSE "Envelope" "Installe envelope, application de gestion financière." \
 	FALSE "Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
@@ -86,9 +85,10 @@ GUI=$(zenity --list --checklist \
 	FALSE "eVNC" "Installe eVNC, l'application de contrôle à distance." \
 	FALSE "Taxi" "Installe taxi, l'application de protocole FTP." \
 	FALSE "Corebird" "Installe Corebird, client twitter." \
+	FALSE "Skype" "Installe Corebird, client twitter." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
 	FALSE "Relay" "Installe Relay, le client IRC pour elementary OS." \
-	FALSE "Gimp et plugins" "Installe le logiciel de retouche GIMP et les plugins GMIC...." \
+	FALSE "Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
 	FALSE "Inkscape" "Installe le logiciel de vectorisation Inkscape." \
 	FALSE "Darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
 	FALSE "Rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
@@ -374,18 +374,6 @@ then
 	/usr/local/bin/redshift-gtk &
 fi
 
-# Installer redshift
-if [[ $GUI == *"My Weather Indicator"* ]]
-then
-	clear
-	echo "Installation de My Weather Indicator..."
-	echo ""
-	notify-send -i applications-system "elementary OS Post Install" "Installation de my-weather-indicator" -t 5000
-	sudo add-apt-repository -y ppa:atareao/atareao
-	sudo apt-get -y update
-	sudo apt-get -y install my-weather-indicator
-fi
-
 # Installer aptik
 if [[ $GUI == *"Aptik"* ]]
 then
@@ -609,15 +597,15 @@ then
 fi
 
 # Installer GIMP et GMIC
-if [[ $GUI == *"Gimp et plugins"* ]]
+if [[ $GUI == *"Gimp et GMIC"* ]]
 then
 	clear
-	echo "Installation de gimp et des plugins..."
+	echo "Installation de gimp et gmic..."
 	echo ""
-	notify-send -i applications-graphics "elementary OS Post Install" "Installation de GIMP avec plugins" -t 5000
+	notify-send -i applications-graphics "elementary OS Post Install" "Installation de GIMP avec GMIC" -t 5000
     sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
     sudo apt-get -y update
-    sudo apt-get -y install gimp gmic gimp-plugin-registry gimplensfun
+    sudo apt-get -y install gmic gimp-gmic
 fi
 
 # Installer Inkscape
@@ -967,6 +955,20 @@ then
 	sudo apt-get -y install tlp tlp-rdw
 	sudo tlp start
 	echo ""
+fi
+
+# Installer Skype
+if [[ $GUI == *"Skype"* ]]
+then
+	clear
+	echo "Installation de Skype..."
+	echo ""
+	notify-send -i applications-chat "elementary OS Post Install" "Installation de Skype" -t 5000
+	if [[ $(uname -m) == "x86_64" ]]
+	then
+		wget -O /tmp/skypeforlinux-64-alpha.deb https://go.skype.com/skypeforlinux-64-alpha.deb
+		sudo dpkg -i /tmp/skypeforlinux-64-alpha.deb
+	fi
 fi
 
 # Notification

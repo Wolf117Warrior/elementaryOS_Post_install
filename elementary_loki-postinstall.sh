@@ -28,23 +28,16 @@
 #################################################################################################################
 #
 # TODO
-# viber http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
-# simplescreenrecorder ppa:maarten-baert/simplescreenrecorder
-# lightworks http://www.lwks.com/dmpub/lwks-12.5.0-amd64.deb
-# http://covergloobus.deviantart.com/
-# zsh ?
-# teamviewer http://download.teamviewer.com/download/teamviewer_i386.deb
-# wireshark, bleachbit
-
+# hexchat ?
 #
 # Ordre menu
-# SYSTEME: upgrade, mémoire, kernel CK, NVIDIA, ppa oibaf, inteal video tearing fix, TLP, tweaks, configurator, boot-repair
+# SYSTEME: upgrade, mémoire, NVIDIA, ppa oibaf, TLP, tweaks, boot-repair
 # CUSTOMISATION: wallpapers luna, conky-manager
 # UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik, redshift
 # BUREAUTIQUE: libreoffice, envelope
-# MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, eradio, spotify, tomahawk
-# INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission, Vivaldi, dropbox, mega, grive,  telegram, hexchat
-# INFOGRAPHIE: gimp, darktable, inkscape, rapid
+# MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, spotify, tomahawk
+# INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission, Vivaldi, dropbox, mega, grive, telegram, hexchat
+# INFOGRAPHIE: gimp, darktable, inkscape, rapid photo downloader
 # JEUX: steam, playonlinux, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
 

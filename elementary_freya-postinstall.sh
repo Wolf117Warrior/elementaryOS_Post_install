@@ -28,15 +28,7 @@
 #################################################################################################################
 #
 # TODO
-# viber http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
-# skype wget -c "http://www.skype.com/go/getskype-linux-beta-ubuntu-64" -O  "skype_linux.deb"
-# simplescreenrecorder ppa:maarten-baert/simplescreenrecorder
-# lightworks http://www.lwks.com/dmpub/lwks-12.5.0-amd64.deb
-# http://covergloobus.deviantart.com/
 # zsh ?
-# teamviewer http://download.teamviewer.com/download/teamviewer_i386.deb
-# wireshark, bleachbit
-
 #
 # Ordre menu
 # SYSTEME: upgrade, mémoire, kernel CK, NVIDIA,  intel video tearing fix, TLP, tweaks, configurator, boot-repair

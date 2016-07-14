@@ -38,7 +38,7 @@
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, spotify, tomahawk
 # INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission, Vivaldi, dropbox, mega, grive, telegram, hexchat
 # INFOGRAPHIE: gimp, darktable, inkscape, rapid photo downloader
-# JEUX: steam, playonlinux, 0.A.D, FlightGear
+# JEUX: steam, itch.io, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
 
 # Clear the Terminal
@@ -102,6 +102,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
 	FALSE "Rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
 	FALSE "Steam" "Installe Steam, la plateforme en ligne de Jeux." \
+	FALSE "itch.io" "Installe itch.io, une autre plateforme de jeux." \
 	FALSE "0.A.D" "Installe 0.A.D, le jeu de stratégie en temps réel dans l'époque Antique." \
 	FALSE "Wesnoth" "Installe Bataille de Wesnoth, le jeu de stratégie au tour par tour" \
 	FALSE "FlightGear" "Installe FlightGear, le simulateur de vol OpenSource." \
@@ -623,6 +624,19 @@ then
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Steam" -t 5000
 	sudo apt -y update
 	sudo apt -y install steam-launcher
+fi
+
+# Installer icth.io
+if [[ $GUI == *"icth.io"* ]]
+then
+	clear
+	echo "Installation d'itch.io..."
+	echo ""
+	notify-send -i applications-arcade "elementary OS Post Install" "Installation d'itch.io" -t 5000
+	curl https://dl.itch.ovh/archive.key | sudo apt-key add -
+    echo "deb https://dl.bintray.com/itchio/deb {distribution} main" | sudo tee /etc/apt/sources.list.d/itchio.list
+	sudo apt -y update
+	sudo apt -y install itch
 fi
 
 # Installer 0.A.D

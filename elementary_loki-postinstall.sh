@@ -44,6 +44,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Boot Repair" "Installe boot-repair, réparateur de GRUB." \
 	FALSE "Elementary-wallpapers-extra" "Installe les fonds d'écran de Luna." \
 	FALSE "elementaryplus" "Installe le thème d'icones indispensable elementary plus." \
+	FALSE "Neofetch" "Le remplacant de Screenfetch" \
 	FALSE "Conky-Manager" "Application pour gérer les fichier de conf de conky" \
 	FALSE "Support formats d'archivage" "Installation du support pour formats d'archivage (zip,rar,7z...)." \
 	FALSE "GDebi" "Installs GDebi. A simple tool to install deb files." \
@@ -421,6 +422,18 @@ then
 	sudo add-apt-repository -y ppa:teejee2008/ppa
 	sudo apt -y update
 	sudo apt -y install conky-manager
+fi
+
+# Installer neofetch
+if [[ $GUI == *"Neofetch"* ]]
+then
+	clear
+	echo "Installation de neofetch..."
+	echo ""
+	notify-send -i preferences-desktop "elementary OS Post Install" "Installation de neofetch'" -t 5000
+	sudo add-apt-repository -y ppa:dawidd0811/neofetch
+	sudo apt -y update
+	sudo apt -y install neofetch
 fi
 
 # Installer Vocal

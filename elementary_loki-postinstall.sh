@@ -634,8 +634,8 @@ then
 	echo "Installation d'itch.io..."
 	echo ""
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation d'itch.io" -t 5000
-	curl https://dl.itch.ovh/archive.key | sudo apt-key add -
-    echo "deb https://dl.bintray.com/itchio/deb {distribution} main" | sudo tee /etc/apt/sources.list.d/itchio.list
+	wget -q -O - https://dl.itch.ovh/archive.key | sudo apt-key add -
+	sudo sh -c  'echo "deb https://dl.bintray.com/itchio/deb xenial main" >> /etc/apt/sources.list.d/itchio.list'
 	sudo apt -y update
 	sudo apt -y install itch
 fi

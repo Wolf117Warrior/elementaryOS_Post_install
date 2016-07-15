@@ -97,6 +97,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Grive 2" "Installe Grive 2 pour le cloud Google Drive." \
 	FALSE "Skype" "Installe Corebird, client twitter." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
+	FALSE "Hexchat" "Installe le client IRC Hexchat." \
 	FALSE "Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
 	FALSE "Inkscape" "Installe le logiciel de vectorisation Inkscape." \
 	FALSE "Darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
@@ -720,6 +721,17 @@ then
 	sudo apt -y install telegram
 	sudo chmod +x /opt/telegram
 	sudo chown -R $whoami:$whoami /opt/telegram
+fi
+
+# Installer Hexchat
+if [[ $GUI == *"Hexchat"* ]]
+then
+	clear
+	echo "Installation d'Hexchat..."
+	echo ""
+	sudo add-apt-repository -y ppa:gwendal-lebihan-dev/hexchat-stable
+	sudo apt -y update
+	sudo apt -y install hexchat
 fi
 
 # Installer elementary-wallpapers-extra

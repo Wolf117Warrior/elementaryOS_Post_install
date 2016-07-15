@@ -628,7 +628,7 @@ then
 fi
 
 # Installer icth.io
-if [[ $GUI == *"icth.io"* ]]
+if [[ $GUI == *"itch.io"* ]]
 then
 	clear
 	echo "Installation d'itch.io..."

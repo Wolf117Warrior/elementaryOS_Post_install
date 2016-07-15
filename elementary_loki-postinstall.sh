@@ -36,7 +36,7 @@
 # UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik, redshift
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, spotify, tomahawk
-# INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission, Vivaldi, dropbox, mega, grive, telegram, hexchat
+# INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission, Vivaldi, dropbox, mega, grive, telegram, polari
 # INFOGRAPHIE: gimp, darktable, inkscape, rapid photo downloader
 # JEUX: steam, itch.io, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
@@ -97,7 +97,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Grive 2" "Installe Grive 2 pour le cloud Google Drive." \
 	FALSE "Skype" "Installe Corebird, client twitter." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
-	FALSE "Hexchat" "Installe le client IRC Hexchat." \
+	FALSE "Polari" "Installe le client IRC Polari." \
 	FALSE "Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
 	FALSE "Inkscape" "Installe le logiciel de vectorisation Inkscape." \
 	FALSE "Darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
@@ -723,15 +723,14 @@ then
 	sudo chown -R $whoami:$whoami /opt/telegram
 fi
 
-# Installer Hexchat
-if [[ $GUI == *"Hexchat"* ]]
+# Installer Polari
+if [[ $GUI == *"Polari"* ]]
 then
 	clear
-	echo "Installation d'Hexchat..."
+	echo "Installation de Polari..."
 	echo ""
-	sudo add-apt-repository -y ppa:gwendal-lebihan-dev/hexchat-stable
 	sudo apt -y update
-	sudo apt -y install hexchat
+	sudo apt -y install polari
 fi
 
 # Installer elementary-wallpapers-extra

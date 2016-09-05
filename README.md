@@ -16,7 +16,7 @@ wget -O /tmp/elementary_freya-postinstall.sh https://raw.githubusercontent.com/D
 Pour 0.4 Loki beta:
 
 ```bash
-sudo apt -y install software-properties-common && wget -O /tmp/elementary_loki-postinstall.sh https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/elementary_loki-postinstall.sh && chmod +x /tmp/elementary_loki-postinstall.sh && /tmp/elementary_loki-postinstall.sh
+sudo apt -y install software-properties-common python-software-properties && wget -O /tmp/elementary_loki-postinstall.sh https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/elementary_loki-postinstall.sh && chmod +x /tmp/elementary_loki-postinstall.sh && /tmp/elementary_loki-postinstall.sh
 ``` 
 
 ## Source

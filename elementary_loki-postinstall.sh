@@ -367,21 +367,8 @@ then
 	echo "Compilation et Installation de redshift..."
 	echo ""
 	notify-send -i display "elementary OS Post Install" "Installation de Redshift" -t 5000
-	sudo apt install -y autopoint intltool
-  sudo apt install -y libdrm-dev
-  sudo apt install -y libxcb1-dev libxcb-randr0-dev
-  sudo apt install  -y libx11-dev libxxf86vm-dev
-  sudo apt install -y libgeoclue-dev
-  sudo apt install -y libglib2.0-dev
-  sudo apt install -y python3
-  wget -O /tmp/redshift-1.11.tar.gz https://github.com/jonls/redshift/archive/v1.11.tar.gz
-	cd /tmp/
-	tar -xf redshift-1.11.tar.gz
-	cd redshift-1.11
-	./bootstrap && ./configure --enable-drm --enable-vidmode --enable-randr --enable-geoclue --enable-geoclue2 --enable-gui && make -j2 distcheck
-	sudo make install
+	sudo apt install -y redshift
 	wget -O $HOME/.config/redshift.conf https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/redshift.conf
-	/usr/local/bin/redshift-gtk &
 fi
 
 # Installer aptik

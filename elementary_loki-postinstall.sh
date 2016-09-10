@@ -611,7 +611,7 @@ then
 	echo ""
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Steam" -t 5000
 	sudo apt -y update
-	sudo apt -y install steam-launcher
+	sudo apt -y install steam
 fi
 
 # Installer icth.io

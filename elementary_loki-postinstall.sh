@@ -205,9 +205,9 @@ then
 	echo "Installation de Google Chrome..."
 	echo ""
   	notify-send -i web-browser "elementary OS Post Install" "Installation de Google Chrome" -t 5000
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-    sudo apt -y install google-chrome-stable
+	cd /tmp
+	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	sudo dpkg -i --force-depends google-chrome-stable_current_amd64.deb
 fi
 
 # Installer Chromium

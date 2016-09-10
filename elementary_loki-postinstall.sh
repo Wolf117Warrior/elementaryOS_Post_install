@@ -367,7 +367,7 @@ then
 	echo "Compilation et Installation de redshift..."
 	echo ""
 	notify-send -i display "elementary OS Post Install" "Installation de Redshift" -t 5000
-	sudo apt install -y redshift
+	sudo apt install -y redshift-gtk
 	wget -O $HOME/.config/redshift.conf https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/redshift.conf
 fi
 

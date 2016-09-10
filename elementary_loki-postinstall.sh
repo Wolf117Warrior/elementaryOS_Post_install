@@ -516,7 +516,8 @@ then
 	cd /tmp
 	wget https://launchpad.net/rapid/pyqt/0.9.0a4/+download/install.py
 	wget https://launchpad.net/rapid/pyqt/0.9.0a4/+download/rapid-photo-downloader-0.9.0a4.tar.gz
-	pip install --user --upgrade pip
+	python3 -m pip install --user --upgrade pip
+    python3 -m pip install --user --upgrade setuptools
 	python3 install.py rapid-photo-downloader-0.9.0a4.tar.gz
 fi
 

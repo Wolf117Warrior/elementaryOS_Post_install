@@ -685,11 +685,9 @@ then
 	echo ""
 	notify-send -i applications-arcade "elementary OS Post Install" "War Thunder sera installé dans le dossier warthunder sur votre HOME" -t 15000
 	mkdir $HOME/warthunder
-	wget http://yup1.gaijinent.com/updater_1.0.7.tar.gz
-	tar -xf updater_1.0.7.tar.gz ./updater ./updater.blk -C $HOME/warthunder
+	wget http://aws-yup1.gaijinent.com/wt_launcher_linux_0.9.3.26.tar.gz
+	tar -xf wt_launcher_linux_0.9.3.26.tar.gz $HOME/warthunder
 	cd $HOME/warthunder
-	notify-send -i applications-arcade "elementary OS Post Install" "Téléchargement de War Thunder, cela va prendre du temps!" -t 15000
-	./updater
 	notify-send -i applications-arcade "elementary OS Post Install" "Création d'un raccourci pour War Thunder!" -t 5000
 	cd /tmp
 	wget -O /tmp/warthunder.desktop https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/warthunder.desktop

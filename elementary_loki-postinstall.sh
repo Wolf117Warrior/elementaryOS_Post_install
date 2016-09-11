@@ -57,7 +57,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Mise à jour du Système" "Mise à jour de la liste des paquets et des applications déjà installées."  \
 	FALSE "Accélération de la mémoire" "Installation de preload et de zRAM." \
 	FALSE "Memtest86+" "Installation de memtest86+ pour tester la RAM." \
-	FALSE "Kernel Trusty Tahr BFS/BFQ" "Installe le optimisé BFQ/BFS scheduler." \
+	FALSE "Kernel Xenial Tahr BFS/BFQ" "Installe le optimisé BFQ/BFS scheduler." \
 	FALSE "Driver NVIDIA" "Installe le driver NVIDIA (ppa graphics-drivers) pour GTX 7XX et +." \
 	FALSE "Oibaf" "Installe le PPA Oibaf pour les versions git des drivers graphiques libres (xorg-server-nouveau/intel/ati)" \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
@@ -812,11 +812,11 @@ then
 	sudo apt-get -y install elementaryplus
 fi
 
-# Installer le Kernel Trusty Tahr BFS/BFQ
-if [[ $GUI == *"Kernel Trusty Tahr BFS/BFQ"* ]]
+# Installer le Kernel Xenial BFS/BFQ
+if [[ $GUI == *"Kernel Xenial BFS/BFQ"* ]]
 then
 	clear
-	echo "Installation du kernel Trusty Tahr BFS/BFQ..."
+	echo "Installation du kernel Xenial BFS/BFQ..."
 	echo ""
 	notify-send -i applications-system "elementary OS Post Install" "Installation du kernel optimisé BFS/BFQ" -t 5000
 	sudo add-apt-repository -y ppa:nick-athens30/xenial-ck

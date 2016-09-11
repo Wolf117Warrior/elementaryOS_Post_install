@@ -781,7 +781,7 @@ then
 	notify-send -i battery-full-charging "elementary OS Post Install" "Installation de TLP" -t 5000
 	sudo add-apt-repository -y ppa:linrunner/tlp
 	sudo apt -y update
-	sudo apt -y install tlp tlp-rdw
+	sudo apt -y install tlp tlp-rdw tp-smapi-dkms acpi-call-dkms
 	sudo tlp start
 	echo ""
 fi

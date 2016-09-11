@@ -57,7 +57,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Mise à jour du Système" "Mise à jour de la liste des paquets et des applications déjà installées."  \
 	FALSE "Accélération de la mémoire" "Installation de preload et de zRAM." \
 	FALSE "Memtest86+" "Installation de memtest86+ pour tester la RAM." \
-	FALSE "Kernel Trusty Tahr BFS/BFQ" "Installe le Kernel Trusty Tahr optimisé BFQ/BFS scheduler." \
+	FALSE "Kernel Trusty Tahr BFS/BFQ" "Installe le optimisé BFQ/BFS scheduler." \
 	FALSE "Driver NVIDIA" "Installe le driver NVIDIA (ppa graphics-drivers) pour GTX 7XX et +." \
 	FALSE "Intel Tearing Fix" "Correction du tearing avec le driver Intel Graphics" \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \

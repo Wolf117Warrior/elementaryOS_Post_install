@@ -519,6 +519,7 @@ then
 	python3 -m pip install --user --upgrade pip
     python3 -m pip install --user --upgrade setuptools
 	python3 install.py rapid-photo-downloader-0.9.0a4.tar.gz
+	notify-send -i media-memory-sd "elementary OS Post Install" "L'executable de rapid-photo-downloader est dans .local/bin !!!" -t 5000
 fi
 
 # Installer GIMP et GMIC
@@ -564,17 +565,9 @@ then
 	echo "Installation de MEGASync..."
 	echo ""
 	notify-send -i applications-internet "elementary OS Post Install" "Installation de MeGA avec icones monochromes" -t 5000
-	wget -q -O - https://mega.nz/linux/MEGAsync/xUbuntu_14.04/Release.key | sudo apt-key add -
-	if [[ $(uname -m) == "i686" ]]
-	then
-		wget -O /tmp/megasync_2.0.0_i386.deb https://mega.co.nz/linux/MEGAsync/xUbuntu_14.04/i386/megasync_2.0.0_i386.deb
-		sudo dpkg -i /tmp/megasync_2.0.0_i386.deb
-	elif [[ $(uname -m) == "x86_64" ]]
-	then
-		wget -O /tmp/megasync_2.0.0_amd64.deb https://mega.co.nz/linux/MEGAsync/xUbuntu_14.04/amd64/megasync_2.0.0_amd64.deb
-		sudo dpkg -i /tmp/megasync_2.0.0_amd64.deb
-	fi
-	echo ""
+	wget -q -O - https://mega.nz/linux/MEGAsync/xUbuntu_16.04/Release.key | sudo apt-key add -
+		wget -O /tmp/megasync-xUbuntu_16.04_amd64.deb https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/megasync-xUbuntu_16.04_amd64.deb
+		sudo dpkg -i /tmp/megasync-xUbuntu_16.04_amd64.deb
     git clone https://github.com/cybre/megasync-elementary /tmp/megasync-elementary
     bash /tmp/megasync-elementary/install.sh
 fi

@@ -96,7 +96,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Dropbox" "Installe dropbox avec les icones monochromes elementary." \
 	FALSE "MEGA" "Installe MEGASync pour le cloud de MEGA avec les icones monochromes elementary." \
 	FALSE "Grive 2" "Installe Grive 2 pour le cloud Google Drive." \
-	FALSE "Skype" "Installe Corebird, client twitter." \
+	FALSE "Skype" "Installe Skype." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
 	FALSE "Polari" "Installe le client IRC Polari." \
 	FALSE "Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \

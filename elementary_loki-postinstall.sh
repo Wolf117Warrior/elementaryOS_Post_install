@@ -73,6 +73,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Sublime Text 3" "Installe Sublime Text 3, un puissant éditeur de texte." \
 	FALSE "Deja Dup" "Installe Deja Dup,  utilitaire pour sauvegarde." \
 	FALSE "ADB" "Installe ADB, outil pour téléphones sous Android." \
+    FALSE "Pushbullet" "Installe l'indicator Pushbullet (interactions entre PC et vos appareils Android)." \
 	FALSE "Time Shift" "Installe timeshift pour les restaurations système." \
 	FALSE "Aptik" "Installe aptik pour sauvegardes de paquets, thèmes,icones..." \
 	FALSE "Redshift" "Installe redshift pour adapter la luminositié de l'écran en fonction du jour..." \
@@ -132,7 +133,7 @@ then
 	echo "Accélération de la mémoire..."
 	echo ""
 	notify-send -i system-software-update "elementary OS Post Install" "Installation de Preload" -t 5000
-	sudo apt -y install preload
+	
 	notify-send -i system-software-update "elementary OS Post Install" "Installation de zRAM" -t 5000
 	sudo apt -y install zram-config
 fi
@@ -824,6 +825,19 @@ then
 	sudo apt-get -y install linux-bb
 	echo "Pensez à rebooter pour profiter de ce kernel..."
 	echo ""
+fi
+
+# Installer Pushbullet
+if [[ $GUI == *"Pushbullet"* ]]
+then
+	clear
+	echo "Installation de l'indicator Pushbullet..."
+	echo ""
+	notify-send -i applications-office "elementary OS Post Install" "Installation de l'indicator Pushbullet" -t 5000
+	sudo add-apt-repository -y ppa:atareao/pushbullet
+    notify-send -i applications-system "Installez Pushbullet sur vos appareil Android !" -t 5000
+	sudo apt-get -y update
+	sudo apt-get -y install pushbullet-indicator
 fi
 
 # Notification

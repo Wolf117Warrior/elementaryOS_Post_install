@@ -68,7 +68,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Neofetch" "Le remplacant de Screenfetch" \
 	FALSE "Conky-Manager" "Application pour gérer les fichier de conf de conky" \
 	FALSE "Support formats d'archivage" "Installation du support pour formats d'archivage (zip,rar,7z...)." \
-	FALSE "GDebi" "Installs GDebi. A simple tool to install deb files." \
+	FALSE "GDebi" "Installe GDebi. Outil pour installer les fichiers .deb" \
 	FALSE "Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
 	FALSE "Sublime Text 3" "Installe Sublime Text 3, un puissant éditeur de texte." \
 	FALSE "Deja Dup" "Installe Deja Dup,  utilitaire pour sauvegarde." \

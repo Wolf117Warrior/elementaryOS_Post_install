@@ -76,7 +76,7 @@ GUI=$(zenity --list --checklist \
     FALSE "Pushbullet" "Installe l'indicator Pushbullet (interactions entre PC et vos appareils Android)." \
 	FALSE "Time Shift" "Installe timeshift pour les restaurations système." \
 	FALSE "Aptik" "Installe aptik pour sauvegardes de paquets, thèmes,icones..." \
-	FALSE "Redshift" "Installe redshift pour adapter la luminositié de l'écran en fonction du jour..." \
+	FALSE "Redshift" "Installe redshift pour adapter la luminosité de l'écran en fonction du jour." \
 	FALSE "LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
 	FALSE "Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
 	FALSE "Extra Multimedia Codecs" "Installation des codecs multimédia additionnels." \

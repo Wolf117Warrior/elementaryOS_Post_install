@@ -112,7 +112,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Unvanquished" "Installe Unvanquished, jeux FPS contre des Aliens." \
 	FALSE "War Thunder" "Installe War Thunder, simulateur de chars et avions de combat en ligne (64bits seulement!)" \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
-	FALSE "Nettoyage de prinptemps" "Retire les paquets qui ne sont plus nécéssaires." \
+	FALSE "Nettoyage de prinptemps" "Retire les paquets qui ne sont plus nécessaires." \
 	--separator=', ');
 
 # Mise à jour du Système
@@ -553,11 +553,8 @@ then
 	echo "Installation de dropbox..."
 	echo ""
 	notify-send -i applications-internet "elementary OS Post Install" "Installation de Dropbox avec icones monochromes" -t 5000
-	sudo apt -y install nautilus-dropbox
-	echo "Installation des icones dropbox..."
-	echo ""
-    git clone https://github.com/zant95/elementary-dropbox /tmp/elementary-dropbox
-    bash /tmp/elementary-dropbox/install.sh
+	git clone https://github.com/zant95/elementary-dropbox /tmp/elementary-dropbox
+	bash /tmp/elementary-dropbox/install.sh -y
 fi
 
 # Installer MEGA

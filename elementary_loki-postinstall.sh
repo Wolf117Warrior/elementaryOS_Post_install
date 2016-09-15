@@ -133,9 +133,9 @@ then
 	echo "Accélération de la mémoire..."
 	echo ""
 	notify-send -i system-software-update "elementary OS Post Install" "Installation de Preload" -t 5000
-	
+	sudo apt -y install preload
 	notify-send -i system-software-update "elementary OS Post Install" "Installation de zRAM" -t 5000
-	sudo apt -y install zram-config preload
+	sudo apt -y install zram-config
 fi
 
 # Memtest86+

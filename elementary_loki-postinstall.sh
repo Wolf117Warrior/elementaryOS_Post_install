@@ -135,7 +135,7 @@ then
 	notify-send -i system-software-update "elementary OS Post Install" "Installation de Preload" -t 5000
 	
 	notify-send -i system-software-update "elementary OS Post Install" "Installation de zRAM" -t 5000
-	sudo apt -y install zram-config
+	sudo apt -y install zram-config preload
 fi
 
 # Memtest86+

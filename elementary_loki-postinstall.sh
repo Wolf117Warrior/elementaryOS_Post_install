@@ -734,27 +734,6 @@ then
 	sudo apt -y install elementary-wallpapers-extra
 fi
 
-# Fix Broken Packages Action
-if [[ $GUI == *"Réparer les paquets cassés"* ]]
-then
-	clear
-	echo "Réparation des paquets cassés..."
-	echo ""
-	notify-send -i package "elementary OS Post Install" "Réparation des paquets cassés" -t 5000
-	sudo apt -y -f install
-fi
-
-# Nettoyage de primptemps
-if [[ $GUI == *"Nettoyage de prinptemps"* ]]
-then
-	clear
-	echo "Nettoyage de prinptemps en cours..."
-	echo ""
-	notify-send -i user-trash-full "elementary OS Post Install" "Nettoyage des paquets inutiles" -t 5000
-	sudo apt -y autoremove
-	sudo apt -y autoclean
-fi
-
 # Installer le driver NVIDIA
 if [[ $GUI == *"Driver NVIDIA"* ]]
 then
@@ -848,6 +827,27 @@ then
     notify-send -i applications-system "Installez Pushbullet sur vos appareil Android !" -t 5000
 	sudo apt-get -y update
 	sudo apt-get -y install pushbullet-indicator
+fi
+
+# Fix Broken Packages Action
+if [[ $GUI == *"Réparer les paquets cassés"* ]]
+then
+	clear
+	echo "Réparation des paquets cassés..."
+	echo ""
+	notify-send -i package "elementary OS Post Install" "Réparation des paquets cassés" -t 5000
+	sudo apt -y -f install
+fi
+
+# Nettoyage de primptemps
+if [[ $GUI == *"Nettoyage de prinptemps"* ]]
+then
+	clear
+	echo "Nettoyage de prinptemps en cours..."
+	echo ""
+	notify-send -i user-trash-full "elementary OS Post Install" "Nettoyage des paquets inutiles" -t 5000
+	sudo apt -y autoremove
+	sudo apt -y autoclean
 fi
 
 # Notification

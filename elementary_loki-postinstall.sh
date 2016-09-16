@@ -709,8 +709,9 @@ then
 	echo "Installation de slack..."
 	echo ""
 	notify-send -i applications-chat "elementary OS Post Install" "Installation de SLack" -t 5000
-	wget -O /tmp/linux_releases/slack-desktop-2.1.2-amd64.deb  https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-2.1.2-amd64.deb
-	sudo dpkg -i --force-depends /tmp/slack-desktop-2.1.2-amd64.deb
+	cd /tmp
+	wget https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-2.1.2-amd64.deb
+	sudo dpkg -i --force-depends slack-desktop-2.1.2-amd64.deb
 fi
 
 # Installer Polari

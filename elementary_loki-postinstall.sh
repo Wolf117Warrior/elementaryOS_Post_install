@@ -36,7 +36,7 @@
 # UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik, redshift
 # BUREAUTIQUE: libreoffice, envelope
 # MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, spotify, tomahawk
-# INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission, Vivaldi, dropbox, mega, grive, telegram, polari
+# INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission, Vivaldi, dropbox, mega, grive, telegram, polari, slack
 # INFOGRAPHIE: gimp, darktable, inkscape, rapid photo downloader
 # JEUX: steam, itch.io, 0.A.D, FlightGear
 # DIVERS: paquet cassés, nettoyage
@@ -99,6 +99,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Grive 2" "Installe Grive 2 pour le cloud Google Drive." \
 	FALSE "Skype" "Installe Skype." \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
+	FALSE "Slack" "Installe Slack, version desktop de l'application slack" \
 	FALSE "Polari" "Installe le client IRC Polari." \
 	FALSE "Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
 	FALSE "Inkscape" "Installe le logiciel de vectorisation Inkscape." \
@@ -699,6 +700,17 @@ then
 	sudo apt -y install telegram
 	sudo chmod +x /opt/telegram
 	sudo chown -R $whoami:$whoami /opt/telegram
+fi
+
+# Installer slack
+if [[ $GUI == *"Slack"* ]]
+then
+	clear
+	echo "Installation de slack..."
+	echo ""
+	notify-send -i applications-chat "elementary OS Post Install" "Installation de SLack" -t 5000
+	wget -O /tmp/linux_releases/slack-desktop-2.1.2-amd64.deb  https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-2.1.2-amd64.deb
+	sudo dpkg -i --force-depends /tmp/slack-desktop-2.1.2-amd64.deb
 fi
 
 # Installer Polari

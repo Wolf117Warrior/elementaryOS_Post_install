@@ -1,28 +1,28 @@
-#!/bin/bash 
+#!/bin/bash
 #################################################################################################################
 #
-#                                       
 #
-#                                    
-#            eeeeeeeeeeeeeeeee           
-#         eeeeeeeeeeeeeeeeeeeeeee        
-#       eeeee  eeeeeeeeeeee   eeeee      
-#     eeee   eeeee       eee     eeee    
-#    eeee   eeee          eee     eeee   
-#   eee    eee            eee       eee  
-#   eee   eee            eee        eee  
-#   ee    eee           eeee       eeee  
-#   ee    eee         eeeee      eeeeee  
-#   ee    eee       eeeee      eeeee ee  
-#   eee   eeee   eeeeee      eeeee  eee  
-#   eee    eeeeeeeeee     eeeeee    eee 
-#   eeeeeeeeeeeeeeeeeeeeeeee    eeeee  
-#    eeeeeeee eeeeeeeeeeee      eeee   
-#        eeeee                 eeeee     
-#          eeeeeee         eeeeeee       
+#
+#
+#            eeeeeeeeeeeeeeeee
+#         eeeeeeeeeeeeeeeeeeeeeee
+#       eeeee  eeeeeeeeeeee   eeeee
+#     eeee   eeeee       eee     eeee
+#    eeee   eeee          eee     eeee
+#   eee    eee            eee       eee
+#   eee   eee            eee        eee
+#   ee    eee           eeee       eeee
+#   ee    eee         eeeee      eeeeee
+#   ee    eee       eeeee      eeeee ee
+#   eee   eeee   eeeeee      eeeee  eee
+#   eee    eeeeeeeeee     eeeeee    eee
+#   eeeeeeeeeeeeeeeeeeeeeeee    eeeee
+#    eeeeeeee eeeeeeeeeeee      eeee
+#        eeeee                 eeeee
+#          eeeeeee         eeeeeee
 #             eeeeeeeeeeeeeeeee
 #
-#                               
+#
 #
 #
 #################################################################################################################
@@ -891,7 +891,7 @@ then
 	echo "Réparation des paquets cassés..."
 	echo ""
 	notify-send -i package "elementary OS Post Install" "Réparation des paquets cassés" -t 5000
-	sudo apt-get -y -f install
+	sudo apt-get install -f -y
 fi
 
 # Nettoyage de primptemps
@@ -901,8 +901,9 @@ then
 	echo "Nettoyage de prinptemps en cours..."
 	echo ""
 	notify-send -i user-trash-full "elementary OS Post Install" "Nettoyage des paquets inutiles" -t 5000
-	sudo apt-get -y autoremove
-	sudo apt-get -y autoclean
+	sudo apt-get autoremove -y
+  sudo apt-get clean -y
+  sudo apt-get autoclean -y
 fi
 
 # Installer le Kernel Trusty Tahr BFS/BFQ

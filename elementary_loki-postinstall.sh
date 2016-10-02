@@ -861,9 +861,9 @@ then
 	cd /tmp
 	wget https://raw.githubusercontent.com/SergKolo/udisks-indicator/master/udisks-indicator
 	sudo chmod +x udisks-indicator
-	mv udisks-indicator /usr/bin/udisks-indicator
+	sudo mv udisks-indicator /usr/bin/udisks-indicator
 	wget https://raw.githubusercontent.com/SergKolo/udisks-indicator/master/udisks-indicator.desktop
-	mv udisks-indicator.desktop /usr/share/applications/udisks-indicator.desktop
+	sudo mv udisks-indicator.desktop /usr/share/applications/udisks-indicator.desktop
 	echo "Pensez à rajouter udisks-indicator aux applications au démarrage!"
 fi
 

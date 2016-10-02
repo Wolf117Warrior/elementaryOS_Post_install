@@ -1,28 +1,28 @@
-#!/bin/bash 
+#!/bin/bash
 #################################################################################################################
 #
-#                                       
 #
-#                                    
-#            eeeeeeeeeeeeeeeee           
-#         eeeeeeeeeeeeeeeeeeeeeee        
-#       eeeee  eeeeeeeeeeee   eeeee      
-#     eeee   eeeee       eee     eeee    
-#    eeee   eeee          eee     eeee   
-#   eee    eee            eee       eee  
-#   eee   eee            eee        eee  
-#   ee    eee           eeee       eeee  
-#   ee    eee         eeeee      eeeeee  
-#   ee    eee       eeeee      eeeee ee  
-#   eee   eeee   eeeeee      eeeee  eee  
-#   eee    eeeeeeeeee     eeeeee    eee 
-#   eeeeeeeeeeeeeeeeeeeeeeee    eeeee  
-#    eeeeeeee eeeeeeeeeeee      eeee   
-#        eeeee                 eeeee     
-#          eeeeeee         eeeeeee       
+#
+#
+#            eeeeeeeeeeeeeeeee
+#         eeeeeeeeeeeeeeeeeeeeeee
+#       eeeee  eeeeeeeeeeee   eeeee
+#     eeee   eeeee       eee     eeee
+#    eeee   eeee          eee     eeee
+#   eee    eee            eee       eee
+#   eee   eee            eee        eee
+#   ee    eee           eeee       eeee
+#   ee    eee         eeeee      eeeeee
+#   ee    eee       eeeee      eeeee ee
+#   eee   eeee   eeeeee      eeeee  eee
+#   eee    eeeeeeeeee     eeeeee    eee
+#   eeeeeeeeeeeeeeeeeeeeeeee    eeeee
+#    eeeeeeee eeeeeeeeeeee      eeee
+#        eeeee                 eeeee
+#          eeeeeee         eeeeeee
 #             eeeeeeeeeeeeeeeee
 #
-#                               
+#
 #
 #
 #################################################################################################################
@@ -73,10 +73,11 @@ GUI=$(zenity --list --checklist \
 	FALSE "Sublime Text 3" "Installe Sublime Text 3, un puissant éditeur de texte." \
 	FALSE "Deja Dup" "Installe Deja Dup,  utilitaire pour sauvegarde." \
 	FALSE "ADB" "Installe ADB, outil pour téléphones sous Android." \
-    FALSE "Pushbullet" "Installe l'indicator Pushbullet (interactions entre PC et vos appareils Android)." \
+  FALSE "Pushbullet" "Installe l'indicator Pushbullet (interactions entre PC et vos appareils Android)." \
 	FALSE "Time Shift" "Installe timeshift pour les restaurations système." \
 	FALSE "Aptik" "Installe aptik pour sauvegardes de paquets, thèmes,icones..." \
 	FALSE "Redshift" "Installe redshift pour adapter la luminosité de l'écran en fonction du jour." \
+	FALSE "udisks-indicator" "Installe udisks-indicator, indicator pour indiquer l'utilisation des disques." \
 	FALSE "LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
 	FALSE "Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
 	FALSE "Extra Multimedia Codecs" "Installation des codecs multimédia additionnels." \
@@ -848,6 +849,22 @@ then
 	notify-send -i user-trash-full "elementary OS Post Install" "Nettoyage des paquets inutiles" -t 5000
 	sudo apt -y autoremove
 	sudo apt -y autoclean
+fi
+
+# Installer udisks-indicator
+if [[ $GUI == *"udisks-indicator"* ]]
+then
+	clear
+	echo "Installation de udisks-indicator..."
+	echo ""
+	notify-send -i drive-harddisk-symbolic "elementary OS Post Install" "Installation de udisks-indicator" -t 5000
+	cd /tmp
+	wget https://raw.githubusercontent.com/SergKolo/udisks-indicator/master/udisks-indicator
+	sudo chmod +x udisks-indicator
+	mv udisks-indicator /usr/bin/udisks-indicator
+	wget https://raw.githubusercontent.com/SergKolo/udisks-indicator/master/udisks-indicator.desktop
+	mv udisks-indicator.desktop /usr/share/applications/udisks-indicator.desktop
+	echo "Pensez à rajouter udisks-indicator aux applications au démarrage!"
 fi
 
 # Notification

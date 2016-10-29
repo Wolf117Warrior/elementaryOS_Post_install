@@ -79,6 +79,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Redshift" "Installe redshift pour adapter la luminosité de l'écran en fonction du jour." \
 	FALSE "udisks-indicator" "Installe udisks-indicator, indicator pour indiquer l'utilisation des disques." \
 	FALSE "LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
+	FALSE "Master PDF Editor" "Éditeur de fichiers PDF." \
 	FALSE "Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
 	FALSE "Extra Multimedia Codecs" "Installation des codecs multimédia additionnels." \
 	FALSE "Support DVD encrypté" "Installation du support pour lire les DVDs encryptés." \
@@ -398,6 +399,18 @@ then
 	sudo add-apt-repository -y ppa:shimmerproject/daily
 	sudo apt -y update
 	sudo apt -y install libreoffice libreoffice-style-elementary
+fi
+
+# Installer Master PDF Editor
+if [[ $GUI == *"Master PDF Editor"* ]]
+then
+	clear
+	echo "Installation de Master PDF Editor..."
+	echo ""
+	notify-send -i applications-office "elementary OS Post Install" "Installation de Master PDF Editor" -t 5000
+	cd /tmp
+	wget -c http://get.code-industry.net/public/master-pdf-editor-3.7.10_amd64.deb
+	sudo dpkg -i master-pdf-editor-3.7.10_amd64.deb
 fi
 
 # Installer elementary Tweaks

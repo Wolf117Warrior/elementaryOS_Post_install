@@ -88,6 +88,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Clementine" "Installe Clementine, lecteur de musique." \
 	FALSE "Lollypop" "Installe lollypop, lecteur de musique." \
 	FALSE "Tomahawk" "Installe tomahawk, lecteur de musique." \
+	FALSE "eRadio" "Installe eradio, l'application de streaming radio." \
 	FALSE "Spotify" "Installe Spotify, l'application de service streaming de musique." \
 	FALSE "Google Chrome" "Installe Google Chrome, le navigateur Google." \
 	FALSE "Chromium" "Installe Chromium, la version opensource de Chrome." \
@@ -878,6 +879,18 @@ then
 	wget https://raw.githubusercontent.com/SergKolo/udisks-indicator/master/udisks-indicator.desktop
 	sudo mv udisks-indicator.desktop /usr/share/applications/
 	echo "Pensez à rajouter udisks-indicator aux applications au démarrage!"
+fi
+
+# Installer eradio
+if [[ $GUI == *"eRadio"* ]]
+then
+	clear
+	echo "Installation de eradio..."
+	echo ""
+	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation d'eRadio'" -t 5000
+	sudo add-apt-repository -y ppa:dreamdev/daily
+	sudo apt-get -y update
+	sudo apt-get -y install eradio
 fi
 
 # Notification

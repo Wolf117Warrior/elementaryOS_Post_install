@@ -180,8 +180,8 @@ then
 	echo "Installation du Support pour DVD encrypté..."
 	echo ""
 	notify-send -i media-dvd "elementary OS Post Install" "Installation de libdvdread4" -t 5000
-	sudo apt -y install libdvdread4
-	sudo /usr/share/doc/libdvdread4/install-css.sh
+	sudo apt -y install libdvd-pkg
+	sudo dpkg-reconfigure libdvd-pkg
 fi
 
 # Installer le Support pour les formats d'archivage
@@ -569,6 +569,7 @@ then
 	echo "Installation de dropbox..."
 	echo ""
 	notify-send -i applications-internet "elementary OS Post Install" "Installation de Dropbox avec icones monochromes" -t 5000
+	sudo apt -y install git
 	git clone https://github.com/zant95/elementary-dropbox /tmp/elementary-dropbox
 	bash /tmp/elementary-dropbox/install.sh -y
 fi
@@ -580,6 +581,7 @@ then
 	echo "Installation de MEGASync..."
 	echo ""
 	notify-send -i applications-internet "elementary OS Post Install" "Installation de MeGA avec icones monochromes" -t 5000
+	sudo apt -y install git
 	wget -q -O - https://mega.nz/linux/MEGAsync/xUbuntu_16.04/Release.key | sudo apt-key add -
 		wget -O /tmp/megasync-xUbuntu_16.04_amd64.deb https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/megasync-xUbuntu_16.04_amd64.deb
 		sudo dpkg -i /tmp/megasync-xUbuntu_16.04_amd64.deb

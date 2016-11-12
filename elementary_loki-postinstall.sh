@@ -888,7 +888,7 @@ then
 	echo "Installation de eradio..."
 	echo ""
 	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation d'eRadio'" -t 5000
-	sudo add-apt-repository -y ppa:dreamdev/daily
+	sudo add-apt-repository -y ppa:dreamdevel/stable
 	sudo apt-get -y update
 	sudo apt-get -y install eradio
 fi

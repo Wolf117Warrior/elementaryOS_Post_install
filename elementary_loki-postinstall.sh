@@ -760,7 +760,7 @@ then
 	notify-send -i display "elementary OS Post Install" "Installation du driver NVIDIA" -t 5000
 	sudo add-apt-repository -y ppa:graphics-drivers/ppa
 	sudo apt -y update
-	sudo apt -y install nvidia-settings nvidia-370
+	sudo apt -y install nvidia-settings nvidia-370 software-properties-gtk
 	echo "Pensez à rebooter..."
 	echo ""
 fi

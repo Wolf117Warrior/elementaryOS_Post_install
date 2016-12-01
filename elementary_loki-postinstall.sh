@@ -316,6 +316,7 @@ then
 	sudo add-apt-repository -y ppa:webupd8team/atom
 	sudo apt -y update
 	sudo apt -y install atom
+	apm install atom-beautify emmet file-icons git-control git-time-machine highlight-selected minimap minimap-find-and-replace minimap-highlight-selected pigments rest-client todo-show w3c-validation
 fi
 
 # Installer Sublime Text 3

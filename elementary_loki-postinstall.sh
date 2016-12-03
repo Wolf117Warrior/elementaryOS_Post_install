@@ -770,7 +770,7 @@ then
 	wget https://dist.torproject.org/tormessenger/0.3.0b1/tor-messenger-linux64-0.3.0b1_en-US.tar.xz
 	tar xvf tor-messenger-*.tar.xz
 	sudo mv tor-messenger/ /opt/
-	/opt/tor-messenger/Browser/start-tor-messenger &&
+	/opt/tor-messenger/Browser/start-tor-messenger &
 fi
 
 # Installer elementary-wallpapers-extra

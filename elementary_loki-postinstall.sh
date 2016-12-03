@@ -88,6 +88,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Clementine" "Installe Clementine, lecteur de musique." \
 	FALSE "Lollypop" "Installe lollypop, lecteur de musique." \
 	FALSE "Tomahawk" "Installe tomahawk, lecteur de musique." \
+	FALSE "Harmony" "Installe harmony, lecteur de musique en ligne" \
 	FALSE "eRadio" "Installe eradio, l'application de streaming radio." \
 	FALSE "Spotify" "Installe Spotify, l'application de service streaming de musique." \
 	FALSE "Google Chrome" "Installe Google Chrome, le navigateur Google." \
@@ -104,6 +105,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Telegram" "Installe Telegram, version desktop de l'application SMS." \
 	FALSE "Slack" "Installe Slack, version desktop de l'application slack" \
 	FALSE "Polari" "Installe le client IRC Polari." \
+	FALSE "Tor messenger" "Installe le client de messagerie anonymisée" \
 	FALSE "Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
 	FALSE "Inkscape" "Installe le logiciel de vectorisation Inkscape." \
 	FALSE "Darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
@@ -500,6 +502,20 @@ then
 	sudo apt -y install tomahawk
 fi
 
+# Installer Harmony
+if [[ $GUI == *"Harmony"* ]]
+then
+	clear
+	echo "Installation de Harmony..."
+	echo ""
+	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation de Harmony" -t 5000
+	cd /tmp
+	wget https://github.com/vincelwt/harmony/releases/download/v0.4.2/harmony-0.4.2-amd64.deb
+	sudo apt install libappindicator1 libindicator7
+	sudo dpkg -i harmony*.deb
+	sudo apt -yf install
+fi
+
 # Installer Clementine
 if [[ $GUI == *"Clementine"* ]]
 then
@@ -740,6 +756,21 @@ then
 	echo ""
 	sudo apt -y update
 	sudo apt -y install polari
+fi
+
+# Installer Tor Messenger
+if [[ $GUI == *"Tor Messenger"* ]]
+then
+	clear
+	echo "Installation de Tor Messenger..."
+	echo ""
+	notify-send -i applications-chat "elementary OS Post Install" "Installation de Tor Messenger" -t 5000
+	notify-send -i applications-chat "Important" " la commande pour lancer Tor Messenger est /opt/tor-messenger/Browser/start-tor-messenger" -t 60000
+	cd /tmp
+	wget https://dist.torproject.org/tormessenger/0.3.0b1/tor-messenger-linux64-0.3.0b1_en-US.tar.xz
+	tar xvf tor-messenger-*.tar.xz
+	sudo mv tor-messenger/ /opt/
+	/opt/tor-messenger/Browser/start-tor-messenger &&
 fi
 
 # Installer elementary-wallpapers-extra

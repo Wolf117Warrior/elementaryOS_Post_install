@@ -117,6 +117,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "FlightGear" "Installe FlightGear, le simulateur de vol OpenSource." \
 	FALSE "Unvanquished" "Installe Unvanquished, jeux FPS contre des Aliens." \
 	FALSE "War Thunder" "Installe War Thunder, simulateur de chars et avions de combat en ligne (64bits seulement!)" \
+	FALSE "oh-my-zsh" "Installe zsh et oh-my-zsh puis le met en place par défaut à la place de bash" \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
 	FALSE "Nettoyage de prinptemps" "Retire les paquets qui ne sont plus nécessaires." \
 	--separator=', ');
@@ -765,7 +766,6 @@ then
 	echo "Installation de Tor Messenger..."
 	echo ""
 	notify-send -i applications-chat "elementary OS Post Install" "Installation de Tor Messenger" -t 5000
-	notify-send -i applications-chat "Important" " la commande pour lancer Tor Messenger est /opt/tor-messenger/Browser/start-tor-messenger" -t 60000
 	cd /tmp
 	wget -O /tmp/tor-messenger-linux64-0.3.0b1_en-US.tar.xz https://dist.torproject.org/tormessenger/0.3.0b1/tor-messenger-linux64-0.3.0b1_en-US.tar.xz
 	tar xvf tor-messenger-*.tar.xz
@@ -866,7 +866,7 @@ then
 fi
 
 # Installer Pushbullet
-if [[ $GUI == *"Pushbullet"* ]]
+if [[ $GUI == *"Installation de Pushbullet"* ]]
 then
 	clear
 	echo "Installation de l'indicator Pushbullet..."
@@ -876,6 +876,19 @@ then
     notify-send -i applications-system "Installez Pushbullet sur vos appareil Android !" -t 5000
 	sudo apt-get -y update
 	sudo apt-get -y install pushbullet-indicator
+fi
+
+# Installer zsh
+if [[ $GUI == *"Installation d'oh-my-zsh"* ]]
+then
+	clear
+	echo "Installation de zsh et d'oh-my-zsh..."
+	echo ""
+	notify-send -i package "elementary OS Post Install" "Installation de zsh et d'oh-my-zsh" -t 5000
+	sudo apt -y install zsh git
+	cd /tmp
+	curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+	chsh -s /bin/zsh
 fi
 
 # Fix Broken Packages Action

@@ -767,7 +767,7 @@ then
 	notify-send -i applications-chat "elementary OS Post Install" "Installation de Tor Messenger" -t 5000
 	notify-send -i applications-chat "Important" " la commande pour lancer Tor Messenger est /opt/tor-messenger/Browser/start-tor-messenger" -t 60000
 	cd /tmp
-	wget https://dist.torproject.org/tormessenger/0.3.0b1/tor-messenger-linux64-0.3.0b1_en-US.tar.xz
+	wget -O /tmp/tor-messenger-linux64-0.3.0b1_en-US.tar.xz https://dist.torproject.org/tormessenger/0.3.0b1/tor-messenger-linux64-0.3.0b1_en-US.tar.xz
 	tar xvf tor-messenger-*.tar.xz
 	sudo mv tor-messenger/ /opt/
 	/opt/tor-messenger/Browser/start-tor-messenger &

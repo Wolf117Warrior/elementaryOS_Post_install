@@ -120,7 +120,6 @@ GUI=$(zenity --list --checklist \
 	FALSE "oh-my-zsh" "Installe zsh et oh-my-zsh puis le met en place par défaut à la place de bash" \
 	FALSE "Gufw" "Installe le logiciel de parefeu Gufw." \
 	FALSE "ClamTK" "Installe l'antivirus ClamAV et son GUI ClamTK." \
-	FALSE "Comodo Antivirus" "Installe l'antivirus de Comodo" \
 	FALSE "Keepass X" "Installe Keepass X pour le stockage et cryptage de vos mots de passe." \
 	FALSE "Fern" "Installe Fern pour cracker les mots de passe wifi" \
 	FALSE "Réparer les paquets cassés" "Vas réparer les paquets cassés." \
@@ -955,18 +954,6 @@ then
 	sudo apt -y install clamtk
 fi
 
-# Installer Comodo Antivirus
-if [[ $GUI == *"Comodo Antivirus"* ]]
-then
-	clear
-	echo "Installation de Comodo Antivirus..."
-	echo ""
-  	notify-send -i edit-find "elementary OS Post Install" "Installation de Comodo Antivirus" -t 5000
-	cd /tmp
-	wget http://download.comodo.com/cis/download/installs/linux/cav-linux_x64.deb
-	sudo dpkg -i --force-depends cav-linux_x64.deb
-fi
-
 # Installer Gufw
 if [[ $GUI == *"Gufw"* ]]
 then
@@ -986,7 +973,7 @@ then
 	notify-send -i network-vpn "elementary OS Post Install" "Installation de Keepass X" -t 5000
 	sudo add-apt-repository -y ppa:eugenesan/ppa
 	sudo apt -y update
-	sudo apt -y install gufw
+	sudo apt -y install keepassx
 fi
 
 # Installer Fern
@@ -996,7 +983,7 @@ then
 	echo "Installation de Fern..."
 	echo ""
 	notify-send -i network-vpn "elementary OS Post Install" "Installation de Fern Wifi Cracker" -t 5000
-	sudo apt-get install macchanger aircrack-ng subversion python-qt4 python-scapy xterm
+	sudo apt -y install macchanger aircrack-ng subversion python-qt4 python-scapy xterm
 	cd /tmp
 	wget https://github.com/savio-code/downloads/raw/master/Fern_Open_Source_2.2_all.deb
 	sudo dpkg -i --force-depends Fern_Open_Source_2.2_all.deb

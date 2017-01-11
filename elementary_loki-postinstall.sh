@@ -79,6 +79,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Redshift" "Installe redshift pour adapter la luminosité de l'écran en fonction du jour." \
 	FALSE "udisks-indicator" "Installe udisks-indicator, indicator pour indiquer l'utilisation des disques." \
 	FALSE "LibreOffice" "Installe LibreOffice, la suite bureautique libre." \
+	FALSE "WPS Office" "Installe WPS Office, une autre suite bureautique compatible M$ Office." \
 	FALSE "Master PDF Editor" "Éditeur de fichiers PDF." \
 	FALSE "Ubuntu Restricted Extras" "Installation des paquets sous copyrights (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
 	FALSE "Extra Multimedia Codecs" "Installation des codecs multimédia additionnels." \
@@ -106,6 +107,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Slack" "Installe Slack, version desktop de l'application slack" \
 	FALSE "Polari" "Installe le client IRC Polari." \
 	FALSE "Tor messenger" "Installe le client de messagerie anonymisée" \
+	FALSE "Discord" "Installe le client de messagerie pour gamers" \
 	FALSE "Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
 	FALSE "Inkscape" "Installe le logiciel de vectorisation Inkscape." \
 	FALSE "Darktable" "Installe darktable, logiciel de traitement de fichier RAW." \
@@ -988,6 +990,32 @@ then
 	wget https://github.com/savio-code/downloads/raw/master/Fern_Open_Source_2.2_all.deb
 	sudo dpkg -i --force-depends Fern_Open_Source_2.2_all.deb
 	sudo /opt/Fern-Wifi-Cracker/execute.py
+fi
+
+# Installer WPAS Office
+if [[ $GUI == *"WPS Office"* ]]
+then
+	clear
+	echo "Installation de WPS Office..."
+	echo ""
+	notify-send -i applications-office "elementary OS Post Install" "Installation de Fern Wifi Cracker" -t 5000
+	cd /tmp
+	wget http://kdl.cc.ksosoft.com/wps-community/download/a21/wps-office_10.1.0.5672~a21_i386.deb
+	wget http://kdl.cc.ksosoft.com/wps-community/download/fonts/wps-office-fonts_1.0_all.deb
+	sudo dpkg -i --force-depends wps-office_10.1.0.5672~a21_i386.deb
+	sudo dpkg -i --force-depends wps-office-fonts_1.0_all.deb
+fi
+
+# Installer Discord
+if [[ $GUI == *"Discord"* ]]
+then
+	clear
+	echo "Installation de Discord..."
+	echo ""
+	notify-send -i applications-chat "elementary OS Post Install" "Installation de Fern Wifi Cracker" -t 5000
+	cd /tmp
+	wget https://dl.discordapp.net/apps/linux/0.0.1/discord-0.0.1.deb
+	sudo dpkg -i --force-depends discord-0.0.1.deb
 fi
 
 # Notification

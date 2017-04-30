@@ -798,7 +798,7 @@ then
 	notify-send -i display "elementary OS Post Install" "Installation du driver NVIDIA" -t 5000
 	sudo add-apt-repository -y ppa:graphics-drivers/ppa
 	sudo apt -y update
-	sudo apt -y install nvidia-settings nvidia-378 software-properties-gtk
+	sudo apt -y install nvidia-settings nvidia-381 software-properties-gtk
 	echo "Pensez à rebooter..."
 	echo ""
 fi

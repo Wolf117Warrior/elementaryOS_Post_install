@@ -73,7 +73,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Sublime Text 3" "Installe Sublime Text 3, un puissant éditeur de texte." \
 	FALSE "Deja Dup" "Installe Deja Dup,  utilitaire pour sauvegarde." \
 	FALSE "ADB" "Installe ADB, outil pour téléphones sous Android." \
-  FALSE "Pushbullet" "Installe l'indicator Pushbullet (interactions entre PC et vos appareils Android)." \
+        FALSE "Pushbullet" "Installe l'indicator Pushbullet (interactions entre PC et vos appareils Android)." \
 	FALSE "Time Shift" "Installe timeshift pour les restaurations système." \
 	FALSE "Aptik" "Installe aptik pour sauvegardes de paquets, thèmes,icones..." \
 	FALSE "Redshift" "Installe redshift pour adapter la luminosité de l'écran en fonction du jour." \
@@ -798,7 +798,7 @@ then
 	notify-send -i display "elementary OS Post Install" "Installation du driver NVIDIA" -t 5000
 	sudo add-apt-repository -y ppa:graphics-drivers/ppa
 	sudo apt -y update
-	sudo apt -y install nvidia-settings nvidia-381 software-properties-gtk
+	sudo apt -y install nvidia-settings nvidia-384 software-properties-gtk
 	echo "Pensez à rebooter..."
 	echo ""
 fi

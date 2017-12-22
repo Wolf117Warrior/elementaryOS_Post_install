@@ -840,8 +840,8 @@ then
 	notify-send -i applications-chat "elementary OS Post Install" "Installation de Skype" -t 5000
 	if [[ $(uname -m) == "x86_64" ]]
 	then
-		wget -O /tmp/skypeforlinux-64-alpha.deb https://go.skype.com/skypeforlinux-64-alpha.deb
-		sudo dpkg -i /tmp/skypeforlinux-64-alpha.deb
+		wget -O /tmp/skypeforlinux-64-alpha.deb https://go.skype.com/skypeforlinux-64.deb
+		sudo dpkg -i /tmp/skypeforlinux-64.deb
 	fi
 fi
 

@@ -1,7 +1,9 @@
-# Script Post Installation pour elementary OS 0.3 Freya et 0.4 Loki (beta)
+# /!\ Attention le script n'est pas encore fonctionnel. /!\
+
+# Script Post Installation pour elementary OS 5.0 Juno
 
 Ce script a pour but de rendre facile l'installation d'applications tierces juste après une installation
-d'elementary OS 0.4 Loki.
+d'elementary OS 5.0 Juno.
 
 ![Screenshot](elementary-postinstall.png)
 
@@ -23,3 +25,4 @@ wget -O /tmp/elementary_loki-postinstall.sh https://raw.githubusercontent.com/De
 Script largement inspiré par celui ci:
 https://github.com/ylrxeidx/elementary-script
 https://github.com/btd1337/elementary-script
+https://github.com/Devil505/elementaryos-postinstall

@@ -50,7 +50,7 @@ GUI=$(zenity --list --checklist \
 	--height 400 \
 	--width 900 \
 	--title="Script de Post-Installation elementary OS 5.0 Juno" \
-	--text "Sélectionner une ou plusieurs action(s) à éxécuter." \
+	--text "Sélectionner les applications et les actions à éxécuter." \
 	--column=Cochez \
 	--column=Titres \
 	--column=Description \
@@ -75,21 +75,17 @@ GUI=$(zenity --list --checklist \
 	FALSE "MEGA" "MEGASync pour le cloud de MEGA avec les icones monochromes elementary." \
 	FALSE "VGrive" " L'application pour le cloud Google Drive et designé pour elementary OS." \
 	FALSE "Tootle" " L'application elementary OS pour ce connecter sur Mastodon." \
-	FALSE "InSync" " L'application pour le cloud Google Drive et designé pour elementary OS." \
-	FALSE "Pcloud" " L'application pour le cloud Google Drive et designé pour elementary OS." \
+	FALSE "InSync" " L'application pour le cloud Google Drive et OneDrive." \
 	FALSE "Communication" "========================================================"  \
-	FALSE "Skype" "Skype, La messagerie instantanée de Microsoft." \
+	FALSE "Skype" "Skype, La messagerie instantanée de Microsoft. !! Snap est requis" \
 	FALSE "Telegram" "La messagerie instantané sécurisé." \
-	FALSE "Slack" "slack" \
+	FALSE "Slack" "La messagerie instantanée collaborative. !! Snap est requis" \
 	FALSE "Polari" "Le client IRC de Gnome." \
-	FALSE "Tor messenger" "Le client de messagerie anonymisée" \
-	FALSE "Riot" "La version desktop de du web du meme nom" \
+	FALSE "Riot" "La version desktop de l'application du web du meme nom pour ce connecter au réseau Matrix.org.  !! flatpak est requis" \
 	FALSE "Bureautique" "========================================================"  \
 	FALSE "LibreOffice" "La suite bureautique libre." \
 	FALSE "OnlyOffice" "Une autre suite bureautique compatible M$ Office." \
-	FALSE "WPS Office" "Une autre suite bureautique compatible M$ Office." \
-	FALSE "Master PDF Editor" "Éditeur de fichiers PDF." \
-	FALSE "BlueMail" "Installe Nylas N1, un superbe client mail." \
+	FALSE "BlueMail" "Installe Nylas N1, un superbe client mail. !! Snap est requis" \
 	FALSE "Thunderbird" "Installe Nylas N1, un superbe client mail." \
 	FALSE "MailSpring" "Installe Nylas N1, un superbe client mail." \
 	FALSE "Multimédia" "========================================================"  \
@@ -99,12 +95,9 @@ GUI=$(zenity --list --checklist \
 	FALSE "VLC" "Installe VLC, le lecteur multimédia." \
 	FALSE "Vocal" "Installe vocal, application de podcasts." \
 	FALSE "Lollypop" "Installe lollypop, lecteur de musique." \
-	FALSE "Tomahawk" "Installe tomahawk, lecteur de musique." \
 	FALSE "Harmony" "Installe harmony, lecteur de musique en ligne" \
 	FALSE "eRadio" "Installe eradio, l'application de streaming radio." \
 	FALSE "Spotify" "Installe Spotify, l'application de service streaming de musique." \
-	FALSE "Nuvola" "l'application de service streaming de musique." \
-	FALSE "MusicBrainz" "l'application de service streaming de musique." \
 	FALSE "Infographie" "========================================================"  \
 	FALSE "Gimp et GMIC" "Installe le logiciel de retouche GIMP et son extension GMIC." \
 	FALSE "Inkscape" "Installe le logiciel de vectorisation Inkscape." \
@@ -149,6 +142,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Kernel Xenial BFS/BFQ" "Installe le Kernel Xenial LTS optimisé BFQ/BFS scheduler." \
 	FALSE "Driver NVIDIA" "Installe le driver NVIDIA (ppa graphics-drivers) pour GTX 7XX et +." \
 	FALSE "Oibaf" "Installe le PPA Oibaf pour les versions git des drivers graphiques libres (xorg-server-nouveau/intel/ati)" \
+	FALSE "Mesa" "Installe le PPA Mesa pour les drivers graphiques Mesa." \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
 	FALSE "Boot Repair" "Installe boot-repair, réparateur de GRUB." \
 	FALSE "Neofetch" "Le remplacant de Screenfetch" \
@@ -157,11 +151,11 @@ GUI=$(zenity --list --checklist \
 	FALSE "Nettoyage de prinptemps" "Retire les paquets qui ne sont plus nécessaires." \
 	--separator=', ');
 
-##################
+############################################################################################################
 #
 #  Premières actions
 #
-##################
+############################################################################################################
 
 # Mise à jour du Système
 if [[ $GUI == *"Mise à jour du Système"* ]]
@@ -174,17 +168,13 @@ then
 	sudo apt -y upgrade
 fi
 
-
-
-
-
-##################
+############################################################################################################
 #
 #  INTERNET
 #
-##################
+############################################################################################################
 
-# Installer Google Chrome Action
+# Installer Google Chrome Action #
 if [[ $GUI == *"Google Chrome"* ]]
 then
 	clear
@@ -192,46 +182,95 @@ then
 	echo ""
   	notify-send -i web-browser "elementary OS Post Install" "Installation de Google Chrome" -t 5000
 	cd /tmp
-	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	sudo dpkg -i --force-depends google-chrome-stable_current_amd64.deb
+	sudo sh -c 'echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+	sudo apt-get update
+	sudo apt-get install google-chrome-stable
 fi
 
-# Installer Chromium
+# Installer Chromium #
 if [[ $GUI == *"Chromium"* ]]
 then
 	clear
 	echo "Installation de Chromium..."
 	echo ""
 	notify-send -i web-browser "elementary OS Post Install" "Installation de Chromium" -t 5000
-	sudo apt -y install chromium-browser
+	sudo apt -y install chromium-browser chromium-browser-l10n
 fi
 
-# Installer Firefox
+# Installer Firefox #
 if [[ $GUI == *"Firefox"* ]]
 then
 	clear
 	echo "Installation de Firefox..."
 	echo ""
 	notify-send -i web-browser "elementary OS Post Install" "Installation de Firefox" -t 5000
-	sudo apt -y install firefox
+	sudo apt -y install firefox firefox-locale-fr
 fi
 
-# Installer Vivaldi
+# Installer Vivaldi #
 if [[ $GUI == *"Vivaldi"* ]]
 then
 	clear
 	echo "Installation de Vivaldi..."
 	echo ""
 	notify-send -i web-browser "elementary OS Post Install" "Installation de Vivaldi" -t 5000
-	if [[ $(uname -m) == "i686" ]]
-	then
-		wget -O /tmp/vivaldi_TP4.1.0.219.50-1_i386.deb https://vivaldi.com/download/vivaldi_TP4.1.0.219.50-1_i386.deb
-		sudo dpkg -i /tmp/vivaldi_TP4.1.0.219.50-1_i386.deb
-	elif [[ $(uname -m) == "x86_64" ]]
-	then
-		wget -O /tmp/vivaldi_TP4.1.0.219.50-1_amd64.deb https://vivaldi.com/download/vivaldi_TP4.1.0.219.50-1_amd64.deb
-		sudo dpkg -i /tmp/vivaldi_TP4.1.0.219.50-1_amd64.deb
-	fi
+	sudo sh -c 'echo "deb http://repo.vivaldi.com/stable/deb/ stable main" > /etc/apt/sources.list.d/vivaldi_browser.list'
+	wget -q -O - https://repo.vivaldi.com/stable/linux_signing_key.pub | sudo apt-key add -
+	sudo apt -y update
+	sudo apt -y install vivaldi-stable
+fi
+
+# Installer Brave #
+if [[ $GUI == *"Brave"* ]]
+then
+	clear
+	echo "Installation de Brave..."
+	echo ""
+	notify-send -i web-browser "elementary OS Post Install" "Installation de Brave" -t 5000
+	sudo apt -y install apt-transport-https curl
+	curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+	source /etc/os-release
+	echo "deb https://brave-browser-apt-release.s3.brave.com/ bionic main" | sudo tee /etc/apt/sources.list.d/brave-browser.list
+	sudo apt -y update
+	sudo apt -y install brave-browser
+	
+fi
+
+# Installer Min #
+if [[ $GUI == *"Min"* ]]
+then
+	clear
+	echo "Installation de Min..."
+	notify-send -i web-browser "elementary OS Post Install" "Installation de Min" -t 5000
+	cd /tmp
+	wget https://github.com/minbrowser/min/releases/download/v1.11.1/min_1.11.1_amd64.deb
+	sudo dpkg -i min_1.11.1_amd64.deb
+fi
+
+# Installer Min #
+if [[ $GUI == *"Opera"* ]]
+then
+	clear
+	echo "Installation de Opera..."
+	notify-send -i web-browser "elementary OS Post Install" "Installation de Opera" -t 5000
+	sudo sh -c 'deb https://deb.opera.com/opera-stable/ stable non-free" > /etc/apt/sources.list.d/opera_browser.list'
+	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A5C7FF72
+	sudo apt-get update
+	sudo apt install -y opera-stable
+fi
+
+# Installer Iridium browser #
+if [[ $GUI == *"Iridium browser"* ]]
+then
+	clear
+	echo "Installation de Iridium browser..."
+	notify-send -i web-browser "elementary OS Post Install" "Installation de Iridium browser" -t 5000
+	cd /tmp
+	wget -qO - https://downloads.iridiumbrowser.de/ubuntu/iridium-release-sign-01.pub|sudo apt-key add -
+	sudo sh -c 'deb https://downloads.iridiumbrowser.de/deb/ stable main" > /etc/apt/sources.list.d/iridium_browser.list'
+	sudo apt-get update
+	sudo apt install -y iridium-browser
 fi
 
 # Installer FeedReader
@@ -264,26 +303,59 @@ then
 	clear
 	echo "Installation de MEGASync..."
 	echo ""
-	notify-send -i applications-internet "elementary OS Post Install" "Installation de MeGA avec icones monochromes" -t 5000
-	sudo apt -y install git
-	wget -q -O - https://mega.nz/linux/MEGAsync/xUbuntu_16.04/Release.key | sudo apt-key add -
-		wget -O /tmp/megasync-xUbuntu_16.04_amd64.deb https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/megasync-xUbuntu_16.04_amd64.deb
-		sudo dpkg -i /tmp/megasync-xUbuntu_16.04_amd64.deb
-    git clone https://github.com/cybre/megasync-elementary /tmp/megasync-elementary
-    bash /tmp/megasync-elementary/install.sh
+	notify-send -i applications-internet "elementary OS Post Install" "Installation de MeGA" -t 5000
+	echo 'deb https://mega.nz/linux/MEGAsync/xUbuntu_18.04/ ./' > /etc/apt/sources.list.d/megasync.list
+	cd /tmp
+	wget -q -O- https://mega.nz/linux/MEGAsync/xUbuntu_18.04/Release.key | sudo apt-key add -
+	sudo apt update
+	sudo apt -y install megasync
 fi
 
-# Installer Grive 2
-if [[ $GUI == *"Grive 2"* ]]
+# Installer InSync
+if [[ $GUI == *"InSync"* ]]
 then
 	clear
-	echo "Installation de Grive 2..."
+	echo "Installation de InSync..."
 	echo ""
-	notify-send -i applications-internet  "elementary OS Post Install" "Installation de Grive 2" -t 5000
-	sudo add-apt-repository -y ppa:nilarimogard/webupd8
-  sudo apt -y update
-  sudo apt -y install grive2
+	notify-send -i applications-internet "elementary OS Post Install" "Installation de InSync" -t 5000
+	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
+	echo 'deb http://apt.insync.io/ubuntu bionic non-free contrib' > /etc/apt/sources.list.d/insync.list
+	sudo apt update
+	sudo apt -y install insync
 fi
+
+# Installer Nextcloud #
+if [[ $GUI == *"Nextcloud"* ]]
+then
+	clear
+	echo "Installation de Nextcloud ..."
+	echo ""
+	notify-send -i applications-internet  "elementary OS Post Install" "Installation de Nextcloud " -t 5000
+	sudo add-apt-repository -y ppa:nextcloud-devs/client
+	sudo apt update
+    sudo apt -y install nextcloud-client
+fi
+
+# Installer Google Drive #
+if [[ $GUI == *"VGrive"* ]]
+then
+	clear
+	echo "Installation de VGrive ..."
+	echo ""
+	notify-send -i applications-internet  "elementary OS Post Install" "Installation de VGrive " -t 5000
+    sudo apt -y install com.github.bcedu.vgrive
+fi
+
+
+# Installer tootle #
+if [[ $GUI == *"Tootle"* ]]
+then
+	clear
+	echo "Installation de Tootle ..."
+	echo ""
+	notify-send -i applications-internet  "elementary OS Post Install" "Installation de Tootle " -t 5000
+    sudo apt -y install com.github.bleakgrey.tootle
+
 
 ##################
 #
@@ -311,10 +383,20 @@ then
 	clear
 	echo "Installation de slack..."
 	echo ""
-	notify-send -i applications-chat "elementary OS Post Install" "Installation de SLack" -t 5000
-	cd /tmp
-	wget https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-2.1.2-amd64.deb
-	sudo dpkg -i --force-depends slack-desktop-2.1.2-amd64.deb
+	notify-send -i applications-chat "elementary OS Post Install" "Installation de Slack" -t 5000
+	sudo snap install slack --classic
+
+fi
+
+# Installer Skype
+if [[ $GUI == *"Skype"* ]]
+then
+	clear
+	echo "Installation de Skype..."
+	echo ""
+	notify-send -i applications-chat "elementary OS Post Install" "Installation de Skype" -t 5000
+	sudo snap install skype --classic
+
 fi
 
 # Installer Polari
@@ -323,22 +405,16 @@ then
 	clear
 	echo "Installation de Polari..."
 	echo ""
-	sudo apt -y update
 	sudo apt -y install polari
 fi
 
-# Installer Tor Messenger
-if [[ $GUI == *"Tor Messenger"* ]]
+# Installer Riot
+if [[ $GUI == *"Riot"* ]]
 then
 	clear
-	echo "Installation de Tor Messenger..."
+	echo "Installation de Riot..."
 	echo ""
-	notify-send -i applications-chat "elementary OS Post Install" "Installation de Tor Messenger" -t 5000
-	cd /tmp
-	wget -O /tmp/tor-messenger-linux64-0.3.0b1_en-US.tar.xz https://dist.torproject.org/tormessenger/0.3.0b1/tor-messenger-linux64-0.3.0b1_en-US.tar.xz
-	tar xvf tor-messenger-*.tar.xz
-	sudo mv tor-messenger/ /opt/
-	/opt/tor-messenger/Browser/start-tor-messenger &
+	flatpak install flathub im.riot.Riot -y
 fi
 
 ##################
@@ -347,7 +423,7 @@ fi
 #
 ##################
 
- Installer LibreOffice
+# Installer LibreOffice
 if [[ $GUI == *"LibreOffice"* ]]
 then
 	clear
@@ -355,41 +431,48 @@ then
 	echo ""
 	notify-send -i applications-office "elementary OS Post Install" "Installation de Libreoffice" -t 5000
 	sudo add-apt-repository -y ppa:libreoffice/ppa
-	sudo add-apt-repository -y ppa:shimmerproject/daily
 	sudo apt -y update
-	sudo apt -y install libreoffice libreoffice-style-elementary
+	sudo apt -y install libreoffice libreoffice-l10n-fr
 fi
 
-# Installer Nylas N1
-if [[ $GUI == *"Nylas N1"* ]]
+# Installer OnlyOffice
+if [[ $GUI == *"OnlyOffice"* ]]
 then
 	clear
-	echo "Installation de Nylas N1..."
+	echo "Installation de OnlyOffice..."
 	echo ""
-	notify-send -i internet-mail "elementary OS Post Install" "Installation de Nylas N1" -t 5000
-	if [[ $(uname -m) == "i686" ]]
-	then
-		wget -O /tmp/N1.deb https://edgehill.nylas.com/download?platform=linux-deb
-		sudo dpkg -i /tmp/N1.deb
-	elif [[ $(uname -m) == "x86_64" ]]
-	then
-		wget -O /tmp/N1.deb https://edgehill.nylas.com/download?platform=linux-deb
-		sudo dpkg -i /tmp/N1.deb
-	fi
+	notify-send -i applications-office "elementary OS Post Install" "Installation de OnlyOffice" -t 5000
+	sudo snap install onlyoffice-desktopeditors
 fi
 
-# Installer WPAS Office
-if [[ $GUI == *"WPS Office"* ]]
+# Installer BlueMail
+if [[ $GUI == *"BlueMail"* ]]
 then
 	clear
-	echo "Installation de WPS Office..."
+	echo "Installation de BlueMail..."
 	echo ""
-	notify-send -i applications-office "elementary OS Post Install" "Installation de Fern Wifi Cracker" -t 5000
-	cd /tmp
-	wget http://kdl.cc.ksosoft.com/wps-community/download/a21/wps-office_10.1.0.5672~a21_i386.deb
-	wget http://kdl.cc.ksosoft.com/wps-community/download/fonts/wps-office-fonts_1.0_all.deb
-	sudo dpkg -i --force-depends wps-office_10.1.0.5672~a21_i386.deb
-	sudo dpkg -i --force-depends wps-office-fonts_1.0_all.deb
+	notify-send -i applications-office "elementary OS Post Install" "Installation de BlueMail" -t 5000
+	sudo snap install bluemail
+fi
+
+# Installer Thunderbird
+if [[ $GUI == *"Thunderbird"* ]]
+then
+	clear
+	echo "Installation de Thunderbird..."
+	echo ""
+	notify-send -i applications-office "elementary OS Post Install" "Installation de Thunderbird" -t 5000
+	sudo apt -y install thunderbird thunderbird-locale-fr
+fi
+
+# Installer Mailspring
+if [[ $GUI == *"Mailspring"* ]]
+then
+	clear
+	echo "Installation de Mailspring..."
+	echo ""
+	notify-send -i internet-mail "elementary OS Post Install" "Installation de Mailspring" -t 5000
+	sudo snap install mailspring
 fi
 
 ##################
@@ -476,18 +559,6 @@ then
 	sudo apt -y install lollypop
 fi
 
-# Installer Tomahawk
-if [[ $GUI == *"Tomahawk"* ]]
-then
-	clear
-	echo "Installation de Tomahawk..."
-	echo ""
-	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation de Tomahawk" -t 5000
-	sudo add-apt-repository -y ppa:tomahawk/ppa
-	sudo apt -y update
-	sudo apt -y install tomahawk
-fi
-
 # Installer Harmony
 if [[ $GUI == *"Harmony"* ]]
 then
@@ -500,18 +571,6 @@ then
 	sudo apt install libappindicator1 libindicator7
 	sudo dpkg -i harmony*.deb
 	sudo apt -yf install
-fi
-
-# Installer Clementine
-if [[ $GUI == *"Clementine"* ]]
-then
-	clear
-	echo "Installation de Clementine..."
-	echo ""
-	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation de Clementine" -t 5000
-	sudo add-apt-repository -y ppa:me-davidsansome/clementine
- 	sudo apt -y update
-  	sudo apt -y install clementine
 fi
 
 # Installer eradio
@@ -559,6 +618,18 @@ then
     python3 -m pip install --user --upgrade setuptools
 	python3 install.py rapid-photo-downloader-0.9.0a4.tar.gz
 	notify-send -i media-memory-sd "elementary OS Post Install" "L'executable de rapid-photo-downloader est dans .local/bin !!!" -t 5000
+fi
+
+# Installer Krita
+if [[ $GUI == *"Krita"* ]]
+then
+	clear
+	echo "Installation de Krita..."
+	echo ""
+	notify-send -i applications-graphics "elementary OS Post Install" "Installation de Krita" -t 5000
+    sudo add-apt-repository -y ppa:kritalime/ppa
+    sudo apt -y update
+    sudo apt -y install krita
 fi
 
 # Installer GIMP et GMIC
@@ -937,7 +1008,7 @@ then
 	sudo apt -y install boot-repair
 fi
 
- Installer TLP
+# Installer TLP
 if [[ $GUI == *"TLP"* ]]
 then
 	clear
@@ -974,6 +1045,19 @@ then
 	sudo add-apt-repository -y ppa:oibaf/graphics-drivers
 	sudo apt -y update
 	sudo apt -y dist-upgrade
+	echo "Pensez à rebooter..."
+	echo ""
+fi
+
+# Mesa
+if [[ $GUI == *"Mesa"* ]]
+then
+	clear
+	echo "Installation de Mesa..."
+	echo ""
+	notify-send -i display "elementary OS Post Install" "Installation des derniers drivers graphiques Mesa" -t 5000
+	sudo add-apt-repository ppa:ubuntu-x-swat/updates
+	sudo apt -y update
 	echo "Pensez à rebooter..."
 	echo ""
 fi

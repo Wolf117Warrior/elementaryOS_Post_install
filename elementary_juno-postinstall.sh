@@ -61,6 +61,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Snap" "Installation du paquet pour l'installation des applications du Snapstore de Canonical"  \
 	FALSE "Internet" "========================================================"  \
 	FALSE "Google Chrome" "Le navigateur Google." \
+	FALSE "Ephemeral" "Le navigateur incognito by Cassidy James Blaede." \
 	FALSE "Chromium" "La version opensource de Chrome." \
 	FALSE "Firefox" "Le navigateur libre et opensource." \
 	FALSE "Vivaldi" "Le nouveau navigateur issue de Opera 12." \
@@ -94,6 +95,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Support DVD encrypté" "Installation du support pour lire les DVDs encryptés." \
 	FALSE "VLC" "Installe VLC, le lecteur multimédia." \
 	FALSE "Vocal" "Installe vocal, application de podcasts." \
+	FALSE "Byte" "Le lecteur audio minimaliste." \
 	FALSE "Lollypop" "Installe lollypop, lecteur de musique." \
 	FALSE "Harmony" "Installe harmony, lecteur de musique en ligne" \
 	FALSE "eRadio" "Installe eradio, l'application de streaming radio." \
@@ -106,28 +108,25 @@ GUI=$(zenity --list --checklist \
 	FALSE "Krita" "logiciel de traitement de fichier RAW." \
 	FALSE "Rapid-photo-downloader" "Installe rapid-photo-downloader, logiciel d'importation de photos depuis supports externes." \
 	FALSE "Jeux vidéo" "========================================================"  \
-	FALSE "Discord" "Installe le client de messagerie pour gamers" \
+	FALSE "Discord" "Installe le client de messagerie pour gamers. !! Flatpak requis" \
 	FALSE "Steam" "Installe Steam, la plateforme en ligne de Jeux." \
 	FALSE "itch.io" "Installe itch.io, une autre plateforme de jeux." \
-	FALSE "0.A.D" "Installe 0.A.D, le jeu de stratégie en temps réel dans l'époque Antique." \
-	FALSE "Wesnoth" "Installe Bataille de Wesnoth, le jeu de stratégie au tour par tour" \
-	FALSE "FlightGear" "Installe FlightGear, le simulateur de vol OpenSource." \
-	FALSE "Unvanquished" "Installe Unvanquished, jeux FPS contre des Aliens." \
-	FALSE "War Thunder" "Installe War Thunder, simulateur de chars et avions de combat en ligne (64bits seulement!)" \
+	FALSE "GameHub" "Logiciel qui permet d'unifier les différents Store (Steam, GoG, Uplay, ...) et de faire tourner des jeux Windows" \
+	FALSE "Lutris" "Logiciel qui permet d'unifier plusieurs store et de faire tourner des jeux Windows" \
 	FALSE "Développement" "========================================================"  \
 	FALSE "Atom" "Installe Atom, un éditeur de texte du 21ème siècle." \
 	FALSE "Sublime Text 3" "Installe Sublime Text 3, un puissant éditeur de texte." \
 	FALSE "Utilitaires" "========================================================"  \
 	FALSE "Support formats d'archivage" "Installation du support pour formats d'archivage (zip,rar,7z...)." \
-	FALSE "GDebi" "Installe GDebi. Outil pour installer les fichiers .deb" \
+	FALSE "eddy" "Outil pour installer les fichiers .deb très facilement et inferface pour eOS" \
 	FALSE "Deja Dup" "Installe Deja Dup,  utilitaire pour sauvegarde." \
 	FALSE "ADB" "Installe ADB, outil pour téléphones sous Android." \
-	FALSE "Pushbullet" "Installe l'indicator Pushbullet (interactions entre PC et vos appareils Android)." \
 	FALSE "Time Shift" "Installe timeshift pour les restaurations système." \
 	FALSE "Aptik" "Installe aptik pour sauvegardes de paquets, thèmes,icones..." \
-	FALSE "Redshift" "Installe redshift pour adapter la luminosité de l'écran en fonction du jour." \
 	FALSE "udisks-indicator" "Installe udisks-indicator, indicator pour indiquer l'utilisation des disques." \
-	FALSE "Transmission" "Installe Transmission, le client bitorrent." \
+	FALSE "Torrential" "Le client torrent pour eOS." \
+	FALSE "Master PDF Editor" "Éditeur de fichiers PDF." \
+	FALSE "clipped" "Gestion de presse-papier." \
 	FALSE "Sécurités" "========================================================"  \
 	FALSE "ClamTK" "Installe l'antivirus ClamAV et son GUI ClamTK." \
 	FALSE "Keepass X" "Installe Keepass X pour le stockage et cryptage de vos mots de passe." \
@@ -137,6 +136,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "elementaryplus" "Installe le thème d'icones indispensable elementary plus." \
 	FALSE "Conky-Manager" "Application pour gérer les fichier de conf de conky" \
 	FALSE "Système" "========================================================"  \
+	FALSE "elementary-tweak" "Gestion de la personnalisation de eOS" \
 	FALSE "Accélération de la mémoire" "Installation de preload et de zRAM." \
 	FALSE "Memtest86+" "Installation de memtest86+ pour tester la RAM." \
 	FALSE "Kernel Xenial BFS/BFQ" "Installe le Kernel Xenial LTS optimisé BFQ/BFS scheduler." \
@@ -144,6 +144,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Oibaf" "Installe le PPA Oibaf pour les versions git des drivers graphiques libres (xorg-server-nouveau/intel/ati)" \
 	FALSE "Mesa" "Installe le PPA Mesa pour les drivers graphiques Mesa." \
 	FALSE "TLP" "Installe TLP pour augmenter la durée de vie de la batterie et réduire la surchauffe." \
+	FALSE "Optimizer" "Gérer vos ressources système ainsi que le nettoyage." \
 	FALSE "Boot Repair" "Installe boot-repair, réparateur de GRUB." \
 	FALSE "Neofetch" "Le remplacant de Screenfetch" \
 	FALSE "oh-my-zsh" "Installe zsh et oh-my-zsh puis le met en place par défaut à la place de bash" \
@@ -187,6 +188,17 @@ then
 	sudo apt-get update
 	sudo apt-get install google-chrome-stable
 fi
+
+# Installer Ephemeral #
+if [[ $GUI == *"Ephemeral"* ]]
+then
+	clear
+	echo "Installation de Ephemeral..."
+	echo ""
+	notify-send -i web-browser "elementary OS Post Install" "Installation de Ephemeral" -t 5000
+	sudo apt -y install com.github.cassidyjames.ephemeral
+fi
+
 
 # Installer Chromium #
 if [[ $GUI == *"Chromium"* ]]
@@ -248,7 +260,7 @@ then
 	sudo dpkg -i min_1.11.1_amd64.deb
 fi
 
-# Installer Min #
+# Installer Opera #
 if [[ $GUI == *"Opera"* ]]
 then
 	clear
@@ -493,6 +505,16 @@ then
 	sudo apt -y install spotify-client
 fi
 
+# Installer Byte
+if [[ $GUI == *"Byte"* ]]
+then
+	clear
+	echo "Installation de Byte..."
+	echo ""
+	notify-send -i multimedia-audio-player "elementary OS Post Install" "Installation de Byte" -t 5000
+	sudo apt -y install com.github.alainm23.byte
+fi
+
 # Installer VLC
 if [[ $GUI == *"VLC"* ]]
 then
@@ -668,8 +690,31 @@ then
 	echo "Installation de steam..."
 	echo ""
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Steam" -t 5000
-	sudo apt -y update
 	sudo apt -y install steam
+fi
+
+# Installer Lutris
+if [[ $GUI == *"Lutris"* ]]
+then
+	clear
+	echo "Installation de Lutris..."
+	echo ""
+	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Lutris" -t 5000
+	sudo add-apt-repository ppa:lutris-team/lutris -y
+	sudo apt -y update
+	sudo apt -y install lutris
+fi
+
+# Installer GameHub
+if [[ $GUI == *"GameHub"* ]]
+then
+	clear
+	echo "Installation de GameHub..."
+	echo ""
+	notify-send -i applications-arcade "elementary OS Post Install" "Installation de GameHub" -t 5000
+	sudo add-apt-repository ppa:tkashkin/gamehub -y
+	sudo apt -y update
+	sudo apt -y install com.github.tkashkin.gamehub
 fi
 
 # Installer icth.io
@@ -679,78 +724,14 @@ then
 	echo "Installation d'itch.io..."
 	echo ""
 	notify-send -i applications-arcade "elementary OS Post Install" "Installation d'itch.io" -t 5000
+	
 	wget -q -O - https://dl.itch.ovh/archive.key | sudo apt-key add -
 	sudo sh -c  'echo "deb https://dl.bintray.com/itchio/deb xenial main" >> /etc/apt/sources.list.d/itchio.list'
 	sudo apt -y update
 	sudo apt -y install itch
 fi
 
-# Installer 0.A.D
-if [[ $GUI == *"0.A.D"* ]]
-then
-	clear
-	echo "Installation de playonlinux..."
-	echo ""
-	notify-send -i applications-arcade "elementary OS Post Install" "Installation de 0.A.D" -t 5000
-	sudo add-apt-repository -y ppa:wfg/0ad
-	sudo apt -y update
-	sudo apt -y install 0ad 0ad-data
-fi
 
-# Installer Wesnoth
-if [[ $GUI == *"Wesnoth"* ]]
-then
-	clear
-	echo "Installation de Wesnoth..."
-	echo ""
-	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Wesnoth" -t 5000
-	sudo add-apt-repository -y ppa:vincent-c/wesnoth
-	sudo apt -y update
-	sudo apt -y install wesnoth
-fi
-
-# Installer FlightGear
-if [[ $GUI == *"FlightGear"* ]]
-then
-	clear
-	echo "Installation de FlightGear..."
-	echo ""
-	notify-send -i applications-arcade "elementary OS Post Install" "Installation de FlightGear" -t 5000
-	sudo add-apt-repository -y ppa:saiarcot895/flightgear
-	sudo apt -y update
-	sudo apt -y install fgrun flightgear flightgear-data simgear
-fi
-
-# Installer Unvanquished
-if [[ $GUI == *"Unvanquished"* ]]
-then
-	clear
-	echo "Installation de Unvanquished..."
-	echo ""
-	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Unvanquished" -t 5000
-	wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
-	sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb games" >> /etc/apt/sources.list.d/getdeb.list'
-	sudo apt -y update
-	sudo apt -y install unvanquished
-fi
-
-# Installer War Thunder
-if [[ $GUI == *"War Thunder"* ]]
-then
-	clear
-	echo "Installation de War Thunder..."
-	echo ""
-	notify-send -i applications-arcade "elementary OS Post Install" "War Thunder sera installé dans le dossier warthunder sur votre HOME" -t 15000
-	mkdir $HOME/warthunder
-	wget http://aws-yup1.gaijinent.com/wt_launcher_linux_0.9.3.26.tar.gz
-	tar -xf wt_launcher_linux_0.9.3.26.tar.gz $HOME/warthunder
-	cd $HOME/warthunder
-	notify-send -i applications-arcade "elementary OS Post Install" "Création d'un raccourci pour War Thunder!" -t 5000
-	cd /tmp
-	wget -O /tmp/warthunder.desktop https://raw.githubusercontent.com/Devil505/elementaryos-postinstall/master/warthunder.desktop
-	chmod +x /tmp/warthunder.desktop
-	sudo cp /tmp/warthunder.desktop /usr/share/applications/warthunder.desktop
-fi
 
 # Installer Discord
 if [[ $GUI == *"Discord"* ]]
@@ -759,9 +740,7 @@ then
 	echo "Installation de Discord..."
 	echo ""
 	notify-send -i applications-chat "elementary OS Post Install" "Installation de Discord" -t 5000
-	cd /tmp
-	wget https://dl.discordapp.net/apps/linux/0.0.1/discord-0.0.1.deb
-	sudo dpkg -i --force-depends discord-0.0.1.deb
+	flatpak install flathub com.discordapp.Discord -y
 fi
 
 ##################
@@ -801,18 +780,7 @@ fi
 #
 ##################
 
-# Installer Pushbullet
-if [[ $GUI == *"Installation de Pushbullet"* ]]
-then
-	clear
-	echo "Installation de l'indicator Pushbullet..."
-	echo ""
-	notify-send -i applications-office "elementary OS Post Install" "Installation de l'indicator Pushbullet" -t 5000
-	sudo add-apt-repository -y ppa:atareao/pushbullet
-    notify-send -i applications-system "Installez Pushbullet sur vos appareil Android !" -t 5000
-	sudo apt-get -y update
-	sudo apt-get -y install pushbullet-indicator
-fi
+
 
 # Installer Master PDF Editor
 if [[ $GUI == *"Master PDF Editor"* ]]
@@ -826,16 +794,14 @@ then
 	sudo dpkg -i master-pdf-editor-3.7.10_amd64.deb
 fi
 
-# Install Transmission Action
-if [[ $GUI == *"Transmission"* ]]
+# Install Torrential
+if [[ $GUI == *"Torrential"* ]]
 then
 	clear
-	echo "Installing Transmission..."
+	echo "Installing Torrential..."
 	echo ""
-	notify-send -i applications-filesharing "elementary OS Post Install" "Installation de Transmission" -t 5000
-	sudo add-apt-repository  -y ppa:transmissionbt
-	sudo apt -y update
-	sudo apt  -y install transmission
+	notify-send -i applications-filesharing "elementary OS Post Install" "Installation de Torrential" -t 5000
+	sudo apt -y install com.github.davidmhewitt.torrential
 fi
 
 # Installer le Support pour les formats d'archivage
@@ -848,14 +814,14 @@ then
 	sudo apt -y install unace rar unrar p7zip-rar p7zip zip unzip sharutils uudeview mpack arj cabextract
 fi
 
-# Installer GDebi
-if [[ $GUI == *"GDebi"* ]]
+# Installer eddy
+if [[ $GUI == *"eddy"* ]]
 then
 	clear
-	echo "Installation de GDebi..."
+	echo "Installation de eddy..."
 	echo ""
-	notify-send -i package "elementary OS Post Install" "Installation de GDebi" -t 5000
-	sudo apt -y install gdebi
+	notify-send -i package "elementary OS Post Install" "Installation de eddy" -t 5000
+	sudo apt -y install com.github.donadigo.eddy
 fi
 
 # Installer Deja Dup
@@ -906,14 +872,14 @@ then
 	sudo apt -y install aptik
 fi
 
-# Installer clamTK
-if [[ $GUI == *"clamTK"* ]]
+# Installer clipped
+if [[ $GUI == *"clipped"* ]]
 then
 	clear
-	echo "Installation de clamTK..."
+	echo "Installation de clipped..."
 	echo ""
-	notify-send -i edit-find "elementary OS Post Install" "Installation de clamTK'" -t 5000
-	sudo apt -y install clamtk
+	notify-send -i edit-find "elementary OS Post Install" "Installation de clipped'" -t 5000
+	sudo apt -y install com.github.davidmhewitt.clipped
 fi
 
 ##################
@@ -1008,6 +974,19 @@ then
 	sudo apt -y install boot-repair
 fi
 
+
+
+# Installer Optimizer
+if [[ $GUI == *"Optimizer"* ]]
+then
+	clear
+	echo "Installation de Optimizer..."
+	echo ""
+	notify-send -i applications-system "elementary OS Post Install" "Installation de Optimizer'" -t 5000
+	sudo apt -y install com.github.hannesschulze.optimizer
+fi
+
+
 # Installer TLP
 if [[ $GUI == *"TLP"* ]]
 then
@@ -1088,6 +1067,18 @@ then
 	wget https://raw.githubusercontent.com/SergKolo/udisks-indicator/master/udisks-indicator.desktop
 	sudo mv udisks-indicator.desktop /usr/share/applications/
 	echo "Pensez à rajouter udisks-indicator aux applications au démarrage!"
+fi
+
+# Installer elementary-tweak
+if [[ $GUI == *"elementary-tweak"* ]]
+then
+	clear
+	echo "Installation de elementary-tweak..."
+	echo ""
+	notify-send -i preferences-desktop "elementary OS Post Install" "Installation de neofetch'" -t 5000
+	sudo add-apt-repository -y ppa:philip.scott/elementary-tweaks
+	sudo apt -y update
+	sudo apt install -y elementary-tweaks
 fi
 
 ########################

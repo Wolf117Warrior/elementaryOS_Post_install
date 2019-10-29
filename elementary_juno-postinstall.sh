@@ -418,6 +418,7 @@ then
 	clear
 	echo "Installation de Polari..."
 	echo ""
+	notify-send -i applications-chat "elementary OS Post Install" "Installation de Polari" -t 5000
 	sudo apt -y install polari
 fi
 
@@ -427,6 +428,7 @@ then
 	clear
 	echo "Installation de Riot..."
 	echo ""
+	notify-send -i applications-chat "elementary OS Post Install" "Installation de Riot" -t 5000
 	flatpak install flathub im.riot.Riot -y
 fi
 
@@ -464,7 +466,7 @@ then
 	clear
 	echo "Installation de BlueMail..."
 	echo ""
-	notify-send -i applications-office "elementary OS Post Install" "Installation de BlueMail" -t 5000
+	notify-send -i internet-mail "elementary OS Post Install" "Installation de BlueMail" -t 5000
 	sudo snap install bluemail
 fi
 
@@ -474,7 +476,7 @@ then
 	clear
 	echo "Installation de Thunderbird..."
 	echo ""
-	notify-send -i applications-office "elementary OS Post Install" "Installation de Thunderbird" -t 5000
+	notify-send -i internet-mail "elementary OS Post Install" "Installation de Thunderbird" -t 5000
 	sudo apt -y install thunderbird thunderbird-locale-fr
 fi
 
@@ -532,7 +534,7 @@ then
 	clear
 	echo "Installation des Ubuntu Restricted Extras..."
 	echo ""
-	notify-send -i software-properties "elementary OS Post Install" "Installation des Ubuntu Restricted Extras" -t 5000
+	notify-send -i media-dvd "elementary OS Post Install" "Installation des Ubuntu Restricted Extras" -t 5000
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 	sudo apt -y install ubuntu-restricted-extras ttf-mscorefonts-installer ubuntu-restricted-addons
 fi
@@ -543,7 +545,7 @@ then
 	clear
 	echo "Installation des Extra Multimedia Codecs..."
 	echo ""
-	notify-send -i multimedia-video-player "elementary OS Post Install" "Installation des codecs" -t 5000
+	notify-send -i media-dvd "elementary OS Post Install" "Installation des codecs" -t 5000
 	sudo apt -y install libavcodec-extra-53 gstreamer0.10-plugins-bad-multiverse
 fi
 
@@ -690,7 +692,7 @@ then
 	clear
 	echo "Installation de steam..."
 	echo ""
-	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Steam" -t 5000
+	notify-send -i computer "elementary OS Post Install" "Installation de Steam" -t 5000
 	sudo apt -y install steam
 fi
 
@@ -700,7 +702,7 @@ then
 	clear
 	echo "Installation de Lutris..."
 	echo ""
-	notify-send -i applications-arcade "elementary OS Post Install" "Installation de Lutris" -t 5000
+	notify-send -i computer "elementary OS Post Install" "Installation de Lutris" -t 5000
 	sudo add-apt-repository ppa:lutris-team/lutris -y
 	sudo apt -y update
 	sudo apt -y install lutris
@@ -712,7 +714,7 @@ then
 	clear
 	echo "Installation de GameHub..."
 	echo ""
-	notify-send -i applications-arcade "elementary OS Post Install" "Installation de GameHub" -t 5000
+	notify-send -i computer "elementary OS Post Install" "Installation de GameHub" -t 5000
 	sudo add-apt-repository ppa:tkashkin/gamehub -y
 	sudo apt -y update
 	sudo apt -y install com.github.tkashkin.gamehub
@@ -724,8 +726,7 @@ then
 	clear
 	echo "Installation d'itch.io..."
 	echo ""
-	notify-send -i applications-arcade "elementary OS Post Install" "Installation d'itch.io" -t 5000
-	
+	notify-send -i computer "elementary OS Post Install" "Installation d'itch.io" -t 5000
 	wget -q -O - https://dl.itch.ovh/archive.key | sudo apt-key add -
 	sudo sh -c  'echo "deb https://dl.bintray.com/itchio/deb xenial main" >> /etc/apt/sources.list.d/itchio.list'
 	sudo apt -y update
@@ -801,7 +802,7 @@ then
 	clear
 	echo "Installing Torrential..."
 	echo ""
-	notify-send -i applications-filesharing "elementary OS Post Install" "Installation de Torrential" -t 5000
+	notify-send -i emblem-downloads "elementary OS Post Install" "Installation de Torrential" -t 5000
 	sudo apt -y install com.github.davidmhewitt.torrential
 fi
 
@@ -842,7 +843,7 @@ then
 	clear
 	echo "Installation du SDK Android..."
 	echo ""
-	notify-send -i applications-office "elementary OS Post Install" "Installation du SDK Android" -t 5000
+	notify-send -i applications-system "elementary OS Post Install" "Installation du SDK Android" -t 5000
 	sudo wget -O /etc/udev/rules.d/51-android.rules https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/android/51-android.rules
 	sudo chmod a+r /etc/udev/rules .d/51-android.rules
 	sudo service udev restart

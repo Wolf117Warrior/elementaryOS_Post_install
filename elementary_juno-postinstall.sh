@@ -26,20 +26,6 @@
 #
 #
 #################################################################################################################
-#
-# TODO
-# hexchat ?
-#
-# Ordre menu
-# SYSTEME: upgrade, mémoire, NVIDIA, ppa oibaf, TLP, tweaks, boot-repair
-# CUSTOMISATION: wallpapers luna, conky-manager
-# UTILITAIRES: archivage, Gdebi, atom, sublime text, deja-dup, ADB, timeshift, aptik, redshift
-# BUREAUTIQUE: libreoffice, envelope
-# MULTIMEDIA: restricted, codecs, dvd, VLC, vocal, lollypop, spotify, tomahawk
-# INTERNET: Chrome, chromium, Firefox, Nylas N1, feedreader, transmission, Vivaldi, dropbox, mega, grive, telegram, polari, slack
-# INFOGRAPHIE: gimp, darktable, inkscape, rapid photo downloader
-# JEUX: steam, itch.io, 0.A.D, FlightGear
-# DIVERS: paquet cassés, nettoyage
 
 # Clear the Terminal
 clear
@@ -47,7 +33,7 @@ notify-send  --icon=dialog-error "Attention" "Le mot de passe root vous sera dem
 
 # Zenity
 GUI=$(zenity --list --checklist \
-	--height 400 \
+	--height 800 \
 	--width 900 \
 	--title="Script de Post-Installation elementary OS 5.0 Juno" \
 	--text "Sélectionner les applications et les actions à éxécuter." \
@@ -73,7 +59,6 @@ GUI=$(zenity --list --checklist \
 	FALSE "FeedReader" "Installe FeedReader, un aggrégateur de flux opensource." \
 	FALSE "Dropbox" "dropbox avec les icones monochromes elementary." \
 	FALSE "Nextcloud" "Le cloud opensource et auto-héberger." \
-	FALSE "MEGA" "MEGASync pour le cloud de MEGA avec les icones monochromes elementary." \
 	FALSE "VGrive" " L'application pour le cloud Google Drive et designé pour elementary OS." \
 	FALSE "Tootle" " L'application elementary OS pour ce connecter sur Mastodon." \
 	FALSE "InSync" " L'application pour le cloud Google Drive et OneDrive." \
@@ -136,7 +121,6 @@ GUI=$(zenity --list --checklist \
 	FALSE "elementaryplus" "Installe le thème d'icones indispensable elementary plus." \
 	FALSE "Conky-Manager" "Application pour gérer les fichier de conf de conky" \
 	FALSE "Système" "========================================================"  \
-	FALSE "elementary-tweak" "Gestion de la personnalisation de eOS" \
 	FALSE "Accélération de la mémoire" "Installation de preload et de zRAM." \
 	FALSE "Memtest86+" "Installation de memtest86+ pour tester la RAM." \
 	FALSE "Kernel Xenial BFS/BFQ" "Installe le Kernel Xenial LTS optimisé BFQ/BFS scheduler." \
@@ -167,6 +151,38 @@ then
 	notify-send -i system-software-update "elementary OS Post Install" "Mise à jour du système en cours" -t 5000
 	sudo apt -y update
 	sudo apt -y upgrade
+fi
+
+# Ajout du paquet pour les PPA
+if [[ $GUI == *"PPA"* ]]
+then
+	clear
+	echo "Installation du paquet pour les PPA..."
+	echo ""
+	notify-send -i system-software-update "elementary OS Post Install" "Installation du paquet pour les PPA" -t 5000
+	sudo apt -y install software-properties-common
+fi
+
+# Mise en place de Flatpak
+if [[ $GUI == *"Flathub"* ]]
+then
+	clear
+	echo "Installation du paquet pour les Flatpak..."
+	echo ""
+	notify-send -i system-software-update "elementary OS Post Install" "Installation du paquet pour les Flatpak" -t 5000
+	sudo add-apt-repository -y ppa:alexlarsson/flatpak
+	sudo apt -y install flatpak
+	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+fi
+
+# Ajout du paquet pour les Snap
+if [[ $GUI == *"Snap"* ]]
+then
+	clear
+	echo "Installation du paquet pour les Snap..."
+	echo ""
+	notify-send -i system-software-update "elementary OS Post Install" "Installation du paquet pour les Snap" -t 5000
+	sudo apt -y install snapd
 fi
 
 ############################################################################################################
@@ -246,7 +262,6 @@ then
 	echo "deb https://brave-browser-apt-release.s3.brave.com/ bionic main" | sudo tee /etc/apt/sources.list.d/brave-browser.list
 	sudo apt -y update
 	sudo apt -y install brave-browser
-	
 fi
 
 # Installer Min #
@@ -309,20 +324,6 @@ then
 	bash /tmp/elementary-dropbox/install.sh -y
 fi
 
-# Installer MEGA
-if [[ $GUI == *"MEGA"* ]]
-then
-	clear
-	echo "Installation de MEGASync..."
-	echo ""
-	notify-send -i applications-internet "elementary OS Post Install" "Installation de MeGA" -t 5000
-	echo 'deb https://mega.nz/linux/MEGAsync/xUbuntu_18.04/ ./' > /etc/apt/sources.list.d/megasync.list
-	cd /tmp
-	wget -q -O- https://mega.nz/linux/MEGAsync/xUbuntu_18.04/Release.key | sudo apt-key add -
-	sudo apt update
-	sudo apt -y install megasync
-fi
-
 # Installer InSync
 if [[ $GUI == *"InSync"* ]]
 then
@@ -367,7 +368,7 @@ then
 	echo ""
 	notify-send -i applications-internet  "elementary OS Post Install" "Installation de Tootle " -t 5000
     sudo apt -y install com.github.bleakgrey.tootle
-
+fi
 
 ##################
 #
@@ -396,7 +397,7 @@ then
 	echo "Installation de slack..."
 	echo ""
 	notify-send -i applications-chat "elementary OS Post Install" "Installation de Slack" -t 5000
-	sudo snap install slack --classic
+	sudo snap install slack
 
 fi
 
@@ -1067,18 +1068,6 @@ then
 	wget https://raw.githubusercontent.com/SergKolo/udisks-indicator/master/udisks-indicator.desktop
 	sudo mv udisks-indicator.desktop /usr/share/applications/
 	echo "Pensez à rajouter udisks-indicator aux applications au démarrage!"
-fi
-
-# Installer elementary-tweak
-if [[ $GUI == *"elementary-tweak"* ]]
-then
-	clear
-	echo "Installation de elementary-tweak..."
-	echo ""
-	notify-send -i preferences-desktop "elementary OS Post Install" "Installation de neofetch'" -t 5000
-	sudo add-apt-repository -y ppa:philip.scott/elementary-tweaks
-	sudo apt -y update
-	sudo apt install -y elementary-tweaks
 fi
 
 ########################

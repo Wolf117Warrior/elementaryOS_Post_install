@@ -5,7 +5,7 @@
 Ce script a pour but de rendre facile l'installation d'applications tierces juste après une installation
 d'elementary OS 5.0 Juno.
 
-![Screenshot](elementary-postinstall.png)
+![Screenshot](screenshots.png)
 
 ## Utilisation
 
